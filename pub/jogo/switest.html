@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>SWI Prolog HTTP Server Test</title>
+	</head>
+	<body>
+		<h1>SWI HTTP Test</h1>
+		
+		<div id="content">
+			<div id="params">
+<textarea rows="13" cols="23" id="board">
+[
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,1,1,1,1,1,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,1,0,0,2,2,2,0,0,1,0],
+[0,1,0,2,0,0,0,2,0,1,0],
+[0,1,0,2,0,4,0,2,0,1,0],
+[0,1,0,2,0,0,0,2,0,1,0],
+[0,1,0,0,2,2,2,0,0,1,0],
+[0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,1,1,1,1,1,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0]
+]</textarea>
+				<br/>
+				<label>Player</label>
+				<input type="text" id="player" value="1"/>
+				<br/>
+				<label>Piece X</label>
+				<input type="text" id="x" value="4"/>
+				<br/>
+				<label>Piece Y</label>
+				<input type="text" id="y" value="2"/>
+				<br/>
+				<label>Delta X</label>
+				<input type="text" id="deltax" value="0"/>
+				<br/>
+				<label>Delta Y</label>
+				<input type="text" id="deltay" value="2"/>
+				<br/>
+				<button type="button" id="search" onClick="play();" >Send</button>
+			</div>
+			<div id="reply"></div>
+		</div>
+		
+		<script type="text/javascript">
+			function postGameRequest(requestObject, onSuccess, onError)
+			{
+				var request = new XMLHttpRequest();
+				request.open('POST', '../../game', true);
+
+				request.onload = onSuccess || function(data){console.log("Request successful. Reply: " + data.target.response);};
+				request.onerror = onError || function(){console.log("Error waiting for response");};
+
+				request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+				
+				request.send("requestString="+encodeURIComponent(JSON.stringify(requestObject).replace(/"/g, '')));			
+			}
+		
+			function play()
+			{
+				// Get Parameter Values
+				var board = document.querySelector("#board").value.replace(/\n/g, '');
+				var player = document.querySelector("#player").value;
+				var x = document.querySelector("#x").value;
+				var y = document.querySelector("#y").value;
+				var deltax = document.querySelector("#deltax").value;
+				var deltay = document.querySelector("#deltay").value;
+				var counter = 0;
+				
+				// Compose Request String
+				var request = (["play",board,player,x,y,deltax,deltay,counter]);
+				postGameRequest(request,
+					function handleReply(data){ // Handle reply
+						response=JSON.parse(data.target.response);
+						document.querySelector("#reply").innerHTML=response.valid;
+						if (JSON.parse(response.valid))
+						{
+							document.querySelector("#board").value=response.newBoard.replace("[[","[\n[").replace("]]","]\n]");
+							//document.querySelector("#counter").value=response.newBoard;
+						}
+					});
+			}
+		</script>
+		
+	</body>
+</html>
