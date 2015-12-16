@@ -37,6 +37,9 @@ XMLscene.prototype.init = function(application) {
 	// set number of rows and columns in font texture
 	this.textShader.setUniformsValues({'dims': [10, 2]});
 
+	this.terrainShader=new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
+    this.terrainShader.setUniformsValues({uSampler2: 1});
+
 	this.infoBoard = new InfoBoard(this);
 };
 
