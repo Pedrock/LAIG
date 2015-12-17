@@ -13,7 +13,7 @@
 
 <ILLUMINATION>
     <ambient r="0.5" g="0.5" b="0.5" a="1" />            <!-- global ambient -->
-    <background r="0" g="0" b="0" a="1" />         <!-- background color -->
+    <background r="0.7" g="0.8" b="1" a="1" />         <!-- background color -->
 </ILLUMINATION>
 
 <LIGHTS>
@@ -27,7 +27,54 @@
 </LIGHTS>
 
 <TEXTURES>
-	
+	<TEXTURE id="textura-tinta-branca">
+        <file path="textures/tinta-branca.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tinta-preta">
+        <file path="textures/tinta-preta.png" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-madeira-vermelha">
+        <file path="textures/madeira-vermelha.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tinta-teste">
+        <file path="textures/tinta-teste.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-ramos-pinheiro">
+        <file path="textures/ramos-pinheiro.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-ramos-pinheiro-pequeno">
+        <file path="textures/ramos-pinheiro-pequeno.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tronco-pinheiro">
+        <file path="textures/tronco-pinheiro.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-flores">
+        <file path="textures/flores.JPG" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tronco-flores">
+        <file path="textures/tronco-flores.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tronco-arvore">
+        <file path="textures/tronco-arvore.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-ramos-arvore">
+        <file path="textures/ramos-arvore.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-metal-verde">
+        <file path="textures/metal-verde.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
 </TEXTURES>
 
 
@@ -46,6 +93,20 @@
         <ambient r="0.2" g="0.2" b="0.2" a="1" />    
         <emission r="0" g="0" b="0" a="0" />     
      </MATERIAL>
+	 <MATERIAL id="material-candeeiro-exterior-pe">                                  
+        <shininess value="6" />
+        <specular r="0" g="0" b="0" a="1" />        
+        <diffuse r="0" g="0" b="0" a="1" />   		
+        <ambient r="0" g="0" b="0" a="1" />         
+        <emission r="0" g="0" b="0" a="0" />  
+	</MATERIAL>	
+<MATERIAL id="material-abranqueado">                                  
+        <shininess value="150" />
+        <specular r="0.3" g="0.3" b="0.3" a="1" />        
+        <diffuse r="0.6" g="0.6" b="0.6" a="1" />   
+        <ambient r="1" g="1" b="1" a="1" />         
+        <emission r="1" g="1" b="1" a="1" />      
+     </MATERIAL>	
 </MATERIALS>
 
 <ANIMATIONS>
@@ -57,6 +118,7 @@
 	<LEAF id="bola" type="sphere" args="1 40 40" />
 	<LEAF id="cilindro" type="cylinder" args="8 0.5 0.5 1 40" />
 	<LEAF id="rectangulo" type="rectangle" args="0 1 1 0" /> 
+	<LEAF id="cone" type="cylinder" args="4 0 1 1 40" />
 	<LEAF id="terreno" type="terrain" texture="textures/jardim.jpg" heightmap="textures/jardim-heightmap.jpg" />
 	
 	<LEAF id="perna-mesa" type="patch" order="3" partsU="20" partsV="20" >
@@ -312,16 +374,16 @@
         <DESCENDANTS>
 		    <DESCENDANT id="board" /> 
 			<DESCENDANT id="cena" />
-			<DESCENDANT id="acento-banco" />
-			<DESCENDANT id="encosto-banco" />
-			<DESCENDANT id="acento-banco-tras" />
-			<DESCENDANT id="encosto-banco-tras" />				
+			
+						
         </DESCENDANTS>
     </NODE>
 	
+	
+	
 	<NODE id="arvore">
         <MATERIAL id="null" />
-        <TEXTURE id="null" />
+        <TEXTURE id="textura-tronco-arvore" />
 		<TRANSLATION x="-15" y="-4.2" z="-6" />
         <DESCENDANTS>
 			<DESCENDANT id="tronco" />
@@ -331,7 +393,7 @@
 	
 	<NODE id="tronco">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<ROTATION axis="x" angle="-90" />
 		<SCALE sx="2" sy="2" sz="1" />
         <DESCENDANTS>
@@ -341,7 +403,7 @@
 	
 	<NODE id="ramos">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-ramos-arvore" />
 		<TRANSLATION x="0" y="13" z="0" />
 		<SCALE sx="5" sy="6" sz="5" />
 		<ROTATION axis="x" angle="90" />
@@ -351,8 +413,8 @@
     </NODE>
 	
 	<NODE id="candeeiro">
-        <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <MATERIAL id="material-abranqueado" />
+        <TEXTURE id="null" />
 		<TRANSLATION x="0" y="9" z="0" />
 		<ROTATION axis="x" angle="-90" />
         <DESCENDANTS>
@@ -361,22 +423,31 @@
     </NODE>
 	
 	<NODE id="poste">
-        <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 		<ROTATION axis="x" angle="-90" />
-		<SCALE sx="0.9" sy="0.9" sz="1.22" />
+		<SCALE sx="0.7" sy="0.7" sz="1.22" />
         <DESCENDANTS>
 			<DESCENDANT id="cilindro" />
         </DESCENDANTS>
     </NODE>
 	
 	<NODE id="poste-candeeiro">
-        <MATERIAL id="material-geral" />
+        <MATERIAL id="material-candeeiro-exterior-pe" />
         <TEXTURE id="clear" />
 		<TRANSLATION x="6" y="-4.2" z="-3" />
         <DESCENDANTS>
 			<DESCENDANT id="poste" />
 			<DESCENDANT id="candeeiro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="poste-candeeiro2">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="-23.5" y="0" z="18" />
+        <DESCENDANTS>
+			<DESCENDANT id="poste-candeeiro" />
         </DESCENDANTS>
     </NODE>
 	
@@ -389,10 +460,196 @@
 			<DESCENDANT id="cadeira" />
 			<DESCENDANT id="cadeira2" />
 			<DESCENDANT id="terreno-jardim" /> 
-			<DESCENDANT id="poste-candeeiro" /> 
-			<DESCENDANT id="arvore" /> 
+			<DESCENDANT id="poste-candeeiro" />
+			<DESCENDANT id="poste-candeeiro2" />			
+			<DESCENDANT id="arvore" />
+			<DESCENDANT id="arbusto" />
+			<DESCENDANT id="pinheiro" />
+			<DESCENDANT id="pinheiro-pequena" />	
+			<DESCENDANT id="banco-jardim" />
+			<DESCENDANT id="suporte-tabuleiro" />
         </DESCENDANTS>
 	</NODE>
+	
+	<NODE id="suporte-tabuleiro">
+        <MATERIAL id="material-candeeiro-exterior-pe" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-1.35" y="-0.01" z="1.35" />
+		<SCALE sx="2.7" sy="2.7" sz="2.7" />
+		<ROTATION axis="x" angle="-90" />
+        <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="arbusto">
+        <MATERIAL id="null" />
+        <TEXTURE id="textura-flores" />
+		<TRANSLATION x="-15" y="-4.2" z="22" />
+        <DESCENDANTS>
+			<DESCENDANT id="tronco-arbusto" />
+			<DESCENDANT id="ramos-arbusto" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="tronco-arbusto">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-tronco-flores" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="0.5" sy="0.5" sz="0.1" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="ramos-arbusto">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="2.5" z="0" />
+		<SCALE sx="2.5" sy="2" sz="2.5" />
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			<DESCENDANT id="bola" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="pinheiro-pequena">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-ramos-pinheiro-pequeno" />
+		<TRANSLATION x="-17" y="-4.25" z="-1" />
+		<SCALE sx="0.8" sy="0.6" sz="0.8" />
+        <DESCENDANTS>
+			<DESCENDANT id="arvore2" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="pinheiro">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-ramos-pinheiro" />
+		<TRANSLATION x="-9" y="-4.25" z="-5" />
+        <DESCENDANTS>
+			<DESCENDANT id="arvore2" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="arvore2">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+        <DESCENDANTS>
+			<DESCENDANT id="tronco2" />
+			<DESCENDANT id="ramos2" />
+			<DESCENDANT id="baixo-cone" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="tronco2">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-tronco-pinheiro" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="1" sy="1" sz="0.75" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="ramos2">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="22" z="0" />
+		<SCALE sx="2" sy="4" sz="2" />
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+            <DESCENDANT id="cone" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="baixo-cone">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="6" z="0" />
+		<SCALE sx="2" sy="0" sz="2" />
+        <DESCENDANTS>
+            <DESCENDANT id="bola" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="banco-jardim">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-18.5" y="-4.2" z="9" />
+		<ROTATION axis="y" angle="90" />
+		<DESCENDANTS> 
+			<DESCENDANT id="banco-corpo" />
+			<DESCENDANT id="banco-pernas" />	
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="banco-corpo">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-madeira-vermelha" />
+		<TRANSLATION x="0" y="2.515" z="0" />
+		<DESCENDANTS> 
+			<DESCENDANT id="acento-banco" />
+			<DESCENDANT id="encosto-banco" />
+			<DESCENDANT id="acento-banco-tras" />
+			<DESCENDANT id="encosto-banco-tras" />	
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="banco-pernas">
+        <MATERIAL id="material-candeeiro-exterior-pe" />
+        <TEXTURE id="clear" />
+        <DESCENDANTS>
+			<DESCENDANT id="perna-frente-direita" />
+			<DESCENDANT id="perna-frente-esquerda" />
+			<DESCENDANT id="perna-tras-esquerda" />
+			<DESCENDANT id="perna-tras-direita" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="perna-tras-direita">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="3.5" y="0" z="0.5" />
+		<ROTATION axis="y" angle="90" />
+		<SCALE sx="0.3" sy="0.4" sz="0.4" />
+        <DESCENDANTS>
+			<DESCENDANT id="cadeira-perna" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="perna-tras-esquerda">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-3.5" y="0" z="0.5" />
+		<ROTATION axis="y" angle="90" />
+		<SCALE sx="0.3" sy="0.4" sz="0.4" />
+        <DESCENDANTS>
+			<DESCENDANT id="cadeira-perna" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="perna-frente-esquerda">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-3.5" y="0" z="1.1" />
+		<ROTATION axis="y" angle="-90" />
+		<SCALE sx="0.3" sy="0.4" sz="0.4" />
+        <DESCENDANTS>
+			<DESCENDANT id="cadeira-perna" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="perna-frente-direita">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="3.5" y="0" z="1.1" />
+		<ROTATION axis="y" angle="-90" />
+		<SCALE sx="0.3" sy="0.4" sz="0.4" />
+        <DESCENDANTS>
+			<DESCENDANT id="cadeira-perna" />
+        </DESCENDANTS>
+    </NODE>
 	
 	<NODE id="terreno-jardim">
         <MATERIAL id="material-relva" />
@@ -406,7 +663,7 @@
 	
 	<NODE id="mesa">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-tinta-branca" />
 		<TRANSLATION x="0" y="-4.2" z="0" />
 		<SCALE sx="0.65" sy="0.65" sz="0.65" />
         <DESCENDANTS>
@@ -420,7 +677,7 @@
 	
 	<NODE id="mesa-perna">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-metal-verde" />
         <DESCENDANTS>
 			<DESCENDANT id="perna-mesa" />
 			<DESCENDANT id="perna-mesa-tras" />
@@ -428,7 +685,7 @@
     </NODE>
 	
 	<NODE id="mesa-perna1">
-        <MATERIAL id="material-geral" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 		<ROTATION axis="y" angle="90" />
         <DESCENDANTS>
@@ -437,7 +694,7 @@
     </NODE>
 	
 	<NODE id="mesa-perna2">
-        <MATERIAL id="material-geral" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 		<ROTATION axis="y" angle="180" />
         <DESCENDANTS>
@@ -446,7 +703,7 @@
     </NODE>
 	
 	<NODE id="mesa-perna3">
-        <MATERIAL id="material-geral" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 		<ROTATION axis="y" angle="-90" />
         <DESCENDANTS>
@@ -456,9 +713,9 @@
 	
 	<NODE id="tampo-mesa">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<TRANSLATION x="0" y="2" z="0" />
-		<SCALE sx="2.5" sy="2" sz="2.5" />
+		<SCALE sx="2.7" sy="2" sz="2.7" />
         <DESCENDANTS>
 			<DESCENDANT id="acento" />
 			<DESCENDANT id="acento-cima" />
@@ -509,7 +766,7 @@
 	
 	<NODE id="cadeira">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-tinta-branca" />
 		<TRANSLATION x="0" y="-4.2" z="-3" />
 		<ROTATION axis="y" angle="-90" />
 		<SCALE sx="0.8" sy="0.8" sz="0.8" />
@@ -522,7 +779,7 @@
 	
 	<NODE id="acento-cadeira">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-tinta-teste" />
 		<SCALE sx="0.5" sy="0.5" sz="0.5" />
         <DESCENDANTS>
 			<DESCENDANT id="tampo-mesa" />
@@ -535,7 +792,7 @@
 	
 	<NODE id="cadeira-perna">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-metal-verde" />
         <DESCENDANTS>
 			<DESCENDANT id="perna-cadeira" />
 			<DESCENDANT id="perna-cadeira-tras" />
