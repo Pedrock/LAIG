@@ -7,7 +7,7 @@
     <rotation axis="y" angle="0" />                  <!-- initial rotation 2 -->
     <rotation axis="z" angle="0" />                  <!-- initial rotation 1 -->
     <scale sx="1" sy="1" sz="1" />                  <!-- initial scaling -->
-    <reference length="5" />                          <!-- axis length; "0" means no axis-->
+    <reference length="0" />                          <!-- axis length; "0" means no axis-->
 </INITIALS>
 
 
@@ -454,11 +454,12 @@
 	<NODE id="cena">
 		<MATERIAL id="material-geral" />
         <TEXTURE id="null" />
+		<TRANSLATION x="6.79" y="0" z="2.26" />
+		<ROTATION axis="y" angle="-45" />
 		<SCALE sx="0.8" sy="0.8" sz="0.8" />
 		<DESCENDANTS>
 			<DESCENDANT id="mesa" />
-			<DESCENDANT id="cadeira" />
-			<DESCENDANT id="cadeira2" />
+			<DESCENDANT id="cadeiras" />
 			<DESCENDANT id="terreno-jardim" /> 
 			<DESCENDANT id="poste-candeeiro" />
 			<DESCENDANT id="poste-candeeiro2" />			
@@ -474,6 +475,8 @@
 	<NODE id="suporte-tabuleiro">
         <MATERIAL id="material-candeeiro-exterior-pe" />
         <TEXTURE id="null" />
+		<TRANSLATION x="-8" y="0" z="4" />
+		<ROTATION axis="y" angle="-45" />
 		<TRANSLATION x="-1.35" y="-0.01" z="1.35" />
 		<SCALE sx="2.7" sy="2.7" sz="2.7" />
 		<ROTATION axis="x" angle="-90" />
@@ -664,7 +667,7 @@
 	<NODE id="mesa">
         <MATERIAL id="material-geral" />
         <TEXTURE id="textura-tinta-branca" />
-		<TRANSLATION x="0" y="-4.2" z="0" />
+		<TRANSLATION x="-8" y="-4.2" z="4" />
 		<SCALE sx="0.65" sy="0.65" sz="0.65" />
         <DESCENDANTS>
 			<DESCENDANT id="tampo-mesa" />
@@ -752,6 +755,17 @@
 		<SCALE sx="2.4" sy="2.4" sz="0.025" />
         <DESCENDANTS>
 			<DESCENDANT id="cilindro" />
+		</DESCENDANTS>
+    </NODE>
+	
+	<NODE id="cadeiras">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="-8" y="0" z="4" />
+		<ROTATION axis="y" angle="45" />
+        <DESCENDANTS>
+			<DESCENDANT id="cadeira" />
+			<DESCENDANT id="cadeira2" /> 			
 		</DESCENDANTS>
     </NODE>
 	
