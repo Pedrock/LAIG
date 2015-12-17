@@ -27,7 +27,25 @@ Game.play = function(board,player,x,y,deltax,deltay,counter, handler)
 				}
 			}
 			else response = false;
-			handler(response);
+			handler(response.valid, x, y, deltax, deltay, response.newCounter, response.newBoard);
+		});
+}
+
+Game.computerPlay = function(board,player,difficulty,counter,handler)
+{
+	var request = (["computerPlay",board,player,difficulty,counter]);
+	postGameRequest(request,
+		function handleReply(data){ // Handle reply
+			response=JSON.parse(data.target.response);
+			if (JSON.parse(response.valid))
+			{
+				for (var i in response)
+				{
+					response[i] = JSON.parse(response[i]);
+				}
+			}
+			else response = false;
+			handler(response.valid, response.x, response.y, response.deltax, response.deltay, response.newCounter, response.newBoard);
 		});
 }
 

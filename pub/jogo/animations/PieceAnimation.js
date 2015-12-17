@@ -2,11 +2,10 @@
  * PieceAnimation
  * @constructor
  */
-function PieceAnimation(scene, object, p1, p2, newCoords, finishedHandler) {
+function PieceAnimation(scene, object, delta, finishedHandler) {
     this.scene = scene;
     
-    this.delta = [p2[0] - p1[0], 0, p2[1] - p1[1]];
-    this.newCoords = newCoords;
+    this.delta = [delta[0], 0, delta[1]];
     
     this.normal;
     this.rotation = 0;

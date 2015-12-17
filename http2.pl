@@ -53,7 +53,14 @@ play(Board,Player,X,Y,DeltaX,DeltaY,N1) :-
 	formatAsJSON([N2,NewBoard,true],[newCounter,newBoard,valid]).
 
 play(_,_,_,_,_,_,_) :-
-	formatAsJSON([_,_,false],[newCounter,newBoard,valid]).
+	formatAsJSON([false],[valid]).
+	
+computerPlay(Board,Player,Difficulty,N1) :-
+	computerPlay(Board,Player,Difficulty,X,Y,DeltaX,DeltaY,N1,N2,NewBoard),
+	formatAsJSON([X,Y,DeltaX,DeltaY,N2,NewBoard,true],[x,y,deltax,deltay,newCounter,newBoard,valid]).
+
+computerPlay(_,_,_,_) :-
+	formatAsJSON([false],[valid]).
 	
 getValidMoves(Board,Player,Counter) :-
 	getValidMoves(Board,Player,Counter,Moves),

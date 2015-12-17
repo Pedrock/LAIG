@@ -7,7 +7,7 @@ rateBoard(Board,2,Rating) :-
         countFlagshipCanBeCaptured(Board,FlagshipCapture),
         findall(_, flagshipExit(Board,_), Ns),
         length(Ns, Num_exits),
-        countPieces(Board,2,Escorts_silver),
+        countPieces(Board,1,Escorts_silver),
         countGoldWins(Board,GoldWins),
         Rating is 
                 50*(1-FlagshipCapture)*Num_exits
@@ -20,11 +20,11 @@ rateBoard(Board,1,Rating) :-
         findall(_, flagshipExit(Board,_), Ns),
         length(Ns, Num_exits),
         countFlagshipCanBeCaptured(Board,FlagshipCapture),
-        countPieces(Board,2,Escorts_silver),
+		countPieces(Board,2,Escorts_gold),
         countFlagship(Board,FlagshipCount),
         Rating is 
                 -200*Num_exits-10*FlagshipCapture
-                + Escorts_silver
+                - Escorts_gold
                 - 1000*FlagshipCount.
 
 % Conta o número de navios almirantes (0 ou 1)
@@ -46,8 +46,8 @@ getPlayAndRating(Board,Player,X,Y,DeltaX,DeltaY,N,Rating) :-
         rateBoard(Board2,Player,Rating).
 
 % Jogada de computador, nível 2
-playAI(Board,_,2,_,Board).
-playAI(Board,Player,N,N2,NewBoard) :-
+playAI(Board,_,_,_,_,_,2,_,Board).
+playAI(Board,Player,X,Y,DeltaX,DeltaY,N,N2,NewBoard) :-
         findall(((X,Y,DeltaX,DeltaY),Rating),
                 getPlayAndRating(Board,Player,X,Y,DeltaX,DeltaY,N,Rating),
                 Moves),
@@ -55,6 +55,7 @@ playAI(Board,Player,N,N2,NewBoard) :-
         getBestMoves(Moves,Rating,BestMoves),
         choose(BestMoves,(X,Y,DeltaX,DeltaY)),
         play(Board,Player,X,Y,DeltaX,DeltaY,N,N2,NewBoard).
+		
 
 % Obter o melhor valor de avaliação a partir de uma lista das várias jogadas possíveis e respetivas avaliações
 pickBestRating([],Rating,Rating).
@@ -74,13 +75,13 @@ getBestMoves([(_,Rating)|T],BestRating,More) :-
 % Ronda de jogo para o computador
 gameRoundAI(Board,Player,NewBoard) :-
         level(Player,2),
-        once(playAI(Board,Player,0,N1,Board2)),
-        once(playAI(Board2,Player,N1,_,NewBoard)).
+        once(playAI(Board,Player,_,_,_,_,0,N1,Board2)),
+        once(playAI(Board2,Player,_,_,_,_,N1,_,NewBoard)).
 
 gameRoundAI(Board,Player,NewBoard) :-
         level(Player,1),
-        once(playRandomly(Board,Player,0,N1, Board2)),
-        once(playRandomly(Board2,Player,N1,_,NewBoard)).
+        once(playRandomly(Board,Player,_,_,_,_,0,N1,Board2)),
+        once(playRandomly(Board2,Player,_,_,_,_,N1,_,NewBoard)).
 		
 % Obter a posição do navio almirante
 getFlagship([H|_],X,1) :-
@@ -114,11 +115,11 @@ flagshipCanBeCaptured(Board) :-
         getCellAt(Board,X2,Y2,1).
 
 % Fazer jogada aleatória
-playRandomly(Board,Player,N1,N2,NewBoard) :-
+playRandomly(Board,Player,X,Y,DeltaX,DeltaY,N1,N2,NewBoard) :-
         findall((X,Y,DeltaX,DeltaY),validPlay(Board,Player,X,Y,DeltaX,DeltaY),Moves),
         choose(Moves,(X,Y,DeltaX,DeltaY)),
         play(Board,Player,X,Y,DeltaX,DeltaY,N1,N2,NewBoard).
-playRandomly(Board,_,_,_,Board).
+playRandomly(Board,_,_,_,_,_,_,_,Board).
 
 % Escolher um elemento de uma lista aleatoriamente
 choose(List, Result) :-

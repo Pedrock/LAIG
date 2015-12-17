@@ -159,10 +159,6 @@ XMLscene.prototype.display = function() {
         if (this.graph.rootNodeId && this.graph.nodes[this.graph.rootNodeId]) 
             this.graph.nodes[this.graph.rootNodeId].display("null", "clear");
     };
-    
-    this.setActiveShaderSimple(this.textShader);
-
-    this.setActiveShaderSimple(this.defaultShader);
 }
 ;
 
@@ -223,4 +219,14 @@ XMLscene.prototype.updateCamera = function(currTime)
         this.gameCamera.orbit(CGFcameraAxis.Y,Math.PI*easeInOutQuad(t));
     else
         this.gameCamera.orbit(CGFcameraAxis.Y,Math.PI*(1-easeInOutQuad(t)));
+}
+
+
+XMLscene.prototype.changePlayers = function()
+{
+    this.board.human[1] = this["Silver Player"] == 0;
+    this.board.human[2] = this["Gold Player"] == 0;
+
+    this.board.difficulty[1] = this["Silver Player"];
+    this.board.difficulty[2] = this["Gold Player"];
 }

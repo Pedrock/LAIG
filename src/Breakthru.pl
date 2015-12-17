@@ -17,8 +17,10 @@ getValidMoves(Board, Player, 1, Moves) :-
 	
 % play(Board,Player,X,Y,DeltaX,DeltaY,N1,N2,NewBoard)
 
-computerPlay(Board,Player,1,N1,N2,NewBoard) :-
-	playRandomly(Board,Player,N1,N2,NewBoard).
-computerPlay(Board,Player,2,N1,N2,NewBoard) :-
-	playAI(Board,Player,N1,N2,NewBoard).
+computerPlay(Board,Player,1,X,Y,DeltaX,DeltaY,N1,N2,NewBoard) :-
+	playRandomly(Board,Player,X,Y,DeltaX,DeltaY,N1,N2,NewBoard),
+	\+ var(X).
+computerPlay(Board,Player,2,X,Y,DeltaX,DeltaY,N1,N2,NewBoard) :-
+	playAI(Board,Player,X,Y,DeltaX,DeltaY,N1,N2,NewBoard),
+	\+ var(X).
 	
