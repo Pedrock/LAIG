@@ -16,6 +16,8 @@ function Board(scene)
     [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0], 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
+
+    this.cellWidth = 2;
     
     this.center = [this.board[0].length, 0, this.board.length];
     
@@ -48,12 +50,15 @@ function Board(scene)
     this.silver.setDiffuse(0.8, 0.85, 0.85, 1);
     this.silver.setSpecular(1, 1, 1, 1);
     this.silver.setShininess(10);
+
+    this.capturedPieces = {1: [], 2: []};
     
     this.pieces = [];
     this.planes = [];
     this.createBoardPieces();
     
-    this.animation = null ;
+    this.moveAnimation = null;
+    this.capturedAnimation = null;
     
     this.pickStart = null ;
     this.pickEnd = null ;
@@ -82,35 +87,35 @@ function Board(scene)
         1: 0,
         2: 0
     }
-    this.initialPieces = this.countPieces();
 }
 
-Board.prototype.countPieces = function() 
+Board.prototype.calculateSidePiecePosition = function(player, index)
 {
-    var pieces = {
-        1: 0,
-        2: 0
-    };
-    for (var y = 0; y < this.board.length; y++) 
+    var side = player == 1 ? 1 : -1;
+    var column = index % 2;
+    var rowN = ~~(index/2)+1;
+    var row = ((rowN % 2) ? 1 : -1) * ~~(rowN/2);
+    return [side*this.cellWidth*(this.board.length/2+1+column)+this.board.length*this.cellWidth/2, this.cellWidth*row+this.board.length*this.cellWidth/2];
+}
+
+Board.prototype.capture = function(player, piece)
+{
+    if (piece)
     {
-        for (var x = 0; x < this.board[y].length; x++) 
-        {
-            var piece = this.board[y][x];
-            if (piece > 0) 
-            {
-                player = piece == 1 ? 1 : 2;
-                pieces[player]++;
-            }
-        }
+        var coords = this.calculateSidePiecePosition(player,this.capturedPieces[player].length);
+        var delta = [coords[0]-piece.boardPosition[0]*this.cellWidth-this.cellWidth/2,coords[1]-piece.boardPosition[1]*this.cellWidth-this.cellWidth/2];
+        var self = this;
+        this.capturedAnimation = new CapturedAnimation(this.scene, player, piece, delta, function() {
+             self.capturedPieces[player].push(piece);
+             self.capturedAnimation = null;
+        });
     }
-    return pieces;
 }
 
 Board.prototype.updateScore = function() 
 {
-    var pieces = this.countPieces();
-    this.score[1] = this.initialPieces[2] - pieces[2];
-    this.score[2] = this.initialPieces[1] - pieces[1];
+    this.score[1] = this.capturedPieces[1].length;
+    this.score[2] = this.capturedPieces[2].length;
 }
 
 Board.prototype.getValidMoves = function(board, player, playCounter) 
@@ -134,7 +139,7 @@ Board.prototype.createPickHandler = function()
                 var obj = this.scene.pickResults[i][0];
                 if (obj) 
                 {
-                    if (this.animation === null  && this.human[this.currentPlayer]) 
+                    if (this.moveAnimation === null  && this.human[this.currentPlayer]) 
                     {
                         var customId = this.scene.pickResults[i][1] - 1;
                         var pos = [customId % this.board[0].length, ~~(customId / this.board.length)];
@@ -213,23 +218,24 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
 {
     if (valid) 
     {
+        var player = this.currentPlayer;
         this.timeStart = null ;
         var nextPlayer = this.currentPlayer;
         if (newCounter == 2)
             nextPlayer = (nextPlayer == 1 ? 2 : 1);
-        if (this.human[nextPlayer])
-            this.getValidMoves(newBoard, nextPlayer, newCounter % 2);
+        this.getValidMoves(newBoard, nextPlayer, newCounter % 2);
         this.playCounter = newCounter;
         var pickObject = this.pieces[y-1][x-1];
         var self = this;
-        this.animation = new PieceAnimation(this.scene,pickObject,[2 * deltax, 2 * deltay],function() 
+        this.moveAnimation = new PieceAnimation(this.scene,pickObject,[this.cellWidth * deltax, this.cellWidth * deltay],function() 
         {
             self.board = newBoard;
             self.pieces[y-1][x-1] = null ;
             pos = [x - 1 + deltax, y - 1 + deltay];
             pickObject.boardPosition = pos;
+            self.capture(player,self.pieces[pos[1]][pos[0]]);
             self.pieces[pos[1]][pos[0]] = pickObject;
-            self.animation = null;
+            self.moveAnimation = null;
             self.pickStart = self.pickEnd = null ;
             if (self.playCounter == 2) 
             {
@@ -245,9 +251,9 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
 
 Board.prototype.update = function(currTime) 
 {
-    if (this.animation) 
+    if (this.moveAnimation) 
     {
-        this.animation.update(currTime);
+        this.moveAnimation.update(currTime);
     } 
     else 
     {
@@ -269,6 +275,11 @@ Board.prototype.update = function(currTime)
             this.getValidMoves();
         }
     }
+    
+    if (this.capturedAnimation)
+    {
+        this.capturedAnimation.update(currTime);
+    }
 }
 
 Board.prototype.switchPlayer = function() 
@@ -282,7 +293,7 @@ Board.prototype.display = function()
 {
     this.scene.pushMatrix();
     this.scene.scale(1 / this.board.length, 1 / this.board.length, 1 / this.board.length);
-    this.scene.translate(-this.board.length, 0, -this.board.length);
+    this.scene.translate(-this.board.length*this.cellWidth/2, 0, -this.board.length*this.cellWidth/2);
     this.scene.clearPickRegistration();
     this.createPickHandler();
     var i = 0;
@@ -292,14 +303,14 @@ Board.prototype.display = function()
         {
             this.scene.registerForPick(++i, this.plane);
             this.scene.pushMatrix();
-            this.scene.translate(2 * x + 1, 0, 2 * y + 1);
-            this.scene.scale(1.9, 1, 1.9);
-            if (!this.animation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
+            this.scene.translate(this.cellWidth * x + 1, 0, this.cellWidth * y + 1);
+            this.scene.scale(0.95*this.cellWidth, 1, 0.95*this.cellWidth);
+            if (!this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
             && (!this.pickStart || (this.pickStart[0] == x && this.pickStart[1] == y))) 
             {
                 this.selectionMaterial.apply();
             } 
-            else if (!this.animation && this.pickStart && this.validMoves[this.pickStart] && this.validMoves[this.pickStart][[x, y]]) 
+            else if (!this.moveAnimation && this.pickStart && this.validMoves[this.pickStart] && this.validMoves[this.pickStart][[x, y]]) 
             {
                 this.choiceMaterial.apply();
             } 
@@ -315,16 +326,41 @@ Board.prototype.display = function()
                 else
                     this.gold.apply();
                 this.scene.pushMatrix();
-                this.scene.translate(2 * x + 1, 0, 2 * y + 1);
-                if (this.animation && this.animation.object === piece) 
+                this.scene.translate(this.cellWidth * x + this.cellWidth/2, 0, this.cellWidth * y + this.cellWidth/2);
+                if (this.moveAnimation && this.moveAnimation.object === piece) 
                 {
-                    this.animation.apply();
+                    this.moveAnimation.apply();
                 }
                 this.scene.registerForPick(1 + y * this.board.length + x, this.plane);
                 this.scene.scale(0.25, 0.25, 0.25);
                 piece.display();
                 this.scene.popMatrix();
             }
+        }
+    }
+    if (this.capturedAnimation)
+    {
+        this.scene.pushMatrix();
+        coords = this.capturedAnimation.object.boardPosition;
+        coords = [this.cellWidth*coords[0],this.cellWidth*coords[1]];
+        this.capturedAnimation.apply();
+        this.scene.translate(coords[0]+this.cellWidth/2,0,coords[1]+this.cellWidth/2);
+        this.scene.scale(0.25, 0.25, 0.25);
+        (this.capturedAnimation.player == 1 ? this.gold : this.silver).apply();
+        this.capturedAnimation.object.display();
+        this.scene.popMatrix();
+    }
+    for (var player = 1; player <= 2; player++)
+    {
+        for (var i = 0; i < this.capturedPieces[player].length; i++)
+        {
+            (player == 1 ? this.gold : this.silver).apply();
+            var coords = this.calculateSidePiecePosition(player, i);
+            this.scene.pushMatrix();
+                this.scene.translate(coords[0],0,coords[1]);
+                this.scene.scale(0.25, 0.25, 0.25);
+                this.capturedPieces[player][i].display();
+            this.scene.popMatrix();
         }
     }
     this.scene.popMatrix();

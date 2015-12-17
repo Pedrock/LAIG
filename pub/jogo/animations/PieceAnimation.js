@@ -2,7 +2,7 @@
  * PieceAnimation
  * @constructor
  */
-function PieceAnimation(scene, object, delta, finishedHandler) {
+function PieceAnimation(scene, object, delta, finishedHandler, captureHandler) {
     this.scene = scene;
     
     this.delta = [delta[0], 0, delta[1]];
@@ -13,6 +13,8 @@ function PieceAnimation(scene, object, delta, finishedHandler) {
     this.object = object;
     this.running = true;
     this.finishedHandler = finishedHandler;
+    this.captureHandler = captureHandler;
+    this.captureHandlerCalled = false;
     
     this.totalLength = Math.sqrt(Math.pow(this.delta[0], 2) + Math.pow(this.delta[2], 2));
     this.timespan = 2;
@@ -105,6 +107,8 @@ PieceAnimation.prototype.update = function(currTime) {
             } 
             if (this.stage == 1) 
             {
+                if (!this.captureHandlerCalled && this.captureHandler) this.captureHandler();
+                this.captureHandlerCalled = true;
                 this.updateLinearSection(currTime, this.rotationTime);
             }
             if (this.stage == 2)
