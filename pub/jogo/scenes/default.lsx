@@ -203,7 +203,104 @@
 		<controlpoint x="2.75" y="0" z="0.1" />
 		<controlpoint x="3" y="0" z="0.25" />
 		
-		</LEAF>
+	</LEAF>
+	
+	<LEAF id="acento-banco" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="0" z="1" />
+		<controlpoint x="4" y="0" z="2" />
+		<controlpoint x="4" y="-0.5" z="2" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="0" z="1" />
+		<controlpoint x="2" y="0" z="2" />
+		<controlpoint x="2" y="-0.5" z="2" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="0" z="1" />
+		<controlpoint x="-2" y="0" z="2" />
+		<controlpoint x="-2" y="-0.5" z="2" />
+		
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="0" z="1" />
+		<controlpoint x="-4" y="0" z="2" />
+		<controlpoint x="-4" y="-0.5" z="2" />
+		
+	</LEAF>
+	
+	<LEAF id="acento-banco-tras" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="0" z="1" />
+		<controlpoint x="-4" y="0" z="2" />
+		<controlpoint x="-4" y="-0.5" z="2" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="0" z="1" />
+		<controlpoint x="-2" y="0" z="2" />
+		<controlpoint x="-2" y="-0.5" z="2" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="0" z="1" />
+		<controlpoint x="2" y="0" z="2" />
+		<controlpoint x="2" y="-0.5" z="2" />
+		
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="0" z="1" />
+		<controlpoint x="4" y="0" z="2" />
+		<controlpoint x="4" y="-0.5" z="2" />
+		
+	</LEAF>
+	
+	<LEAF id="encosto-banco" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="1" z="0" />
+		<controlpoint x="-4" y="2" z="0" />
+		<controlpoint x="-4" y="2" z="-0.5" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2" y="2" z="0" />
+		<controlpoint x="-2" y="2" z="-0.5" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2" y="2" z="0" />
+		<controlpoint x="2" y="2" z="-0.5" />
+		
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="1" z="0" />
+		<controlpoint x="4" y="2" z="0" />
+		<controlpoint x="4" y="2" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="encosto-banco-tras" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="1" z="0" />
+		<controlpoint x="4" y="2" z="0" />
+		<controlpoint x="4" y="2" z="-0.5" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2" y="2" z="0" />
+		<controlpoint x="2" y="2" z="-0.5" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2" y="2" z="0" />
+		<controlpoint x="-2" y="2" z="-0.5" />
+	
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="1" z="0" />
+		<controlpoint x="-4" y="2" z="0" />
+		<controlpoint x="-4" y="2" z="-0.5" />
+		
+	</LEAF>
+	
 </LEAVES>
 
 <NODES>
@@ -214,7 +311,72 @@
         <TEXTURE id="null" />
         <DESCENDANTS>
 		    <DESCENDANT id="board" /> 
-			<DESCENDANT id="cena" />	
+			<DESCENDANT id="cena" />
+			<DESCENDANT id="acento-banco" />
+			<DESCENDANT id="encosto-banco" />
+			<DESCENDANT id="acento-banco-tras" />
+			<DESCENDANT id="encosto-banco-tras" />				
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="arvore">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-15" y="-4.2" z="-6" />
+        <DESCENDANTS>
+			<DESCENDANT id="tronco" />
+			<DESCENDANT id="ramos" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="tronco">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="clear" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="2" sy="2" sz="1" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="ramos">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="0" y="13" z="0" />
+		<SCALE sx="5" sy="6" sz="5" />
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			<DESCENDANT id="bola" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="candeeiro">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="0" y="9" z="0" />
+		<ROTATION axis="x" angle="-90" />
+        <DESCENDANTS>
+			<DESCENDANT id="bola" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="poste">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="clear" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="0.9" sy="0.9" sz="1.22" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="poste-candeeiro">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="6" y="-4.2" z="-3" />
+        <DESCENDANTS>
+			<DESCENDANT id="poste" />
+			<DESCENDANT id="candeeiro" />
         </DESCENDANTS>
     </NODE>
 	
@@ -226,15 +388,17 @@
 			<DESCENDANT id="mesa" />
 			<DESCENDANT id="cadeira" />
 			<DESCENDANT id="cadeira2" />
-			<DESCENDANT id="terreno-jardim" /> 			
+			<DESCENDANT id="terreno-jardim" /> 
+			<DESCENDANT id="poste-candeeiro" /> 
+			<DESCENDANT id="arvore" /> 
         </DESCENDANTS>
 	</NODE>
 	
 	<NODE id="terreno-jardim">
         <MATERIAL id="material-relva" />
         <TEXTURE id="clear" />
-		<TRANSLATION x="0" y="-4.2" z="0" />
-		<SCALE sx="20" sy="1" sz="20" />
+		<TRANSLATION x="-3" y="-5.2" z="8" />
+		<SCALE sx="35" sy="2" sz="35" />
         <DESCENDANTS>
 			<DESCENDANT id="terreno" />
         </DESCENDANTS>
