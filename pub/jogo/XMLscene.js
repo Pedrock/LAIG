@@ -67,6 +67,13 @@ XMLscene.prototype.setDefaultAppearance = function() {
     this.setShininess(10.0);
 };
 
+XMLscene.prototype.setLightAppearance = function() {
+    this.setAmbient(1, 1, 1, 1.0);
+    this.setDiffuse(1, 1, 1, 1.0);
+    this.setSpecular(1, 1, 1, 1.0);
+    this.setShininess(10.0);
+};
+
 XMLscene.prototype.getScenePath = function()
 {
     return this.path;
@@ -154,6 +161,7 @@ XMLscene.prototype.display = function() {
     // This is one possible way to do it
     if (this.graph.loadedOk) 
     {
+        this.setLightAppearance();
         this.updateLights();
         this.setDefaultAppearance();
         if (this.graph.rootNodeId && this.graph.nodes[this.graph.rootNodeId]) 

@@ -44,7 +44,7 @@ CapturedAnimation.prototype.update = function(currTime) {
         } 
         else 
         {
-            var t = Math.min(1,(currTime - this.startTime)/10000);
+            var t = Math.min(1,(currTime - this.startTime)/2000);
             var easing = easeInOutCubic(t);
             this.position = [easing*this.delta[0],arc(t)*this.delta[1],easing*this.delta[2]];
             if (t == 1)

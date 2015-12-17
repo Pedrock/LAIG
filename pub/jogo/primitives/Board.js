@@ -95,6 +95,11 @@ Board.prototype.calculateSidePiecePosition = function(player, index)
     var column = index % 2;
     var rowN = ~~(index/2)+1;
     var row = ((rowN % 2) ? 1 : -1) * ~~(rowN/2);
+    if (row == -5 && column == 1)
+    {
+        row = 5;
+        column = 0;
+    }
     return [side*this.cellWidth*(this.board.length/2+1+column)+this.board.length*this.cellWidth/2, this.cellWidth*row+this.board.length*this.cellWidth/2];
 }
 
@@ -226,14 +231,14 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
         this.getValidMoves(newBoard, nextPlayer, newCounter % 2);
         this.playCounter = newCounter;
         var pickObject = this.pieces[y-1][x-1];
+        pos = [x - 1 + deltax, y - 1 + deltay];
+        var capturedPiece = this.pieces[pos[1]][pos[0]];
         var self = this;
         this.moveAnimation = new PieceAnimation(this.scene,pickObject,[this.cellWidth * deltax, this.cellWidth * deltay],function() 
         {
             self.board = newBoard;
-            self.pieces[y-1][x-1] = null ;
-            pos = [x - 1 + deltax, y - 1 + deltay];
+            self.pieces[y-1][x-1] = null;
             pickObject.boardPosition = pos;
-            self.capture(player,self.pieces[pos[1]][pos[0]]);
             self.pieces[pos[1]][pos[0]] = pickObject;
             self.moveAnimation = null;
             self.pickStart = self.pickEnd = null ;
@@ -242,6 +247,11 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
                 self.updateScore();
                 self.switchPlayer();
             }
+        },
+        function()
+        {
+            self.pieces[pos[1]][pos[0]] = null;
+            self.capture(player,capturedPiece);
         }
         );
     } 
