@@ -41,6 +41,10 @@ XMLscene.prototype.init = function(application) {
     this.terrainShader.setUniformsValues({uSampler2: 1});
 
 	this.infoBoard = new InfoBoard(this);
+
+    this.cameraTime = 0;
+    this.prevCurrTime = 0;
+	this.cameraMovement = 1000;
 };
 
 
@@ -198,6 +202,7 @@ XMLscene.prototype.update = function(currTime)
         this.board.update(currTime);
         this.updateCamera(currTime);
     }
+    this.prevCurrTime = currTime;
 }
 
 function easeInOutQuad(t) {
@@ -214,19 +219,20 @@ XMLscene.prototype["Rotate"] = function()
     this.board.getValidMoves();
 }
 
+XMLscene.prototype.getCameraTime = function(delta)
+{
+    if (this.board.currentPlayer == 1) this.cameraTime += delta;
+    else this.cameraTime -= delta;
+    this.cameraTime = Math.max(Math.min(this.cameraTime,this.cameraMovement),0);
+    return this.cameraTime/1000;
+}
+
 XMLscene.prototype.updateCamera = function(currTime)
 {
     this.gameCamera.position = this.cameraPosition.slice();
-    if (this.board.currentPlayer != this.currentPlayer) 
-    {
-        this.cameraAnimationStart = currTime;
-        this.currentPlayer = this.board.currentPlayer;
-    }
-    var t = Math.min(1000,currTime - this.cameraAnimationStart)/1000;
-    if (this.board.currentPlayer == 2)
-        this.gameCamera.orbit(CGFcameraAxis.Y,Math.PI*easeInOutQuad(t));
-    else
-        this.gameCamera.orbit(CGFcameraAxis.Y,Math.PI*(1-easeInOutQuad(t)));
+    var delta = currTime - this.prevCurrTime;
+    var t = this.getCameraTime(delta);
+    this.gameCamera.orbit(CGFcameraAxis.Y,Math.PI*easeInOutQuad(t));
 }
 
 
@@ -237,4 +243,10 @@ XMLscene.prototype.changePlayers = function()
 
     this.board.difficulty[1] = this["Silver Player"];
     this.board.difficulty[2] = this["Gold Player"];
+}
+
+XMLscene.prototype["Undo"] = function()
+{
+    if (this.board)
+        this.board.undo();
 }
