@@ -27,56 +27,14 @@
 </LIGHTS>
 
 <TEXTURES>
-	<TEXTURE id="textura-tinta-branca">
-        <file path="textures/tinta-branca.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-tinta-preta">
-        <file path="textures/tinta-preta.png" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-madeira-vermelha">
-        <file path="textures/madeira-vermelha.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-tinta-teste">
-        <file path="textures/tinta-teste.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-ramos-pinheiro">
-        <file path="textures/ramos-pinheiro.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-ramos-pinheiro-pequeno">
-        <file path="textures/ramos-pinheiro-pequeno.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
 	<TEXTURE id="textura-tronco-pinheiro">
         <file path="textures/tronco-pinheiro.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-flores">
-        <file path="textures/flores.JPG" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-tronco-flores">
-        <file path="textures/tronco-flores.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-tronco-arvore">
-        <file path="textures/tronco-arvore.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
 	<TEXTURE id="textura-ramos-arvore">
         <file path="textures/ramos-arvore.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
-	<TEXTURE id="textura-metal-verde">
-        <file path="textures/metal-verde.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	
-	<!---->
 	<TEXTURE id="textura-parede-interior">
         <file path="textures/parede-interior.jpg" />                             
         <amplif_factor s="1" t="1" />                
@@ -144,20 +102,6 @@
         <ambient r="0.5" g="0.5" b="0.5" a="1" />         <!-- ambient reflection -->
         <emission r="0" g="0" b="0" a="0" />        <!-- emission component -->
      </MATERIAL>
-	 <MATERIAL id="material-relva">                                  
-        <shininess value="100" />
-        <specular r="0" g="0" b="0" a="1" />    
-        <diffuse r="0.5" g="0.5" b="0.5" a="1" />  
-        <ambient r="0.2" g="0.2" b="0.2" a="1" />    
-        <emission r="0" g="0" b="0" a="0" />     
-     </MATERIAL>
-	 <MATERIAL id="material-candeeiro-exterior-pe">                                  
-        <shininess value="6" />
-        <specular r="0" g="0" b="0" a="1" />        
-        <diffuse r="0" g="0" b="0" a="1" />   		
-        <ambient r="0" g="0" b="0" a="1" />         
-        <emission r="0" g="0" b="0" a="0" />  
-	</MATERIAL>	
 	<MATERIAL id="material-abranqueado">                                  
         <shininess value="150" />
         <specular r="0.3" g="0.3" b="0.3" a="1" />        
@@ -421,104 +365,6 @@
 		<controlpoint x="0" y="0.5" z="0" />
 		<controlpoint x="0" y="1" z="0" />
 		<controlpoint x="0" y="1.5" z="0" />
-		
-	</LEAF>
-	
-	
-	
-	<LEAF id="acento-banco" type="patch" order="3" partsU="20" partsV="20" >
-		
-		<controlpoint x="4" y="0" z="0" />
-		<controlpoint x="4" y="0" z="1" />
-		<controlpoint x="4" y="0" z="2" />
-		<controlpoint x="4" y="-0.5" z="2" />
-		
-		<controlpoint x="2" y="0" z="0" />
-		<controlpoint x="2" y="0" z="1" />
-		<controlpoint x="2" y="0" z="2" />
-		<controlpoint x="2" y="-0.5" z="2" />
-		
-		<controlpoint x="-2" y="0" z="0" />
-		<controlpoint x="-2" y="0" z="1" />
-		<controlpoint x="-2" y="0" z="2" />
-		<controlpoint x="-2" y="-0.5" z="2" />
-		
-		<controlpoint x="-4" y="0" z="0" />
-		<controlpoint x="-4" y="0" z="1" />
-		<controlpoint x="-4" y="0" z="2" />
-		<controlpoint x="-4" y="-0.5" z="2" />
-		
-	</LEAF>
-	
-	<LEAF id="acento-banco-tras" type="patch" order="3" partsU="20" partsV="20" >
-		
-		<controlpoint x="-4" y="0" z="0" />
-		<controlpoint x="-4" y="0" z="1" />
-		<controlpoint x="-4" y="0" z="2" />
-		<controlpoint x="-4" y="-0.5" z="2" />
-		
-		<controlpoint x="-2" y="0" z="0" />
-		<controlpoint x="-2" y="0" z="1" />
-		<controlpoint x="-2" y="0" z="2" />
-		<controlpoint x="-2" y="-0.5" z="2" />
-		
-		<controlpoint x="2" y="0" z="0" />
-		<controlpoint x="2" y="0" z="1" />
-		<controlpoint x="2" y="0" z="2" />
-		<controlpoint x="2" y="-0.5" z="2" />
-		
-		<controlpoint x="4" y="0" z="0" />
-		<controlpoint x="4" y="0" z="1" />
-		<controlpoint x="4" y="0" z="2" />
-		<controlpoint x="4" y="-0.5" z="2" />
-		
-	</LEAF>
-	
-	<LEAF id="encosto-banco" type="patch" order="3" partsU="20" partsV="20" >
-		
-		<controlpoint x="-4" y="0" z="0" />
-		<controlpoint x="-4" y="1" z="0" />
-		<controlpoint x="-4" y="2" z="0" />
-		<controlpoint x="-4" y="2" z="-0.5" />
-		
-		<controlpoint x="-2" y="0" z="0" />
-		<controlpoint x="-2" y="1" z="0" />
-		<controlpoint x="-2" y="2" z="0" />
-		<controlpoint x="-2" y="2" z="-0.5" />
-		
-		<controlpoint x="2" y="0" z="0" />
-		<controlpoint x="2" y="1" z="0" />
-		<controlpoint x="2" y="2" z="0" />
-		<controlpoint x="2" y="2" z="-0.5" />
-		
-		<controlpoint x="4" y="0" z="0" />
-		<controlpoint x="4" y="1" z="0" />
-		<controlpoint x="4" y="2" z="0" />
-		<controlpoint x="4" y="2" z="-0.5" />
-		
-	</LEAF>
-	
-	<LEAF id="encosto-banco-tras" type="patch" order="3" partsU="20" partsV="20" >
-	
-		<controlpoint x="4" y="0" z="0" />
-		<controlpoint x="4" y="1" z="0" />
-		<controlpoint x="4" y="2" z="0" />
-		<controlpoint x="4" y="2" z="-0.5" />
-		
-		<controlpoint x="2" y="0" z="0" />
-		<controlpoint x="2" y="1" z="0" />
-		<controlpoint x="2" y="2" z="0" />
-		<controlpoint x="2" y="2" z="-0.5" />
-		
-		<controlpoint x="-2" y="0" z="0" />
-		<controlpoint x="-2" y="1" z="0" />
-		<controlpoint x="-2" y="2" z="0" />
-		<controlpoint x="-2" y="2" z="-0.5" />
-	
-		<controlpoint x="-4" y="0" z="0" />
-		<controlpoint x="-4" y="1" z="0" />
-		<controlpoint x="-4" y="2" z="0" />
-		<controlpoint x="-4" y="2" z="-0.5" />
 		
 	</LEAF>
 	
@@ -864,6 +710,27 @@
 			<DESCENDANT id="cena" />		
         </DESCENDANTS>
     </NODE>
+	
+	<NODE id="cena">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="8" y="-3.25" z="-10" />
+		<ROTATION axis="y" angle="-90" />
+		<DESCENDANTS>
+			<DESCENDANT id="chao-sala" />
+			<DESCENDANT id="parede-sala" />
+			<DESCENDANT id="parede-sala1" />
+			<DESCENDANT id="lareira" />
+			<DESCENDANT id="mesa" />
+			<DESCENDANT id="sofa" />
+			<DESCENDANT id="sofa1" />
+			<DESCENDANT id="porta-entrada" />
+			<DESCENDANT id="tapete" />
+			<DESCENDANT id="pinheiro-pequeno" />
+			<DESCENDANT id="presépio" />
+			<DESCENDANT id="candeeiro" />
+        </DESCENDANTS>
+	</NODE>
 	
 	<NODE id="barco">
         <MATERIAL id="null" />
@@ -1622,29 +1489,6 @@
             <DESCENDANT id="rectangulo" />
         </DESCENDANTS>
     </NODE>
-	
-	<NODE id="cena">
-		<MATERIAL id="material-geral" />
-        <TEXTURE id="null" />
-		<TRANSLATION x="8" y="-3.25" z="-10" />
-		<ROTATION axis="y" angle="-90" />
-		<DESCENDANTS>
-			<DESCENDANT id="chao-sala" />
-			<DESCENDANT id="parede-sala" />
-			<DESCENDANT id="parede-sala1" />
-			<DESCENDANT id="lareira" />
-			<DESCENDANT id="mesa" />
-			<DESCENDANT id="sofa" />
-			<DESCENDANT id="sofa1" />
-			<DESCENDANT id="porta-entrada" />
-			<DESCENDANT id="tapete" />
-			<DESCENDANT id="pinheiro-pequeno" />
-			<DESCENDANT id="presépio" />
-			<DESCENDANT id="candeeiro" />
-        </DESCENDANTS>
-	</NODE>
-	
-	
 	
 </NODES>
 
