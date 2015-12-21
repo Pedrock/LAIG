@@ -1,0 +1,1651 @@
+<SCENE>
+
+<INITIALS>
+    <frustum near="0.1" far="500"/>                      <!-- frustum planes-->
+    <translation x="0" y="0" z="0" />                 <!-- initial translate -->
+    <rotation axis="x" angle="0" />                  <!-- initial rotation 3 -->
+    <rotation axis="y" angle="0" />                  <!-- initial rotation 2 -->
+    <rotation axis="z" angle="0" />                  <!-- initial rotation 1 -->
+    <scale sx="1" sy="1" sz="1" />                  <!-- initial scaling -->
+    <reference length="0" />                          <!-- axis length; "0" means no axis-->
+</INITIALS>
+
+
+<ILLUMINATION>
+    <ambient r="0.5" g="0.5" b="0.5" a="1" />            <!-- global ambient -->
+    <background r="0" g="0" b="0" a="1" />         <!-- background color -->
+</ILLUMINATION>
+
+<LIGHTS>
+	<LIGHT id="Sol">                                    
+        <enable value ="1" />                       <!-- light identifier -->
+        <position x="-5" y="5" z="5" w="1" /> <!-- light position -->      
+        <ambient r="0.7" g="0.7" b="0.7" a="1" />        	<!-- ambient component -->
+        <diffuse r="0.7" g="0.7" b="0.7" a="1" />        	<!-- diffuse component -->
+        <specular r="0.5" g="0.5" b="0.5" a="1" />       	<!-- specular component -->
+    </LIGHT>
+</LIGHTS>
+
+<TEXTURES>
+	<TEXTURE id="textura-tinta-branca">
+        <file path="textures/tinta-branca.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tinta-preta">
+        <file path="textures/tinta-preta.png" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-madeira-vermelha">
+        <file path="textures/madeira-vermelha.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tinta-teste">
+        <file path="textures/tinta-teste.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-ramos-pinheiro">
+        <file path="textures/ramos-pinheiro.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-ramos-pinheiro-pequeno">
+        <file path="textures/ramos-pinheiro-pequeno.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tronco-pinheiro">
+        <file path="textures/tronco-pinheiro.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-flores">
+        <file path="textures/flores.JPG" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tronco-flores">
+        <file path="textures/tronco-flores.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tronco-arvore">
+        <file path="textures/tronco-arvore.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-ramos-arvore">
+        <file path="textures/ramos-arvore.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-metal-verde">
+        <file path="textures/metal-verde.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	
+	<!---->
+	<TEXTURE id="textura-parede-interior">
+        <file path="textures/parede-interior.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tecto">
+        <file path="textures/tecto.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-pavimento-interior">
+        <file path="textures/madeira-castanha-clara.jpg" />                             
+        <amplif_factor s="0.5" t="0.5" />                
+    </TEXTURE>
+	<TEXTURE id="textura-porta-entrada">
+        <file path="textures/porta-entrada.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-candeeiro-interior-pe">
+        <file path="textures/candeeiro-interior-pe.jpg" />                             
+        <amplif_factor s="1" t="0.1" />          	
+    </TEXTURE>
+	<TEXTURE id="textura-candeeiro-interior-lampada">
+        <file path="textures/candeeiro-interior-lampada.jpg" />                             
+        <amplif_factor s="10" t="10" />                
+    </TEXTURE>
+	<TEXTURE id="textura-sofa">
+        <file path="textures/sofa.jpg" />                             
+        <amplif_factor s="10" t="10" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tapete">
+        <file path="textures/tapete.jpg" />                             
+        <amplif_factor s="10" t="10" />                
+    </TEXTURE>
+	<TEXTURE id="textura-madeira-vermelha-escura">
+        <file path="textures/madeira-vermelha-escura.jpg" />                             
+        <amplif_factor s="10" t="10" />                
+    </TEXTURE>
+	<TEXTURE id="textura-metal">
+        <file path="textures/metal.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-pedra-branca">
+        <file path="textures/pedra-branca.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-pedra-preta">
+        <file path="textures/pedra-preta.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-chama">
+        <file path="textures/chama.png" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-pinheiro-de-natal">
+        <file path="textures/pinheiro-de-natal.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+</TEXTURES>
+
+
+<MATERIALS>
+     <MATERIAL id="material-geral">                                  
+        <shininess value="120" />
+        <specular r="1" g="1" b="1" a="1" />        <!-- specular reflection -->
+        <diffuse r="0.8" g="0.8" b="0.8" a="1" />   <!-- diffuse reflection -->
+        <ambient r="0.5" g="0.5" b="0.5" a="1" />         <!-- ambient reflection -->
+        <emission r="0" g="0" b="0" a="0" />        <!-- emission component -->
+     </MATERIAL>
+	 <MATERIAL id="material-relva">                                  
+        <shininess value="100" />
+        <specular r="0" g="0" b="0" a="1" />    
+        <diffuse r="0.5" g="0.5" b="0.5" a="1" />  
+        <ambient r="0.2" g="0.2" b="0.2" a="1" />    
+        <emission r="0" g="0" b="0" a="0" />     
+     </MATERIAL>
+	 <MATERIAL id="material-candeeiro-exterior-pe">                                  
+        <shininess value="6" />
+        <specular r="0" g="0" b="0" a="1" />        
+        <diffuse r="0" g="0" b="0" a="1" />   		
+        <ambient r="0" g="0" b="0" a="1" />         
+        <emission r="0" g="0" b="0" a="0" />  
+	</MATERIAL>	
+	<MATERIAL id="material-abranqueado">                                  
+        <shininess value="150" />
+        <specular r="0.3" g="0.3" b="0.3" a="1" />        
+        <diffuse r="0.6" g="0.6" b="0.6" a="1" />   
+        <ambient r="1" g="1" b="1" a="1" />         
+        <emission r="1" g="1" b="1" a="1" />      
+     </MATERIAL>	
+	 <MATERIAL id="material-interior-casa">                                  
+        <shininess value="150" />
+        <specular r="0" g="0" b="0" a="0" />      
+        <diffuse r="0" g="0" b="0" a="1" />  
+        <ambient r="1" g="1" b="1" a="1" />        
+        <emission r="0" g="0" b="0" a="0" />     
+     </MATERIAL>
+</MATERIALS>
+
+<ANIMATIONS>
+	
+</ANIMATIONS>
+
+<LEAVES>
+    <LEAF id="board" type="board" args="" />
+	<LEAF id="bola" type="sphere" args="1 4 4" />
+	<LEAF id="bola1" type="sphere" args="1 40 40" />
+	<LEAF id="cilindro" type="cylinder" args="8 0.5 0.5 1 8" />
+	<LEAF id="cilindro1" type="cylinder" args="2 0.5 0.2 1 8" />
+	<LEAF id="cilindro2" type="cylinder" args="2 0.2 0.65 1 8" />
+	<LEAF id="cilindro3" type="cylinder" args="3.25 0.4 0.2 1 20" />
+	<LEAF id="rectangulo" type="rectangle" args="0 1 1 0" /> 
+	<LEAF id="cone" type="cylinder" args="4 0 1 1 40" />
+	<LEAF id="triangulo" type="triangle" args="5 0 -5 -5 0 -5 0 5 0" />
+	<LEAF id="terreno" type="terrain" texture="textures/jardim.jpg" heightmap="textures/jardim-heightmap.jpg" />
+	
+	<LEAF id="superficie-frente-barco" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2.33" y="0.5" z="0" />
+		<controlpoint x="-2.66" y="1" z="0" />
+		<controlpoint x="-3" y="1.5" z="0" />
+		
+		<controlpoint x="-1" y="0" z="1" />
+		<controlpoint x="-1.33" y="0.5" z="1.33" />
+		<controlpoint x="-1.66" y="1" z="1.66" />
+		<controlpoint x="-2" y="1.5" z="2" />
+		
+		<controlpoint x="1" y="0" z="1" />
+		<controlpoint x="1.33" y="0.5" z="1.33" />
+		<controlpoint x="1.66" y="1" z="1.66" />
+		<controlpoint x="2" y="1.5" z="2" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2.33" y="0.5" z="0" />
+		<controlpoint x="2.66" y="1" z="0" />
+		<controlpoint x="3" y="1.5" z="0" />
+		
+	</LEAF>
+	
+	<LEAF id="superficie-interior-frente-barco" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2.33" y="1.15" z="0" />
+		<controlpoint x="2.66" y="1.3" z="0" />
+		<controlpoint x="3" y="1.5" z="0" />
+		
+		<controlpoint x="1" y="1" z="1" />
+		<controlpoint x="1.33" y="1.15" z="1.33" />
+		<controlpoint x="1.66" y="1.3" z="1.66" />
+		<controlpoint x="2" y="1.5" z="2" />
+		
+		<controlpoint x="-1" y="1" z="1" />
+		<controlpoint x="-1.33" y="1.15" z="1.33" />
+		<controlpoint x="-1.66" y="1.3" z="1.66" />
+		<controlpoint x="-2" y="1.5" z="2" />
+	
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2.33" y="1.15" z="0" />
+		<controlpoint x="-2.66" y="1.3" z="0" />
+		<controlpoint x="-3" y="1.5" z="0" />
+		
+	</LEAF>
+	
+	<LEAF id="superficie-tras-barco" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2.33" y="0.5" z="0" />
+		<controlpoint x="2.66" y="1" z="0" />
+		<controlpoint x="3" y="1.5" z="0" />
+		
+		<controlpoint x="1" y="0" z="-1" />
+		<controlpoint x="1.33" y="0.5" z="-1.33" />
+		<controlpoint x="1.66" y="1" z="-1.66" />
+		<controlpoint x="2" y="1.5" z="-2" />
+		
+		<controlpoint x="-1" y="0" z="-1" />
+		<controlpoint x="-1.33" y="0.5" z="-1.33" />
+		<controlpoint x="-1.66" y="1" z="-1.66" />
+		<controlpoint x="-2" y="1.5" z="-2" />
+	
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2.33" y="0.5" z="0" />
+		<controlpoint x="-2.66" y="1" z="0" />
+		<controlpoint x="-3" y="1.5" z="0" />
+		
+	</LEAF>
+	
+	<LEAF id="superficie-interior-tras-barco" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2.33" y="1.15" z="0" />
+		<controlpoint x="-2.66" y="1.3" z="0" />
+		<controlpoint x="-3" y="1.5" z="0" />
+		
+		<controlpoint x="-1" y="1" z="-1" />
+		<controlpoint x="-1.33" y="1.15" z="-1.33" />
+		<controlpoint x="-1.66" y="1.3" z="-1.66" />
+		<controlpoint x="-2" y="1.5" z="-2" />
+		
+		<controlpoint x="1" y="1" z="-1" />
+		<controlpoint x="1.33" y="1.15" z="-1.33" />
+		<controlpoint x="1.66" y="1.3" z="-1.66" />
+		<controlpoint x="2" y="1.5" z="-2" />
+		
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2.33" y="1.15" z="0" />
+		<controlpoint x="2.66" y="1.3" z="0" />
+		<controlpoint x="3" y="1.5" z="0" />
+	</LEAF>
+	
+	<LEAF id="superficie-baixo-barco" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="0" z="0" />
+		
+		<controlpoint x="-1" y="0" z="-1" />
+		<controlpoint x="-1" y="0" z="-0.5" />
+		<controlpoint x="-1" y="0" z="0.5" />
+		<controlpoint x="-1" y="0" z="1" />
+		
+		<controlpoint x="1" y="0" z="-1" />
+		<controlpoint x="1" y="0" z="-0.5" />
+		<controlpoint x="1" y="0" z="0.5" />
+		<controlpoint x="1" y="0" z="1" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="0" z="0" />
+	</LEAF>
+
+	<LEAF id="superficie-interior-baixo-barco" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2" y="1" z="0" />
+		
+		<controlpoint x="1" y="1" z="-1" />
+		<controlpoint x="1" y="1" z="-0.5" />
+		<controlpoint x="1" y="1" z="0.5" />
+		<controlpoint x="1" y="1" z="1" />
+		
+		<controlpoint x="-1" y="1" z="-1" />
+		<controlpoint x="-1" y="1" z="-0.5" />
+		<controlpoint x="-1" y="1" z="0.5" />
+		<controlpoint x="-1" y="1" z="1" />
+		
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2" y="1" z="0" />		
+		
+	</LEAF>
+	
+	<LEAF id="vela-frente" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="0" y="0" z="0" />
+		<controlpoint x="0" y="0.5" z="0" />
+		<controlpoint x="0" y="1" z="0" />
+		<controlpoint x="0" y="1.5" z="0" />
+		
+		<controlpoint x="0.5" y="0" z="0.75" />
+		<controlpoint x="0.5" y="0.5" z="0.75" />
+		<controlpoint x="0.5" y="1" z="0.75" />
+		<controlpoint x="0.5" y="1.5" z="0.75" />
+		
+		<controlpoint x="1" y="0" z="-0.75" />
+		<controlpoint x="1" y="0.5" z="-0.75" />
+		<controlpoint x="1" y="1" z="-0.75" />
+		<controlpoint x="1" y="1.5" z="-0.75" />
+		
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		
+	</LEAF>
+	
+	<LEAF id="vela-tras" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		
+		<controlpoint x="1" y="0" z="-0.75" />
+		<controlpoint x="1" y="0.5" z="-0.75" />
+		<controlpoint x="1" y="1" z="-0.75" />
+		<controlpoint x="1" y="1.5" z="-0.75" />
+		
+		<controlpoint x="0.5" y="0" z="0.75" />
+		<controlpoint x="0.5" y="0.5" z="0.75" />
+		<controlpoint x="0.5" y="1" z="0.75" />
+		<controlpoint x="0.5" y="1.5" z="0.75" />
+	
+		<controlpoint x="0" y="0" z="0" />
+		<controlpoint x="0" y="0.5" z="0" />
+		<controlpoint x="0" y="1" z="0" />
+		<controlpoint x="0" y="1.5" z="0" />
+		
+	</LEAF>
+	
+	<LEAF id="vela-frente-pequena" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="0" y="0" z="0" />
+		<controlpoint x="0" y="0.5" z="0" />
+		<controlpoint x="0" y="1" z="0" />
+		<controlpoint x="0" y="1.5" z="0" />
+		
+		<controlpoint x="1" y="0" z="-0.75" />
+		<controlpoint x="1" y="0.5" z="-0.75" />
+		<controlpoint x="1" y="1" z="-0.75" />
+		<controlpoint x="1" y="1.5" z="-0.75" />
+		
+		<controlpoint x="0.5" y="0" z="0.75" />
+		<controlpoint x="0.5" y="0.5" z="0.75" />
+		<controlpoint x="0.5" y="1" z="0.75" />
+		<controlpoint x="0.5" y="1.5" z="0.75" />
+		
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		
+	</LEAF>
+	
+	<LEAF id="vela-tras-pequena" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		<controlpoint x="2" y="0.75" z="0" />
+		
+		<controlpoint x="0.5" y="0" z="0.75" />
+		<controlpoint x="0.5" y="0.5" z="0.75" />
+		<controlpoint x="0.5" y="1" z="0.75" />
+		<controlpoint x="0.5" y="1.5" z="0.75" />
+		
+		<controlpoint x="1" y="0" z="-0.75" />
+		<controlpoint x="1" y="0.5" z="-0.75" />
+		<controlpoint x="1" y="1" z="-0.75" />
+		<controlpoint x="1" y="1.5" z="-0.75" />
+	
+		<controlpoint x="0" y="0" z="0" />
+		<controlpoint x="0" y="0.5" z="0" />
+		<controlpoint x="0" y="1" z="0" />
+		<controlpoint x="0" y="1.5" z="0" />
+		
+	</LEAF>
+	
+	
+	
+	<LEAF id="acento-banco" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="0" z="1" />
+		<controlpoint x="4" y="0" z="2" />
+		<controlpoint x="4" y="-0.5" z="2" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="0" z="1" />
+		<controlpoint x="2" y="0" z="2" />
+		<controlpoint x="2" y="-0.5" z="2" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="0" z="1" />
+		<controlpoint x="-2" y="0" z="2" />
+		<controlpoint x="-2" y="-0.5" z="2" />
+		
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="0" z="1" />
+		<controlpoint x="-4" y="0" z="2" />
+		<controlpoint x="-4" y="-0.5" z="2" />
+		
+	</LEAF>
+	
+	<LEAF id="acento-banco-tras" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="0" z="1" />
+		<controlpoint x="-4" y="0" z="2" />
+		<controlpoint x="-4" y="-0.5" z="2" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="0" z="1" />
+		<controlpoint x="-2" y="0" z="2" />
+		<controlpoint x="-2" y="-0.5" z="2" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="0" z="1" />
+		<controlpoint x="2" y="0" z="2" />
+		<controlpoint x="2" y="-0.5" z="2" />
+		
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="0" z="1" />
+		<controlpoint x="4" y="0" z="2" />
+		<controlpoint x="4" y="-0.5" z="2" />
+		
+	</LEAF>
+	
+	<LEAF id="encosto-banco" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="1" z="0" />
+		<controlpoint x="-4" y="2" z="0" />
+		<controlpoint x="-4" y="2" z="-0.5" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2" y="2" z="0" />
+		<controlpoint x="-2" y="2" z="-0.5" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2" y="2" z="0" />
+		<controlpoint x="2" y="2" z="-0.5" />
+		
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="1" z="0" />
+		<controlpoint x="4" y="2" z="0" />
+		<controlpoint x="4" y="2" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="encosto-banco-tras" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="4" y="0" z="0" />
+		<controlpoint x="4" y="1" z="0" />
+		<controlpoint x="4" y="2" z="0" />
+		<controlpoint x="4" y="2" z="-0.5" />
+		
+		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2" y="1" z="0" />
+		<controlpoint x="2" y="2" z="0" />
+		<controlpoint x="2" y="2" z="-0.5" />
+		
+		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2" y="1" z="0" />
+		<controlpoint x="-2" y="2" z="0" />
+		<controlpoint x="-2" y="2" z="-0.5" />
+	
+		<controlpoint x="-4" y="0" z="0" />
+		<controlpoint x="-4" y="1" z="0" />
+		<controlpoint x="-4" y="2" z="0" />
+		<controlpoint x="-4" y="2" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="frente-lareira" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="-2.3" y="5" z="1" />
+		<controlpoint x="-1.5" y="5" z="1" />
+		<controlpoint x="1.5" y="5" z="1" />
+		<controlpoint x="2.3" y="5" z="1" />
+		
+		<controlpoint x="-2.3" y="4.5" z="1" />
+		<controlpoint x="-1.5" y="4.5" z="1" />
+		<controlpoint x="1.5" y="4.5" z="1" />
+		<controlpoint x="2.3" y="4.5" z="1" />
+		
+		<controlpoint x="-2.3" y="4" z="1" />
+		<controlpoint x="-1.5" y="4" z="1" />
+		<controlpoint x="1.5" y="4" z="1" />
+		<controlpoint x="2.3" y="4" z="1" />
+		
+		<controlpoint x="-2.3" y="3" z="1" />
+		<controlpoint x="-1.5" y="4" z="1" />
+		<controlpoint x="1.5" y="4" z="1" />
+		<controlpoint x="2.3" y="3" z="1" />
+		
+	</LEAF>
+	
+	<LEAF id="superficie-lareira" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="-2.3" y="3" z="1" />
+		<controlpoint x="-1.5" y="4" z="1" />
+		<controlpoint x="1.5" y="4" z="1" />
+		<controlpoint x="2.3" y="3" z="1" />
+		
+		<controlpoint x="-2.3" y="3" z="0.5" />
+		<controlpoint x="-1.5" y="4" z="0.5" />
+		<controlpoint x="1.5" y="4" z="0.5" />
+		<controlpoint x="2.3" y="3" z="0.5" />
+		
+		<controlpoint x="-2.3" y="3" z="-0.5" />
+		<controlpoint x="-1.5" y="4" z="-0.5" />
+		<controlpoint x="1.5" y="4" z="-0.5" />
+		<controlpoint x="2.3" y="3" z="-0.5" />
+	
+		<controlpoint x="-2.3" y="3" z="-1" />
+		<controlpoint x="-1.5" y="4" z="-1" />
+		<controlpoint x="1.5" y="4" z="-1" />
+		<controlpoint x="2.3" y="3" z="-1" />
+		
+	</LEAF>
+	
+	<LEAF id="encosto-sofa" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="-2.5" y="0" z="0" />
+		<controlpoint x="-2.5" y="2" z="0" />
+		<controlpoint x="-2.5" y="4" z="0" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="-1" y="0" z="0" />
+		<controlpoint x="-1" y="2" z="0" />
+		<controlpoint x="-1" y="4" z="0" />
+		<controlpoint x="-1" y="4" z="-0.5" />
+		
+		<controlpoint x="1" y="0" z="0" />
+		<controlpoint x="1" y="2" z="0" />
+		<controlpoint x="1" y="4" z="0" />
+		<controlpoint x="1" y="4" z="-0.5" />
+		
+		<controlpoint x="2.5" y="0" z="0" />
+		<controlpoint x="2.5" y="2" z="0" />
+		<controlpoint x="2.5" y="4" z="0" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="sofa-braço-esquerdo" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="-2.5" y="-0.5" z="3" />
+		<controlpoint x="-2.5" y="2" z="3" />
+		<controlpoint x="-2.5" y="0" z="-0.5" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="-2.25" y="-0.5" z="3" />
+		<controlpoint x="-2.25" y="2" z="3" />
+		<controlpoint x="-2.25" y="0" z="-0.5" />
+		<controlpoint x="-2.25" y="4" z="-0.5" />
+		
+		<controlpoint x="-1.75" y="-0.5" z="3" />
+		<controlpoint x="-1.75" y="2" z="3" />
+		<controlpoint x="-1.75" y="0" z="-0.5" />
+		<controlpoint x="-1.75" y="4" z="-0.5" />
+		
+		<controlpoint x="-1.5" y="-0.5" z="3" />
+		<controlpoint x="-1.5" y="2" z="3" />
+		<controlpoint x="-1.5" y="0" z="-0.5" />
+		<controlpoint x="-1.5" y="4" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="sofa-braço-direito" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="1.5" y="-0.5" z="3" />
+		<controlpoint x="1.5" y="2" z="3" />
+		<controlpoint x="1.5" y="0" z="-0.5" />
+		<controlpoint x="1.5" y="4" z="-0.5" />
+		
+		<controlpoint x="1.75" y="-0.5" z="3" />
+		<controlpoint x="1.75" y="2" z="3" />
+		<controlpoint x="1.75" y="0" z="-0.5" />
+		<controlpoint x="1.75" y="4" z="-0.5" />
+		
+		<controlpoint x="2.25" y="-0.5" z="3" />
+		<controlpoint x="2.25" y="2" z="3" />
+		<controlpoint x="2.25" y="0" z="-0.5" />
+		<controlpoint x="2.25" y="4" z="-0.5" />
+		
+		<controlpoint x="2.5" y="-0.5" z="3" />
+		<controlpoint x="2.5" y="2" z="3" />
+		<controlpoint x="2.5" y="0" z="-0.5" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="sofa-lado-direito-baixo" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="2.5" y="-0.5" z="3" />
+		<controlpoint x="2.5" y="2" z="3" />
+		<controlpoint x="2.5" y="0" z="-0.5" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="2.5" y="0" z="3" />
+		<controlpoint x="2.5" y="0" z="3" />
+		<controlpoint x="2.5" y="0" z="-0.5" />
+		<controlpoint x="2.5" y="0" z="-0.5" />
+	
+		<controlpoint x="2.5" y="-0.5" z="3" />
+		<controlpoint x="2.5" y="-1" z="3" />
+		<controlpoint x="2.5" y="-1" z="1" />
+		<controlpoint x="2.5" y="-1" z="-1" />
+		
+		<controlpoint x="2.5" y="-0.5" z="3" />
+		<controlpoint x="2.5" y="-1" z="3" />
+		<controlpoint x="2.5" y="-1" z="1" />
+		<controlpoint x="2.5" y="-1" z="-1" />
+
+	</LEAF>
+	
+	<LEAF id="sofa-lado-direito-baixo-interior" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="1.5" y="-0.5" z="3" />
+		<controlpoint x="1.5" y="-1" z="3" />
+		<controlpoint x="1.5" y="-1" z="1" />
+		<controlpoint x="1.5" y="-1" z="-1" />
+		
+		<controlpoint x="1.5" y="-0.5" z="3" />
+		<controlpoint x="1.5" y="-1" z="3" />
+		<controlpoint x="1.5" y="-1" z="1" />
+		<controlpoint x="1.5" y="-1" z="-1" />
+		
+		<controlpoint x="1.5" y="0" z="3" />
+		<controlpoint x="1.5" y="0" z="3" />
+		<controlpoint x="1.5" y="0" z="-0.5" />
+		<controlpoint x="1.5" y="0" z="-0.5" />
+	
+		<controlpoint x="1.5" y="-0.5" z="3" />
+		<controlpoint x="1.5" y="2" z="3" />
+		<controlpoint x="1.5" y="0" z="-0.5" />
+		<controlpoint x="1.5" y="4" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="sofa-lado-esquerdo-baixo" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="-2.5" y="-0.5" z="3" />
+		<controlpoint x="-2.5" y="-1" z="3" />
+		<controlpoint x="-2.5" y="-1" z="1" />
+		<controlpoint x="-2.5" y="-1" z="-1" />
+		
+		<controlpoint x="-2.5" y="-0.5" z="3" />
+		<controlpoint x="-2.5" y="-1" z="3" />
+		<controlpoint x="-2.5" y="-1" z="1" />
+		<controlpoint x="-2.5" y="-1" z="-1" />
+		
+		<controlpoint x="-2.5" y="0" z="3" />
+		<controlpoint x="-2.5" y="0" z="3" />
+		<controlpoint x="-2.5" y="0" z="-0.5" />
+		<controlpoint x="-2.5" y="0" z="-0.5" />
+	
+		<controlpoint x="-2.5" y="-0.5" z="3" />
+		<controlpoint x="-2.5" y="2" z="3" />
+		<controlpoint x="-2.5" y="0" z="-0.5" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="sofa-lado-esquerdo-baixo-interior" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="-1.5" y="-0.5" z="3" />
+		<controlpoint x="-1.5" y="2" z="3" />
+		<controlpoint x="-1.5" y="0" z="-0.5" />
+		<controlpoint x="-1.5" y="4" z="-0.5" />
+		
+		<controlpoint x="-1.5" y="0" z="3" />
+		<controlpoint x="-1.5" y="0" z="3" />
+		<controlpoint x="-1.5" y="0" z="-0.5" />
+		<controlpoint x="-1.5" y="0" z="-0.5" />
+	
+		<controlpoint x="-1.5" y="-0.5" z="3" />
+		<controlpoint x="-1.5" y="-1" z="3" />
+		<controlpoint x="-1.5" y="-1" z="1" />
+		<controlpoint x="-1.5" y="-1" z="-1" />
+		
+		<controlpoint x="-1.5" y="-0.5" z="3" />
+		<controlpoint x="-1.5" y="-1" z="3" />
+		<controlpoint x="-1.5" y="-1" z="1" />
+		<controlpoint x="-1.5" y="-1" z="-1" />
+
+	</LEAF>
+	
+	<LEAF id="encosto-sofa-tras" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="2.5" y="-1" z="-1" />
+		<controlpoint x="2.5" y="2" z="-1" />
+		<controlpoint x="2.5" y="4" z="-1" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="1" y="-1" z="-1" />
+		<controlpoint x="1" y="2" z="-1" />
+		<controlpoint x="1" y="4" z="-1" />
+		<controlpoint x="1" y="4" z="-0.5" />
+		
+		<controlpoint x="-1" y="-1" z="-1" />
+		<controlpoint x="-1" y="2" z="-1" />
+		<controlpoint x="-1" y="4" z="-1" />
+		<controlpoint x="-1" y="4" z="-0.5" />
+		
+		<controlpoint x="-2.5" y="-1" z="-1" />
+		<controlpoint x="-2.5" y="2" z="-1" />
+		<controlpoint x="-2.5" y="4" z="-1" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="sofa-lado-direito" type="patch" order="3" partsU="20" partsV="20" >
+	
+		<controlpoint x="2.5" y="-1" z="0.01" />
+		<controlpoint x="2.5" y="2" z="0.01" />
+		<controlpoint x="2.5" y="4" z="0.01" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="2.5" y="-1" z="0.01" />
+		<controlpoint x="2.5" y="2" z="0.01" />
+		<controlpoint x="2.5" y="4" z="0.01" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+	
+		<controlpoint x="2.5" y="-1" z="-1" />
+		<controlpoint x="2.5" y="2" z="-1" />
+		<controlpoint x="2.5" y="4" z="-1" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="2.5" y="-1" z="-1" />
+		<controlpoint x="2.5" y="2" z="-1" />
+		<controlpoint x="2.5" y="4" z="-1" />
+		<controlpoint x="2.5" y="4" z="-0.5" />
+
+	</LEAF>
+	
+	<LEAF id="sofa-lado-esquerdo" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="-2.5" y="-1" z="-1" />
+		<controlpoint x="-2.5" y="2" z="-1" />
+		<controlpoint x="-2.5" y="4" z="-1" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="-2.5" y="-1" z="-1" />
+		<controlpoint x="-2.5" y="2" z="-1" />
+		<controlpoint x="-2.5" y="4" z="-1" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+		
+		<controlpoint x="-2.5" y="-1" z="0.01" />
+		<controlpoint x="-2.5" y="2" z="0.01" />
+		<controlpoint x="-2.5" y="4" z="0.01" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+	
+		<controlpoint x="-2.5" y="-1" z="0.01" />
+		<controlpoint x="-2.5" y="2" z="0.01" />
+		<controlpoint x="-2.5" y="4" z="0.01" />
+		<controlpoint x="-2.5" y="4" z="-0.5" />
+		
+	</LEAF>
+	
+	<LEAF id="acento-sofa" type="patch" order="3" partsU="20" partsV="20" >
+		
+		<controlpoint x="2.5" y="0" z="0" />
+		<controlpoint x="2.5" y="0" z="1" />
+		<controlpoint x="2.5" y="0" z="3" />
+		<controlpoint x="2.5" y="-0.5" z="3" />
+		
+		<controlpoint x="1" y="0" z="0" />
+		<controlpoint x="1" y="0" z="1" />
+		<controlpoint x="1" y="0" z="3" />
+		<controlpoint x="1" y="-0.5" z="3" />
+		
+		<controlpoint x="-1" y="0" z="0" />
+		<controlpoint x="-1" y="0" z="1" />
+		<controlpoint x="-1" y="0" z="3" />
+		<controlpoint x="-1" y="-0.5" z="3" />
+		
+		<controlpoint x="-2.5" y="0" z="0" />
+		<controlpoint x="-2.5" y="0" z="1" />
+		<controlpoint x="-2.5" y="0" z="3" />
+		<controlpoint x="-2.5" y="-0.5" z="3" />
+		
+	</LEAF>
+	
+	<LEAF id="acento-sofa-baixo" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="-2.5" y="-1" z="-1" />
+		<controlpoint x="-2.5" y="-1" z="1" />
+		<controlpoint x="-2.5" y="-1" z="3" />
+		<controlpoint x="-2.5" y="-0.5" z="3" />
+		
+		<controlpoint x="-1" y="-1" z="-1" />
+		<controlpoint x="-1" y="-1" z="1" />
+		<controlpoint x="-1" y="-1" z="3" />
+		<controlpoint x="-1" y="-0.5" z="3" />
+		
+		<controlpoint x="1" y="-1" z="-1" />
+		<controlpoint x="1" y="-1" z="1" />
+		<controlpoint x="1" y="-1" z="3" />
+		<controlpoint x="1" y="-0.5" z="3" />
+		
+		<controlpoint x="2.5" y="-1" z="-1" />
+		<controlpoint x="2.5" y="-1" z="1" />
+		<controlpoint x="2.5" y="-1" z="3" />
+		<controlpoint x="2.5" y="-0.5" z="3" />
+		
+	</LEAF>
+	
+</LEAVES>
+
+<NODES>
+    <ROOT id="root" />
+	
+    <NODE id="root">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+        <DESCENDANTS>
+		    <DESCENDANT id="board" /> 
+			<DESCENDANT id="cena" />		
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="barco">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+        <DESCENDANTS>
+			<DESCENDANT id="superficie-frente-barco" />
+			<DESCENDANT id="superficie-interior-frente-barco" />	
+			<DESCENDANT id="superficie-tras-barco" />
+			<DESCENDANT id="superficie-interior-tras-barco" />
+			<DESCENDANT id="superficie-baixo-barco" />
+			<DESCENDANT id="superficie-interior-baixo-barco" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="navio-almirante">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+        <DESCENDANTS>
+			<DESCENDANT id="barco-almirante" />
+			<DESCENDANT id="mastro-almirante" />
+			<DESCENDANT id="vela-cima-almirante" />
+			<DESCENDANT id="vela-baixo-almirante" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="barco-almirante">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<SCALE sx="1.5" sy="2" sz="1.5" />
+        <DESCENDANTS>
+			<DESCENDANT id="barco" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="mastro-almirante">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<SCALE sx="1.1" sy="2" sz="1.1" />
+        <DESCENDANTS>
+			<DESCENDANT id="mastro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="vela-cima-almirante">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="0" y="4.75" z="0" />
+        <DESCENDANTS>
+			<DESCENDANT id="vela-pequena" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="vela-pequena">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="0.2" y="2.55" z="0" />
+		<SCALE sx="2" sy="1.5" sz="1.5" />
+        <DESCENDANTS>
+			<DESCENDANT id="vela-frente-pequena" />
+			<DESCENDANT id="vela-tras-pequena" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="vela-baixo-almirante">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-0.2" y="-1" z="0" />
+		<SCALE sx="2" sy="1.7" sz="3" />
+        <DESCENDANTS>
+			<DESCENDANT id="vela" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="navio">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+        <DESCENDANTS>
+			<DESCENDANT id="barco" />
+			<DESCENDANT id="mastro" />
+			<DESCENDANT id="vela" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="vela">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0.2" y="2.55" z="0" />
+		<SCALE sx="2" sy="1.5" sz="1.5" />
+        <DESCENDANTS>
+			<DESCENDANT id="vela-frente" />
+			<DESCENDANT id="vela-tras" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="mastro">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<SCALE sx="0.9" sy="1" sz="0.9" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro-mastro" />
+			<DESCENDANT id="tapo-mastro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="cilindro-mastro">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="0.5" sy="0.5" sz="0.6" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="tapo-mastro">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="4.8" z="0" />
+		<SCALE sx="0.25" sy="0" sz="0.25" />
+        <DESCENDANTS>
+            <DESCENDANT id="bola" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="suporte-tabuleiro">
+        <MATERIAL id="material-candeeiro-exterior-pe" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-8" y="0" z="4" />
+		<ROTATION axis="y" angle="-45" />
+		<TRANSLATION x="-1.35" y="-0.01" z="1.35" />
+		<SCALE sx="2.7" sy="2.7" sz="2.7" />
+		<ROTATION axis="x" angle="-90" />
+        <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="rectangulo7">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pedra-preta" />
+		<TRANSLATION x="-3.75" y="5" z="0" />
+		<SCALE sx="1" sy="0.5" sz="2" />
+		<TRANSLATION x="0" y="0" z="-0.5" />
+		<ROTATION axis="y" angle="-90" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo6">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pedra-preta" />
+		<TRANSLATION x="3.75" y="5" z="0" />
+		<SCALE sx="1" sy="0.5" sz="2" />
+		<TRANSLATION x="0" y="0" z="0.5" />
+		<ROTATION axis="y" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo5">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pedra-preta" />
+		<TRANSLATION x="0" y="5" z="1" />
+		<SCALE sx="7.5" sy="0.5" sz="1" />
+		<TRANSLATION x="-0.5" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo4">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pedra-preta" />
+		<TRANSLATION x="0" y="5" z="0" />
+		<ROTATION axis="z" angle="180" />
+		<TRANSLATION x="0" y="-5.5" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo3" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo3">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pedra-preta" />
+		<TRANSLATION x="0" y="5.5" z="0" />
+		<SCALE sx="1.5" sy="0" sz="1" />
+		<TRANSLATION x="2.5" y="0" z="0" />
+		<ROTATION axis="z" angle="90" />
+		<TRANSLATION x="-3" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo2">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-3" y="0" z="0" />
+		<ROTATION axis="y" angle="180" />
+		<TRANSLATION x="-3" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo1">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="3" y="0" z="1" />
+		<ROTATION axis="y" angle="90" />
+		<SCALE sx="2" sy="5" sz="2" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo8">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="2.65" y="0" z="1" />
+		<SCALE sx="0.35" sy="1" sz="1" />
+		<ROTATION axis="y" angle="-90" />
+		<TRANSLATION x="-3" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo9">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-5.3" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo8" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo10">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="2.3" y="0" z="0" />
+		<ROTATION axis="y" angle="180" />
+		<TRANSLATION x="-3" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo11">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-2.35" y="0" z="0" />
+		<ROTATION axis="y" angle="180" />
+		<TRANSLATION x="-2.35" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo10" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo12">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pedra-preta" />
+		<TRANSLATION x="0" y="0" z="-0.4" />
+		<SCALE sx="4.7" sy="4" sz="1" />
+		<TRANSLATION x="-0.5" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo13">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="0" z="1" />
+		<SCALE sx="4.7" sy="0.25" sz="1" />
+		<TRANSLATION x="-0.5" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="rectangulo14">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="0.25" z="0" />
+		<TRANSLATION x="2.5" y="0" z="0" />
+		<ROTATION axis="z" angle="90" />
+		<TRANSLATION x="-3" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="chama-pequena2">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-chama" />
+		<TRANSLATION x="1.6" y="0" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="chama-pequena" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="chama-pequena">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-chama" />
+		<TRANSLATION x="0.75" y="0.25" z="0.5" />
+		<SCALE sx="0.3" sy="0.2" sz="0.3" />
+		<ROTATION axis="z" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="vela-baixo-almirante" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="chama-maior">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-chama" />
+		<TRANSLATION x="0.75" y="0.25" z="0.7" />
+		<SCALE sx="1" sy="1.5" sz="1" />
+		<ROTATION axis="z" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="vela-frente" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="lareira">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pedra-branca" />
+		<TRANSLATION x="10" y="0" z="1" />
+		<DESCENDANTS>
+			<DESCENDANT id="rectangulo1" />
+			<DESCENDANT id="rectangulo2" />
+			<DESCENDANT id="rectangulo3" />
+			<DESCENDANT id="rectangulo4" />
+			<DESCENDANT id="rectangulo5" />
+			<DESCENDANT id="rectangulo6" />
+			<DESCENDANT id="rectangulo7" />
+			<DESCENDANT id="rectangulo8" />
+			<DESCENDANT id="rectangulo9" />
+			<DESCENDANT id="rectangulo10" />
+			<DESCENDANT id="rectangulo11" />
+			<DESCENDANT id="rectangulo12" />
+			<DESCENDANT id="rectangulo13" />
+			<DESCENDANT id="rectangulo14" />
+			<DESCENDANT id="frente-lareira" />
+			<DESCENDANT id="superficie-lareira" />
+			<DESCENDANT id="chama-maior" />
+			<DESCENDANT id="chama-pequena" />
+			<DESCENDANT id="chama-pequena2" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="mesa">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="10" y="0" z="8" />
+		<SCALE sx="0.8" sy="0.75" sz="0.8" />
+		<DESCENDANTS>
+			<DESCENDANT id="tampo-mesa" />
+			<DESCENDANT id="mesa-perna" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="mesa-perna">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-metal" />
+		<DESCENDANTS>
+			<DESCENDANT id="mesa-perna-cima" />
+			<DESCENDANT id="mesa-perna-baixo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="mesa-perna-cima">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="4" z="0" />
+		<ROTATION axis="x" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="cilindro1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="mesa-perna-baixo">
+		<MATERIAL id="material-geral" />
+		<TRANSLATION x="0" y="2" z="0" />
+        <TEXTURE id="null" />
+		<ROTATION axis="x" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="cilindro2" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="tampo-mesa">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-madeira-vermelha-escura" />
+		<TRANSLATION x="0" y="2" z="0" />
+		<SCALE sx="1.8" sy="1" sz="1.8" />
+        <DESCENDANTS>
+			<DESCENDANT id="acento" />
+			<DESCENDANT id="acento-cima" />
+			<DESCENDANT id="acento-baixo" />
+		</DESCENDANTS>
+    </NODE>
+	
+	<NODE id="acento-baixo">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="2" z="0" />
+		<ROTATION axis="x" angle="180" />
+		<SCALE sx="1.2" sy="0.00001" sz="1.2" />
+        <DESCENDANTS>
+            <DESCENDANT id="bola" />
+		</DESCENDANTS>
+    </NODE>
+	
+	<NODE id="acento-cima">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="2.2" z="0" />
+		<SCALE sx="1.2" sy="0.00001" sz="1.2" />
+        <DESCENDANTS>
+            <DESCENDANT id="bola" />
+		</DESCENDANTS>
+    </NODE>
+	
+	<NODE id="acento">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="2" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="2.4" sy="2.4" sz="0.025" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro" />
+		</DESCENDANTS>
+    </NODE>
+	
+	<NODE id="perna-sofa">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="2" y="3.25" z="-0.5" />
+		<ROTATION axis="x" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="cilindro3" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="perna-sofa3">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-2" y="3.25" z="2" />
+		<ROTATION axis="x" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="cilindro3" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="perna-sofa2">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="2" y="3.25" z="2" />
+		<ROTATION axis="x" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="cilindro3" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="perna-sofa1">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-2" y="3.25" z="-0.5" />
+		<ROTATION axis="x" angle="90" />
+		<DESCENDANTS>
+			<DESCENDANT id="cilindro3" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="sofa-corpo">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-sofa" />
+		<TRANSLATION x="0" y="4" z="0" />
+		<DESCENDANTS>
+			<DESCENDANT id="acento-sofa" />
+			<DESCENDANT id="acento-sofa-baixo" />
+			<DESCENDANT id="encosto-sofa" />
+			<DESCENDANT id="encosto-sofa-tras" />
+			<DESCENDANT id="sofa-lado-direito" />
+			<DESCENDANT id="sofa-lado-esquerdo" />
+			<DESCENDANT id="sofa-braço-esquerdo" />
+			<DESCENDANT id="sofa-braço-direito" />
+			<DESCENDANT id="sofa-lado-direito-baixo" />
+			<DESCENDANT id="sofa-lado-esquerdo-baixo" />
+			<DESCENDANT id="sofa-lado-direito-baixo-interior" />
+			<DESCENDANT id="sofa-lado-esquerdo-baixo-interior" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="sofa">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="textura-metal" />
+		<TRANSLATION x="6" y="0" z="8" />
+		<ROTATION axis="y" angle="90" />
+		<SCALE sx="0.5" sy="0.5" sz="0.5" />
+		<DESCENDANTS>
+			<DESCENDANT id="sofa-corpo" />
+			<DESCENDANT id="perna-sofa" />
+			<DESCENDANT id="perna-sofa1" />
+			<DESCENDANT id="perna-sofa2" />
+			<DESCENDANT id="perna-sofa3" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="sofa1">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="14" y="0" z="8" />
+		<ROTATION axis="y" angle="180" />
+		<TRANSLATION x="-6" y="0" z="-8" />
+		<DESCENDANTS>
+			<DESCENDANT id="sofa" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="parede-sala">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-parede-interior" />
+		<SCALE sx="20" sy="10" sz="1" />
+        <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="parede-sala1">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-tecto" />
+		<TRANSLATION x="20" y="0" z="0" />
+		<ROTATION axis="y" angle="-90" />
+		<SCALE sx="20" sy="10" sz="1" />
+        <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="chao-sala">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pavimento-interior" />
+		<TRANSLATION x="0" y="0" z="20" />
+		<SCALE sx="20" sy="1" sz="20" />
+		<ROTATION axis="x" angle="-90" />
+        <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="porta-entrada">
+        <MATERIAL id="null" />
+        <TEXTURE id="textura-porta-entrada" />
+		<TRANSLATION x="19.95" y="0" z="14" />
+		<ROTATION axis="y" angle="-90" />
+		<SCALE sx="5" sy="8" sz="1" />
+        <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="tapete">
+        <MATERIAL id="null" />
+        <TEXTURE id="textura-tapete" />
+		<TRANSLATION x="10" y="0.001" z="8" />
+		<SCALE sx="5" sy="0.01" sz="5" />
+        <DESCENDANTS>
+			<DESCENDANT id="bola1" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="presépio">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-ramos-arvore" />
+		<TRANSLATION x="0.75" y="0.01" z="4.25" />
+		<SCALE sx="3.5" sy="1" sz="3.5" />
+		<ROTATION axis="x" angle="-90" />
+        <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="pinheiro-pequeno">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-pinheiro-de-natal" />
+		<TRANSLATION x="2.5" y="0" z="2.5" />
+		<SCALE sx="0.5" sy="0.4" sz="0.5" />
+        <DESCENDANTS>
+			<DESCENDANT id="arvore2" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="arvore2">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+        <DESCENDANTS>
+			<DESCENDANT id="tronco2" />
+			<DESCENDANT id="ramos2" />
+			<DESCENDANT id="baixo-cone" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="tronco2">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-tronco-pinheiro" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="1" sy="1" sz="0.75" />
+        <DESCENDANTS>
+			<DESCENDANT id="cilindro" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="ramos2">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="22" z="0" />
+		<SCALE sx="3" sy="4" sz="3" />
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+            <DESCENDANT id="cone" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="baixo-cone">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="6" z="0" />
+		<SCALE sx="3" sy="1" sz="3" />
+        <DESCENDANTS>
+            <DESCENDANT id="bola1" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="candeeiro">
+        <MATERIAL id="material-abranqueado" />
+        <TEXTURE id="textura-candeeiro-interior-lampada" />
+        <TRANSLATION x="15" y="0" z="12" />
+        <DESCENDANTS>
+            <DESCENDANT id="piramide" />
+			<DESCENDANT id="pe-candeeiro" />
+			<DESCENDANT id="parte-baixo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="piramide">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="5" z="0" />
+		<SCALE sx="0.25" sy="0.5" sz="0.25" />
+        <DESCENDANTS>
+            <DESCENDANT id="triangulo-1" />
+			<DESCENDANT id="triangulo-2" /> 
+			<DESCENDANT id="triangulo-3" /> 
+			<DESCENDANT id="triangulo-4" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="triangulo-1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+        <DESCENDANTS>
+            <DESCENDANT id="triangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="triangulo-2">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="y" angle="90" />
+        <DESCENDANTS>
+            <DESCENDANT id="triangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="triangulo-3">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="y" angle="180" />
+        <DESCENDANTS>
+            <DESCENDANT id="triangulo" />
+        </DESCENDANTS>
+	</NODE>
+		
+		<NODE id="triangulo-4">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="y" angle="-90" />
+        <DESCENDANTS>
+            <DESCENDANT id="triangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="pe-candeeiro">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-candeeiro-interior-pe" /> 
+		 <TRANSLATION x="-0.25" y="0" z="0.25" />
+		<SCALE sx="0.5" sy="1" sz="0.5" />
+        <DESCENDANTS>
+            <DESCENDANT id="paralelipipedo" />
+			<DESCENDANT id="paralelipipedo1" />
+			<DESCENDANT id="paralelipipedo2" />
+			<DESCENDANT id="paralelipipedo3" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="paralelipipedo">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<SCALE sx="1" sy="5" sz="1" />
+        <DESCENDANTS>
+            <DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="paralelipipedo1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="0" z="-1" />
+		<ROTATION axis="y" angle="-90" />
+        <DESCENDANTS>
+            <DESCENDANT id="paralelipipedo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="paralelipipedo2">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="1" y="0" z="0" />
+		<ROTATION axis="y" angle="90" />
+        <DESCENDANTS>
+            <DESCENDANT id="paralelipipedo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="paralelipipedo3">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="1" y="0" z="-1" />
+		<ROTATION axis="y" angle="180" />
+        <DESCENDANTS>
+            <DESCENDANT id="paralelipipedo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="parte-baixo">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-1.25" y="5" z="-1.25" />
+		<ROTATION axis="x" angle="90" />
+		<SCALE sx="2.5" sy="2.5" sz="0" />
+        <DESCENDANTS>
+            <DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="cena">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="8" y="-3.25" z="-10" />
+		<ROTATION axis="y" angle="-90" />
+		<DESCENDANTS>
+			<DESCENDANT id="chao-sala" />
+			<DESCENDANT id="parede-sala" />
+			<DESCENDANT id="parede-sala1" />
+			<DESCENDANT id="lareira" />
+			<DESCENDANT id="mesa" />
+			<DESCENDANT id="sofa" />
+			<DESCENDANT id="sofa1" />
+			<DESCENDANT id="porta-entrada" />
+			<DESCENDANT id="tapete" />
+			<DESCENDANT id="pinheiro-pequeno" />
+			<DESCENDANT id="presépio" />
+			<DESCENDANT id="candeeiro" />
+        </DESCENDANTS>
+	</NODE>
+	
+	
+	
+</NODES>
+
+</SCENE>

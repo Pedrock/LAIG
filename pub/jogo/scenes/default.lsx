@@ -817,7 +817,8 @@
 			<DESCENDANT id="poste-candeeiro" />
 			<DESCENDANT id="poste-candeeiro2" />			
 			<DESCENDANT id="arvore" />
-			<DESCENDANT id="arbusto" />
+			<DESCENDANT id="arbusto1" />
+			<DESCENDANT id="arbusto2" />
 			<DESCENDANT id="pinheiro" />
 			<DESCENDANT id="pinheiro-pequena" />	
 			<DESCENDANT id="banco-jardim" />
@@ -838,9 +839,26 @@
         </DESCENDANTS>
     </NODE>
 	
-	<NODE id="arbusto">
+	<NODE id="arbusto2">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+		<TRANSLATION x="15" y="0" z="-27" />
+        <DESCENDANTS>
+			<DESCENDANT id="arbusto" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="arbusto1">
         <MATERIAL id="null" />
         <TEXTURE id="textura-flores" />
+        <DESCENDANTS>
+			<DESCENDANT id="arbusto" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="arbusto">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
 		<TRANSLATION x="-15" y="-4.2" z="22" />
         <DESCENDANTS>
 			<DESCENDANT id="tronco-arbusto" />
