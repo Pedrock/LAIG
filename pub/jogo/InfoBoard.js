@@ -46,7 +46,7 @@ InfoBoard.prototype.display = function()
 			this.scene.translate(-3.5*this.charWidth,0,0);
 			var seconds = ~~(this.board.timeLeft/1000);
 			var milis = this.board.timeLeft % 1000; 
-			this.displayString(("0"+seconds).slice(-2)+":"+("0"+milis).slice(-2));
+			this.displayString(("0"+seconds).slice(-2)+":"+(milis+"0").slice(0,2));
         this.scene.popMatrix();
 
 		this.silver.apply();

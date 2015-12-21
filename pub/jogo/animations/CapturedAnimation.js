@@ -2,7 +2,7 @@
  * CapturedAnimation
  * @constructor
  */
-function CapturedAnimation(scene, player, object, delta, moveAnimation, reversed) {
+function CapturedAnimation(scene, player, object, delta, moveAnimation, reversed, fast) {
     this.scene = scene;
     
     this.delta = [delta[0], 10, delta[1]];
@@ -16,7 +16,7 @@ function CapturedAnimation(scene, player, object, delta, moveAnimation, reversed
     this.reversedTime = null;
     this.prevCurrTime = 0;
 
-    this.timespan = 2;
+    this.timespan = 2 / (fast ? 10: 1);
 }
 
 function easeInOutCubic(t) {
@@ -65,12 +65,15 @@ CapturedAnimation.prototype.update = function(currTime) {
 
 CapturedAnimation.prototype.reverse = function()
 {
-    this.reversed = true;
-    this.reversedTime = this.prevCurrTime;
-    if (!this.running)
+    if (!this.reversed)
     {
-        this.running = true;
-        this.startTime = this.prevCurrTime-this.timespan*1000;
+        this.reversed = true;
+        this.reversedTime = this.prevCurrTime;
+        if (!this.running)
+        {
+            this.running = true;
+            this.startTime = this.prevCurrTime-this.timespan*1000;
+        }
     }
 }
 

@@ -259,17 +259,19 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
                     deltax: deltax,
                     deltay: deltay,
                     board: self.board,
+                    newBoard: newBoard,
                     playCounter: self.playCounter,
+                    newCounter: newCounter,
                     player: self.currentPlayer
                 };
                 self.movesStack.push(move);
                 self.getValidMoves(newBoard, nextPlayer, newCounter % 2);
                 self.playCounter = newCounter;
                 self.board = newBoard;
-                self.pieces[y - 1][x - 1] = null ;
+                self.pieces[y - 1][x - 1] = null;
                 pickObject.boardPosition = pos;
                 self.pieces[pos[1]][pos[0]] = pickObject;
-                if (self.playCounter == 2)
+                if (self.playCounter == 2) 
                 {
                     self.updateScore();
                     self.switchPlayer();
@@ -292,15 +294,32 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
 
 Board.prototype.update = function(currTime) 
 {
-    if (this.moveAnimation) 
+    if (this.moveAnimation && this.moveAnimation) 
     {
-       this.moveAnimation.update(currTime);
-    } 
-    else 
+        this.moveAnimation.update(currTime);
+    }
+    else if (this.reverse_all)
     {
-        if (!this.human[this.currentPlayer] && !this.pickStart) 
+        if (this.movesStack.length) this.undo_last_move(true,currTime);
+        else this.reverse_all = false;
+    }
+    else if (this.replay_active)
+    {
+       if (this.replayStack.length)
+       {
+            var move = this.replayStack.shift();
+            this.currentPlayer = move.player;
+            this.board = move.board;
+            this.handleResponse(true,move.x,move.y,move.deltax,move.deltay,move.newCounter,move.newBoard);
+            this.moveAnimation.update(currTime);
+       }
+       else this.replay_active = false;
+    }
+
+    if (!this.moveAnimation) 
+    {
+        if (!this.human[this.currentPlayer] && !this.awaitingResponse) 
         {
-            this.pickStart = true;
             this.computerPlay();
         }
         if (!this.timeStart) 
@@ -309,7 +328,7 @@ Board.prototype.update = function(currTime)
             this.timeLeft = this.timePerPlay;
         }
         this.timeLeft = Math.max(0, this.timeStart + this.timePerPlay - currTime);
-        if (this.timeLeft === 0 && !this.awaitingResponse)
+        if (this.timeLeft === 0 && !this.awaitingResponse) 
         {
             this.timeStart = currTime;
             this.switchPlayer();
@@ -329,6 +348,52 @@ Board.prototype.switchPlayer = function()
     this.pickStart = null ;
 }
 
+Board.prototype.undo_last_move = function(fast, currTime)
+{
+    var self = this;
+    var move = this.movesStack.pop();
+    if (move.board[move.y - 1 + move.deltay][move.x - 1 + move.deltax] != 0) 
+    {
+        var capturePiece = this.capturedPieces[move.player][this.capturedPieces[move.player].length - 1];
+        capturePiece.boardPosition = [move.x - 1 + move.deltax, move.y - 1 + move.deltay];
+        var coords = this.calculateSidePiecePosition(move.player, this.capturedPieces[move.player].length - 1);
+        var pos = [move.x - 1 + move.deltax, move.y - 1 + move.deltay];
+        var delta = [coords[0] - pos[0] * this.cellWidth - this.cellWidth / 2, coords[1] - pos[1] * this.cellWidth - this.cellWidth / 2];
+        var captureHandler = function() 
+        {
+            self.capturedAnimation = new CapturedAnimation(self.scene,move.player,capturePiece,delta,self.moveAnimation,true,fast);
+            self.capturedPieces[move.player].pop();
+        }
+        ;
+    }
+    ;
+    var piece = this.pieces[move.y - 1 + move.deltay][move.x - 1 + move.deltax];
+    self.currentPlayer = move.player;
+    self.playCounter = move.playCounter;
+    self.board = move.board;
+    self.pieces[move.y - 1][move.x - 1] = piece;
+    self.pieces[piece.boardPosition[1]][piece.boardPosition[0]] = null ;
+    piece.boardPosition = [move.x - 1, move.y - 1];
+    this.moveAnimation = new PieceAnimation(this.scene,piece,[this.cellWidth * move.deltax, this.cellWidth * move.deltay],function() 
+    {
+        self.getValidMoves(move.board, move.player, move.playCounter);
+        self.updateScore();
+        self.moveAnimation = null;
+        self.pickStart = self.pickEnd = null ;
+        self.timeStart = null ;
+        if (capturePiece)
+            self.pieces[pos[1]][pos[0]] = capturePiece;
+    }
+    ,captureHandler,true,fast);
+    if (!capturePiece)
+        this.moveAnimation.captureFinished(false);
+    this.moveAnimation.endCaptureHandler = function(reversed) {
+        self.capturedAnimation = null ;
+    }
+    ;
+    if (this.moveAnimation && currTime) this.moveAnimation.update(currTime);
+}
+
 Board.prototype.undo = function() 
 {
     if (this.moveAnimation) 
@@ -339,43 +404,17 @@ Board.prototype.undo = function()
     } 
     else if (this.movesStack.length) 
     {
-        var self = this;
-        var move = this.movesStack.pop();
-        if (move.board[move.y-1+move.deltay][move.x-1+move.deltax] != 0) 
-        {
-            var capturePiece = this.capturedPieces[move.player][this.capturedPieces[move.player].length - 1];
-            capturePiece.boardPosition = [move.x-1+move.deltax, move.y-1+move.deltay];
-            var coords = this.calculateSidePiecePosition(move.player, this.capturedPieces[move.player].length - 1);
-            var pos = [move.x - 1 + move.deltax, move.y - 1 + move.deltay];
-            var delta = [coords[0] - pos[0] * this.cellWidth - this.cellWidth / 2, coords[1] - pos[1] * this.cellWidth - this.cellWidth / 2];
-            var captureHandler = function() 
-            {
-                self.capturedAnimation = new CapturedAnimation(self.scene,move.player,capturePiece,delta,self.moveAnimation, true);
-                self.capturedPieces[move.player].pop();
-            };
-        };
-        var piece = this.pieces[move.y-1+move.deltay][move.x-1+move.deltax];
-        self.currentPlayer = move.player;
-        self.playCounter = move.playCounter;
-        self.board = move.board;
-        self.pieces[move.y - 1][move.x - 1] = piece;
-        self.pieces[piece.boardPosition[1]][piece.boardPosition[0]] = null;
-        piece.boardPosition = [move.x - 1, move.y - 1];
-        this.moveAnimation = new PieceAnimation(this.scene,piece,[this.cellWidth * move.deltax,this.cellWidth * move.deltay],function() 
-        {
-            self.getValidMoves(move.board, move.player, move.playCounter);
-            self.updateScore();
-            self.moveAnimation = null ;
-            self.pickStart = self.pickEnd = null;
-            self.timeStart = null;
-            if (capturePiece) 
-                self.pieces[pos[1]][pos[0]] = capturePiece;
-        }
-        ,captureHandler,true);
-        if (!capturePiece) this.moveAnimation.captureFinished(false);
-        this.moveAnimation.endCaptureHandler = function(reversed) {
-            self.capturedAnimation = null ;
-        };
+        this.undo_last_move(false);
+    }
+}
+
+Board.prototype.replay = function() 
+{
+    if (!this.replay_active && this.movesStack.length)
+    {
+        this.replayStack = this.movesStack.slice();
+        this.replay_active = true;
+        this.reverse_all = true;
     }
 }
 
@@ -395,7 +434,7 @@ Board.prototype.display = function()
             this.scene.pushMatrix();
             this.scene.translate(this.cellWidth * x + 1, 0, this.cellWidth * y + 1);
             this.scene.scale(0.95 * this.cellWidth, 1, 0.95 * this.cellWidth);
-            if (!this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
+            if (!this.replay_active && !this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
             && (!this.pickStart || (this.pickStart[0] == x && this.pickStart[1] == y))) 
             {
                 this.selectionMaterial.apply();
@@ -417,7 +456,7 @@ Board.prototype.display = function()
                     this.gold.apply();
                 this.scene.pushMatrix();
                 this.scene.translate(this.cellWidth * x + this.cellWidth / 2, 0, this.cellWidth * y + this.cellWidth / 2);
-                if (this.moveAnimation && this.moveAnimation.object === piece) 
+                if (this.moveAnimation && this.moveAnimation.started && this.moveAnimation.object === piece) 
                 {
                     this.moveAnimation.apply();
                 }

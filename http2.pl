@@ -57,6 +57,7 @@ play(_,_,_,_,_,_,_) :-
 	
 computerPlay(Board,Player,Difficulty,N1) :-
 	computerPlay(Board,Player,Difficulty,X,Y,DeltaX,DeltaY,N1,N2,NewBoard),
+	sleep(1),
 	formatAsJSON([X,Y,DeltaX,DeltaY,N2,NewBoard,true],[x,y,deltax,deltay,newCounter,newBoard,valid]).
 
 computerPlay(_,_,_,_) :-
