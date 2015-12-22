@@ -167,15 +167,12 @@ Board.prototype.createPickHandler = function()
                         {
                             console.log("Picked second");
                             this.pickEnd = pos;
-                            
-                            var self = this;
-                            
                             var delta = [pos[0] - this.pickStart[0], pos[1] - this.pickStart[1]];
                             x = this.pickStart[0] + 1;
                             y = this.pickStart[1] + 1;
                             var handler = this.handleResponse.bind(this);
-                            Game.play(this.board, this.currentPlayer, x, y, delta[0], delta[1], this.playCounter, handler);
                             this.awaitingResponse = true;
+                            Game.play(this.board, this.currentPlayer, x, y, delta[0], delta[1], this.playCounter, handler);
                         } 
                         else if (object && this.board[pos[1]][pos[0]] % 2 == this.currentPlayer % 2) 
                         {
@@ -237,6 +234,7 @@ Board.prototype.computerPlay = function()
 
 Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounter, newBoard) 
 {
+    if (!this.awaitingResponse) return;
     this.awaitingResponse = false;
     if (valid) 
     {
@@ -310,6 +308,7 @@ Board.prototype.update = function(currTime)
             var move = this.replayStack.shift();
             this.currentPlayer = move.player;
             this.board = move.board;
+            this.awaitingResponse = true;
             this.handleResponse(true,move.x,move.y,move.deltax,move.deltay,move.newCounter,move.newBoard);
             this.moveAnimation.update(currTime);
        }
@@ -318,7 +317,7 @@ Board.prototype.update = function(currTime)
 
     if (!this.moveAnimation) 
     {
-        if (!this.human[this.currentPlayer] && !this.awaitingResponse) 
+        if (!this.human[this.currentPlayer] && !this.awaitingResponse && !this.replay_active) 
         {
             this.computerPlay();
         }
@@ -396,6 +395,8 @@ Board.prototype.undo_last_move = function(fast, currTime)
 
 Board.prototype.undo = function() 
 {
+    if (this.replay_active) return;
+    this.awaitingResponse = false;
     if (this.moveAnimation) 
     {
         this.moveAnimation.reverse();
@@ -412,6 +413,7 @@ Board.prototype.replay = function()
 {
     if (!this.replay_active && this.movesStack.length)
     {
+        this.awaitingResponse = false;
         this.replayStack = this.movesStack.slice();
         this.replay_active = true;
         this.reverse_all = true;
