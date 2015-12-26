@@ -17,7 +17,7 @@
 </ILLUMINATION>
 
 <LIGHTS>
-	<LIGHT id="Sol">                                    
+	<LIGHT id="luz1">                                    
         <enable value ="1" />                       <!-- light identifier -->
         <position x="5" y="10" z="-5" w="1" /> <!-- light position -->      
         <ambient r="0.7" g="0.7" b="0.7" a="1" />        	<!-- ambient component -->
@@ -27,72 +27,11 @@
 </LIGHTS>
 
 <TEXTURES>
-	<TEXTURE id="textura-tronco-pinheiro">
-        <file path="textures/tronco-pinheiro.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-ramos-arvore">
-        <file path="textures/ramos-arvore.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-parede-interior">
-        <file path="textures/parede-interior.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-tecto">
-        <file path="textures/tecto.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
+	
 	<TEXTURE id="textura-pavimento-interior">
         <file path="textures/madeira-castanha-clara.jpg" />                             
         <amplif_factor s="0.5" t="0.5" />                
     </TEXTURE>
-	<TEXTURE id="textura-porta-entrada">
-        <file path="textures/porta-entrada.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-candeeiro-interior-pe">
-        <file path="textures/candeeiro-interior-pe.jpg" />                             
-        <amplif_factor s="1" t="0.1" />          	
-    </TEXTURE>
-	<TEXTURE id="textura-candeeiro-interior-lampada">
-        <file path="textures/candeeiro-interior-lampada.jpg" />                             
-        <amplif_factor s="10" t="10" />                
-    </TEXTURE>
-	<TEXTURE id="textura-sofa">
-        <file path="textures/sofa.jpg" />                             
-        <amplif_factor s="10" t="10" />                
-    </TEXTURE>
-	<TEXTURE id="textura-tapete">
-        <file path="textures/tapete.jpg" />                             
-        <amplif_factor s="10" t="10" />                
-    </TEXTURE>
-	<TEXTURE id="textura-madeira-vermelha-escura">
-        <file path="textures/madeira-vermelha-escura.jpg" />                             
-        <amplif_factor s="10" t="10" />                
-    </TEXTURE>
-	<TEXTURE id="textura-metal">
-        <file path="textures/metal.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-pedra-branca">
-        <file path="textures/pedra-branca.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-pedra-preta">
-        <file path="textures/pedra-preta.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-chama">
-        <file path="textures/chama.png" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-pinheiro-de-natal">
-        <file path="textures/pinheiro-de-natal.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	
-	<!---->
 	<TEXTURE id="textura-chao-chines">
         <file path="textures/chao-chines.jpg" />                             
         <amplif_factor s="1" t="1" />                
@@ -113,16 +52,8 @@
         <file path="textures/madeira-escura.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
-	<TEXTURE id="textura-pernas-mesa">
-        <file path="textures/pernas-mesa.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
 	<TEXTURE id="textura-agua">
         <file path="textures/agua.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
-	<TEXTURE id="textura-porcelana">
-        <file path="textures/porcelana.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
 	<TEXTURE id="textura-tinta-branca">
@@ -149,6 +80,18 @@
         <file path="textures/paisagem.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
+	<TEXTURE id="textura-madeira-vermelha-escura">
+        <file path="textures/madeira-vermelha-escura.jpg" />                             
+        <amplif_factor s="10" t="10" />                
+    </TEXTURE>
+	<TEXTURE id="textura-tronco-pinheiro">
+        <file path="textures/tronco-pinheiro.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-ramos-arvore">
+        <file path="textures/ramos-arvore.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
 </TEXTURES>
 
 
@@ -159,20 +102,6 @@
         <diffuse r="0.8" g="0.8" b="0.8" a="1" />   <!-- diffuse reflection -->
         <ambient r="0.5" g="0.5" b="0.5" a="1" />         <!-- ambient reflection -->
         <emission r="0" g="0" b="0" a="0" />        <!-- emission component -->
-     </MATERIAL>
-	<MATERIAL id="material-abranqueado">                                  
-        <shininess value="150" />
-        <specular r="0.3" g="0.3" b="0.3" a="1" />        
-        <diffuse r="0.6" g="0.6" b="0.6" a="1" />   
-        <ambient r="1" g="1" b="1" a="1" />         
-        <emission r="1" g="1" b="1" a="1" />      
-     </MATERIAL>	
-	 <MATERIAL id="material-interior-casa">                                  
-        <shininess value="150" />
-        <specular r="0" g="0" b="0" a="0" />      
-        <diffuse r="0" g="0" b="0" a="1" />  
-        <ambient r="1" g="1" b="1" a="1" />        
-        <emission r="0" g="0" b="0" a="0" />     
      </MATERIAL>
 	 <MATERIAL id="material-vermelho">                                  
         <shininess value="100" />

@@ -17,7 +17,7 @@
 </ILLUMINATION>
 
 <LIGHTS>
-	<LIGHT id="Sol">                                    
+	<LIGHT id="luz1">                                    
         <enable value ="1" />                       <!-- light identifier -->
         <position x="0" y="7" z="0" w="1" /> <!-- light position -->      
         <ambient r="0.5" g="0.5" b="0.5" a="1" />        	<!-- ambient component -->
