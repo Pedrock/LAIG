@@ -116,6 +116,13 @@
         <ambient r="1" g="1" b="1" a="1" />        
         <emission r="0" g="0" b="0" a="0" />     
      </MATERIAL>
+	 <MATERIAL id="material-cinza">                                  
+        <shininess value="6" />
+        <specular r="0.5" g="0.5" b="0.5" a="1" />        
+        <diffuse r="0.5" g="0.5" b="0.5" a="1" />   		
+        <ambient r="0.5" g="0.5" b="0.5" a="1" />         
+        <emission r="0" g="0" b="0" a="0" />  
+	</MATERIAL>	
 </MATERIALS>
 
 <ANIMATIONS>
@@ -133,7 +140,6 @@
 	<LEAF id="rectangulo" type="rectangle" args="0 1 1 0" /> 
 	<LEAF id="cone" type="cylinder" args="4 0 1 1 40" />
 	<LEAF id="triangulo" type="triangle" args="5 0 -5 -5 0 -5 0 5 0" />
-	<LEAF id="terreno" type="terrain" texture="textures/jardim.jpg" heightmap="textures/jardim-heightmap.jpg" />
 	
 	<LEAF id="superficie-frente-barco" type="patch" order="3" partsU="20" partsV="20" >
 	
@@ -707,7 +713,8 @@
         <TEXTURE id="null" />
         <DESCENDANTS>
 		    <DESCENDANT id="board" /> 
-			<DESCENDANT id="cena" />		
+			<DESCENDANT id="cena" />	
+			<DESCENDANT id="suporte-tabuleiro" />
         </DESCENDANTS>
     </NODE>
 	
@@ -856,12 +863,11 @@
     </NODE>
 	
 	<NODE id="suporte-tabuleiro">
-        <MATERIAL id="material-candeeiro-exterior-pe" />
+        <MATERIAL id="material-cinza" />
         <TEXTURE id="null" />
-		<TRANSLATION x="-8" y="0" z="4" />
-		<ROTATION axis="y" angle="-45" />
-		<TRANSLATION x="-1.35" y="-0.01" z="1.35" />
-		<SCALE sx="2.7" sy="2.7" sz="2.7" />
+		
+		<TRANSLATION x="-1.05" y="-0.01" z="1.05" />
+		<SCALE sx="2.1" sy="2.1" sz="2.1" />
 		<ROTATION axis="x" angle="-90" />
         <DESCENDANTS>
 			<DESCENDANT id="rectangulo" />
