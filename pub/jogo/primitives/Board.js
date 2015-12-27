@@ -58,7 +58,6 @@ function Board(scene)
     
     this.pieces = [];
     this.planes = [];
-    this.createBoardPieces();
     
     this.moveAnimation = null ;
     this.capturedAnimation = null ;
@@ -126,7 +125,7 @@ Board.prototype.capture = function(player, piece, pos)
         }
         ;
         this.capturedAnimation = new CapturedAnimation(this.scene,player,piece,delta,this.moveAnimation);
-    } 
+    }
     else
         this.moveAnimation.captureFinished(false);
 }
@@ -192,7 +191,7 @@ Board.prototype.createPickHandler = function()
     }
 }
 
-Board.prototype.createBoardPieces = function() 
+Board.prototype.createBoardPieces = function(flagship, gold_escort, silver_escort) 
 {
     for (var y = 0; y < this.board.length; y++) 
     {
@@ -203,14 +202,14 @@ Board.prototype.createBoardPieces = function()
             {
                 switch (this.board[y][x]) 
                 {
-                case 1:
-                    var object = new Escort(this.scene);
+                case 1: 
+                    var object = Object.create(silver_escort);
                     break;
                 case 2:
-                    var object = new Escort(this.scene);
+                    var object = Object.create(gold_escort);
                     break;
                 case 4:
-                    var object = new Flagship(this.scene);
+                    var object = Object.create(flagship);
                     break;
                 }
                 if (object !== undefined) 

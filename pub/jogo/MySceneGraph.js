@@ -171,7 +171,7 @@ MySceneGraph.prototype.onXMLReady = function()
         this.parseNodes(rootElement);
         if (this.rootNodeId && this.nodes[this.rootNodeId]) 
         {
-            this.buildObjects(this.rootNodeId, this.nodes[this.rootNodeId].texture);
+            this.buildObjects(this.rootNodeId, null);
         } 
         else if (this.rootNodeId === undefined) 
         {
@@ -720,6 +720,7 @@ MySceneGraph.prototype.parseElement = function(element, values, reader_functions
 MySceneGraph.prototype.buildObjects = function(id, texture) 
 {
     var node = this.nodes[id];
+    if (texture == null) texture = node.texture;
     if (this.nodes[id].isLeaf) 
     {
         var amplif_factor = [1, 1];

@@ -484,9 +484,39 @@
         <MATERIAL id="material-geral" />
         <TEXTURE id="null" /> 
         <DESCENDANTS>
-			<DESCENDANT id="navio-frota-prateada" />
 			<DESCENDANT id="board" /> 
-			<!--<DESCENDANT id="cena" />	-->		
+			<DESCENDANT id="cena" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="flagship">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-dourado" />
+        <DESCENDANTS>
+			<DESCENDANT id="barco-almirante" />
+			<DESCENDANT id="mastro-almirante" />
+			<DESCENDANT id="vela-almirante" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="gold-escort">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-dourado" />
+        <DESCENDANTS>
+			<DESCENDANT id="barco" />
+			<DESCENDANT id="mastro" />
+			<DESCENDANT id="vela-dourada" />
+			
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="silver-escort">
+        <MATERIAL id="material-geral" />
+        <TEXTURE id="textura-prateado" />
+        <DESCENDANTS>
+			<DESCENDANT id="barco" />
+			<DESCENDANT id="mastro" />
+			<DESCENDANT id="vela-prateada" />
         </DESCENDANTS>
     </NODE>
 	
@@ -500,16 +530,6 @@
 			<DESCENDANT id="superficie-interior-tras-barco" />
 			<DESCENDANT id="superficie-baixo-barco" />
 			<DESCENDANT id="superficie-interior-baixo-barco" />
-        </DESCENDANTS>
-    </NODE>
-	
-	<NODE id="navio-almirante">
-        <MATERIAL id="null" />
-        <TEXTURE id="textura-dourado" />
-        <DESCENDANTS>
-			<DESCENDANT id="barco-almirante" />
-			<DESCENDANT id="mastro-almirante" />
-			<DESCENDANT id="vela-almirante" />
         </DESCENDANTS>
     </NODE>
 	
@@ -577,27 +597,6 @@
         <DESCENDANTS>
 			<DESCENDANT id="vela-grande" />
 			<DESCENDANT id="vela-grande-tras" />
-        </DESCENDANTS>
-    </NODE>
-	
-	<NODE id="navio-frota-dourada">
-        <MATERIAL id="null" />
-        <TEXTURE id="textura-dourado" />
-        <DESCENDANTS>
-			<DESCENDANT id="barco" />
-			<DESCENDANT id="mastro" />
-			<DESCENDANT id="vela-dourada" />
-			
-        </DESCENDANTS>
-    </NODE>
-	
-	<NODE id="navio-frota-prateada">
-        <MATERIAL id="null" />
-        <TEXTURE id="textura-prateado" />
-        <DESCENDANTS>
-			<DESCENDANT id="barco" />
-			<DESCENDANT id="mastro" />
-			<DESCENDANT id="vela-prateada" />
         </DESCENDANTS>
     </NODE>
 	
@@ -713,8 +712,7 @@
             <DESCENDANT id="bola" />
         </DESCENDANTS>
     </NODE>
-	<!---->
-	
+
 	<NODE id="cena">
 		<MATERIAL id="material-geral" />
         <TEXTURE id="null" />

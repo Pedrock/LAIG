@@ -96,6 +96,10 @@ XMLscene.prototype.onGraphLoaded = function()
         this.board = this.graph.nodes["board"].objects[0];
         this.currentPlayer = this.board.currentPlayer;
         this.infoBoard = new InfoBoard(this,this.board);
+        this.graph.buildObjects("flagship", null);
+        this.graph.buildObjects("gold-escort", null);
+        this.graph.buildObjects("silver-escort", null);
+        this.board.createBoardPieces(this.graph.nodes["flagship"],this.graph.nodes["gold-escort"],this.graph.nodes["silver-escort"]);
     }
 }
 ;
