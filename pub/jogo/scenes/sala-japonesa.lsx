@@ -311,15 +311,15 @@
 		<controlpoint x="0" y="5" z="1" />
 		<controlpoint x="0" y="5" z="1.6" />
 		
-		<controlpoint x="3" y="4.5" z="-1.6" />
-		<controlpoint x="3" y="4.5" z="-1" />
-		<controlpoint x="3" y="4.5" z="1" />
-		<controlpoint x="3" y="4.5" z="1.6" />
+		<controlpoint x="-3" y="4.5" z="-1.6" />
+		<controlpoint x="-3" y="4.5" z="-1" />
+		<controlpoint x="-3" y="4.5" z="1" />
+		<controlpoint x="-3" y="4.5" z="1.6" />
 		
-		<controlpoint x="3" y="2.5" z="-1.6" />
-		<controlpoint x="3" y="2.5" z="-1" />
-		<controlpoint x="3" y="2.5" z="1" />
-		<controlpoint x="3" y="2.5" z="1.6" />
+		<controlpoint x="-3" y="2.5" z="-1.6" />
+		<controlpoint x="-3" y="2.5" z="-1" />
+		<controlpoint x="-3" y="2.5" z="1" />
+		<controlpoint x="-3" y="2.5" z="1.6" />
 	
 		<controlpoint x="0" y="2" z="-1.6" />
 		<controlpoint x="0" y="2" z="-1" />
@@ -334,15 +334,15 @@
 		<controlpoint x="0" y="2" z="1" />
 		<controlpoint x="0" y="2" z="1.6" />
 		
-		<controlpoint x="3" y="2.5" z="-1.6" />
-		<controlpoint x="3" y="2.5" z="-1" />
-		<controlpoint x="3" y="2.5" z="1" />
-		<controlpoint x="3" y="2.5" z="1.6" />
+		<controlpoint x="-3" y="2.5" z="-1.6" />
+		<controlpoint x="-3" y="2.5" z="-1" />
+		<controlpoint x="-3" y="2.5" z="1" />
+		<controlpoint x="-3" y="2.5" z="1.6" />
 		
-		<controlpoint x="3" y="4.5" z="-1.6" />
-		<controlpoint x="3" y="4.5" z="-1" />
-		<controlpoint x="3" y="4.5" z="1" />
-		<controlpoint x="3" y="4.5" z="1.6" />
+		<controlpoint x="-3" y="4.5" z="-1.6" />
+		<controlpoint x="-3" y="4.5" z="-1" />
+		<controlpoint x="-3" y="4.5" z="1" />
+		<controlpoint x="-3" y="4.5" z="1.6" />
 		
 		<controlpoint x="0" y="5" z="-1.6" />
 		<controlpoint x="0" y="5" z="-1" />
@@ -358,15 +358,15 @@
 		<controlpoint x="0" y="9.5" z="1" />
 		<controlpoint x="0" y="9.5" z="2.2" />
 		
-		<controlpoint x="4" y="8.5" z="-2.2" />
-		<controlpoint x="4" y="8.5" z="-1" />
-		<controlpoint x="4" y="8.5" z="1" />
-		<controlpoint x="4" y="8.5" z="2.2" />
+		<controlpoint x="-4" y="8.5" z="-2.2" />
+		<controlpoint x="-4" y="8.5" z="-1" />
+		<controlpoint x="-4" y="8.5" z="1" />
+		<controlpoint x="-4" y="8.5" z="2.2" />
 		
-		<controlpoint x="4" y="5.5" z="-2.2" />
-		<controlpoint x="4" y="5.5" z="-1" />
-		<controlpoint x="4" y="5.5" z="1" />
-		<controlpoint x="4" y="5.5" z="2.2" />
+		<controlpoint x="-4" y="5.5" z="-2.2" />
+		<controlpoint x="-4" y="5.5" z="-1" />
+		<controlpoint x="-4" y="5.5" z="1" />
+		<controlpoint x="-4" y="5.5" z="2.2" />
 		
 		<controlpoint x="0" y="4.5" z="-2.2" />
 		<controlpoint x="0" y="4.5" z="-1" />
@@ -381,15 +381,15 @@
 		<controlpoint x="0" y="4.5" z="1" />
 		<controlpoint x="0" y="4.5" z="2.2" />
 		
-		<controlpoint x="4" y="5.5" z="-2.2" />
-		<controlpoint x="4" y="5.5" z="-1" />
-		<controlpoint x="4" y="5.5" z="1" />
-		<controlpoint x="4" y="5.5" z="2.2" />
+		<controlpoint x="-4" y="5.5" z="-2.2" />
+		<controlpoint x="-4" y="5.5" z="-1" />
+		<controlpoint x="-4" y="5.5" z="1" />
+		<controlpoint x="-4" y="5.5" z="2.2" />
 		
-		<controlpoint x="4" y="8.5" z="-2.2" />
-		<controlpoint x="4" y="8.5" z="-1" />
-		<controlpoint x="4" y="8.5" z="1" />
-		<controlpoint x="4" y="8.5" z="2.2" />
+		<controlpoint x="-4" y="8.5" z="-2.2" />
+		<controlpoint x="-4" y="8.5" z="-1" />
+		<controlpoint x="-4" y="8.5" z="1" />
+		<controlpoint x="-4" y="8.5" z="2.2" />
 		
 		<controlpoint x="0" y="9.5" z="-2.2" />
 		<controlpoint x="0" y="9.5" z="-1" />
