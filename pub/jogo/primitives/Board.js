@@ -19,8 +19,6 @@ function Board(scene)
     
     this.cellWidth = 2;
     
-    this.center = [this.board[0].length, 0, this.board.length];
-    
     this.defaultMaterial = new CGFappearance(this.scene);
     this.defaultMaterial.setAmbient(0.6, 0.6, 0.8, 1);
     this.defaultMaterial.setDiffuse(0.6, 0.6, 0.8, 1);
@@ -46,6 +44,8 @@ function Board(scene)
     
     this.pieces = [];
     this.planes = [];
+
+    this.createBoardPieces();
     
     this.moveAnimation = null ;
     this.capturedAnimation = null ;
@@ -179,7 +179,14 @@ Board.prototype.createPickHandler = function()
     }
 }
 
-Board.prototype.createBoardPieces = function(flagship, gold_escort, silver_escort) 
+Board.prototype.updateBoardPieces = function(flagship, gold_escort, silver_escort)
+{
+    this.flagship = flagship;
+    this.gold_escort = gold_escort;
+    this.silver_escort = silver_escort;
+}
+
+Board.prototype.createBoardPieces = function() 
 {
     for (var y = 0; y < this.board.length; y++) 
     {
@@ -191,19 +198,19 @@ Board.prototype.createBoardPieces = function(flagship, gold_escort, silver_escor
                 switch (this.board[y][x]) 
                 {
                 case 1: 
-                    var object = Object.create(silver_escort);
+                    var object = 'silver_escort';
                     break;
                 case 2:
-                    var object = Object.create(gold_escort);
+                    var object = 'gold_escort';
                     break;
                 case 4:
-                    var object = Object.create(flagship);
+                    var object = 'flagship';
                     break;
                 }
                 if (object !== undefined) 
                 {
-                    this.pieces[y][x] = object;
-                    object.boardPosition = [x, y];
+                    this.pieces[y][x] = {object: object};
+                    this.pieces[y][x].boardPosition = [x, y];
                 } 
                 else
                     console.warn("Invalid board");
@@ -447,7 +454,7 @@ Board.prototype.display = function()
                 }
                 this.scene.registerForPick(1 + y * this.board.length + x, this.plane);
                 this.scene.scale(0.25, 0.25, 0.25);
-                piece.display();
+                this[piece.object].display();
                 this.scene.popMatrix();
             }
         }
@@ -460,7 +467,7 @@ Board.prototype.display = function()
         this.capturedAnimation.apply();
         this.scene.translate(coords[0] + this.cellWidth / 2, 0, coords[1] + this.cellWidth / 2);
         this.scene.scale(0.25, 0.25, 0.25);
-        this.capturedAnimation.object.display();
+        this[this.capturedAnimation.object.object].display();
         this.scene.popMatrix();
     }
     for (var player = 1; player <= 2; player++) 
@@ -471,7 +478,7 @@ Board.prototype.display = function()
             this.scene.pushMatrix();
             this.scene.translate(coords[0], 0, coords[1]);
             this.scene.scale(0.25, 0.25, 0.25);
-            this.capturedPieces[player][i].display();
+            this[this.capturedPieces[player][i].object].display();
             this.scene.popMatrix();
         }
     }

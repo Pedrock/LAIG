@@ -98,7 +98,7 @@ Leaf.prototype.build = function(amplif_factor)
                 this.objects[0] = new Terrain(this.scene,this.texture,this.heightmap);
                 break;
             case "board":
-                this.objects[0] = new Board(this.scene);
+                this.objects[0] = this.scene.board;
                 break;
             default:
                if (!this.error) console.error("Leaves: Invalid leaf type: '" + type + "'. Leaf ignored.");

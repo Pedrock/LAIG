@@ -40,11 +40,13 @@ XMLscene.prototype.init = function(application) {
 	this.terrainShader=new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
     this.terrainShader.setUniformsValues({uSampler2: 1});
 
-	this.infoBoard = new InfoBoard(this);
-
     this.cameraTime = 0;
     this.prevCurrTime = 0;
 	this.cameraMovement = 1000;
+
+	this.graphs = {};
+
+	this.board = new Board(this);
 };
 
 
@@ -85,27 +87,34 @@ XMLscene.prototype.getScenePath = function()
 
 // Handler called when the graph is finally loaded. 
 // As loading is asynchronous, this may be called already after the application has started the run loop
-XMLscene.prototype.onGraphLoaded = function() 
+XMLscene.prototype.onGraphLoaded = function(graph) 
 {
+    if (graph.nodes["board"])
+    {
+        //this.currentPlayer = this.board.currentPlayer;
+        graph.buildObjects("flagship", null);
+        graph.buildObjects("gold-escort", null);
+        graph.buildObjects("silver-escort", null);
+        
+    }
+};
+
+XMLscene.prototype.updateScene = function() {
+    if (!this.graphs[this.Scene].loadedOk) return;
+    if (!this.infoBoard) this.infoBoard = new InfoBoard(this,this.board);
+    this.graph = this.graphs[this.Scene];
     this.gl.clearColor(this.graph.illumination.background[0], this.graph.illumination.background[1], this.graph.illumination.background[2], this.graph.illumination.background[3]);
     this.initLights();
     this.updateFrustum();
     this.axis = new CGFaxis(this,this.graph.initials.referenceLength);
-    if (this.graph.nodes["board"])
-    {
-        this.board = this.graph.nodes["board"].objects[0];
-        this.currentPlayer = this.board.currentPlayer;
-        this.infoBoard = new InfoBoard(this,this.board);
-        this.graph.buildObjects("flagship", null);
-        this.graph.buildObjects("gold-escort", null);
-        this.graph.buildObjects("silver-escort", null);
-        this.board.createBoardPieces(this.graph.nodes["flagship"],this.graph.nodes["gold-escort"],this.graph.nodes["silver-escort"]);
-    }
-}
-;
+    this.board.updateBoardPieces(this.graph.nodes["flagship"],this.graph.nodes["gold-escort"],this.graph.nodes["silver-escort"]);
+};
 
 XMLscene.prototype.initLights = function() {
     var i = 0;
+    for (var i in this.lights)
+        this.lights[i].disable();
+    
     for (var id in this.graph.lights) 
     {
         if (i == this.lights.length) 
@@ -148,26 +157,26 @@ XMLscene.prototype.display = function() {
     this.updateProjectionMatrix();
     this.loadIdentity();
 
-    if (this.infoBoard)
+    if (this.graph && this.infoBoard)
         this.infoBoard.display();
    
     // Apply transformations corresponding to the camera position relative to the origin
     this.applyViewMatrix();
     
-    if (this.graph.loadedOk)
+    if (this.graph)
         this.initialTransformations();
 
     
     // Draw axis
      
-    if (this.graph.initials.referenceLength) this.axis.display();
+    if (this.graph && this.graph.initials.referenceLength) this.axis.display();
     
     // ---- END Background, camera and axis setup
     
     // it is important that things depending on the proper loading of the graph
     // only get executed after the graph has loaded correctly.
     // This is one possible way to do it
-    if (this.graph.loadedOk) 
+    if (this.graph) 
     {
         this.setLightAppearance();
         this.updateLights();
@@ -197,14 +206,21 @@ XMLscene.prototype.initialTransformations = function()
 
 XMLscene.prototype.update = function(currTime)
 {
-    for (var id in this.graph.nodes)
+    if (this.graphs[this.Scene] !== this.graph)
     {
-        if (this.graph.nodes[id] && !this.graph.nodes[id].isLeaf) this.graph.nodes[id].update(currTime);
+        this.updateScene();
     }
-    if (this.board)
+    if (this.graph)
     {
-        this.board.update(currTime);
-        this.updateCamera(currTime);
+        for (var id in this.graph.nodes)
+        {
+            if (this.graph.nodes[id] && !this.graph.nodes[id].isLeaf) this.graph.nodes[id].update(currTime);
+        }
+        if (this.board)
+        {
+            this.board.update(currTime);
+            this.updateCamera(currTime);
+        }
     }
     this.prevCurrTime = currTime;
 }

@@ -4,7 +4,7 @@ function MySceneGraph(filename, scene) {
     
     // Referencias bidirecionais entre cena e grafo
     this.scene = scene;
-    scene.graph = this;
+    scene.graphs[filename] = this;
     
     // Leitor de ficheiro XML
     this.reader = new CGFXMLreader();
@@ -186,7 +186,7 @@ MySceneGraph.prototype.onXMLReady = function()
     }
     
     // "Avisar"" a cena de que o grafo foi carregado
-    this.scene.onGraphLoaded();
+    this.scene.onGraphLoaded(this);
 };
 
 /*

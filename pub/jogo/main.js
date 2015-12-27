@@ -31,9 +31,6 @@ main=function()
     app.setScene(myScene);
     app.setInterface(myInterface);
 
-    var filename=getUrlVars()['file'] || "default.lsx";
-    var myGraph = new MySceneGraph(filename, myScene);
-
 	app.run();
 }
 
