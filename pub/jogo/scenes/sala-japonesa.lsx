@@ -30,7 +30,7 @@
 	
 	<TEXTURE id="textura-pavimento-interior">
         <file path="textures/madeira-castanha-clara.jpg" />                             
-        <amplif_factor s="0.5" t="0.5" />                
+        <amplif_factor s="0.25" t="0.5" />                
     </TEXTURE>
 	<TEXTURE id="textura-chao-chines">
         <file path="textures/chao-chines.jpg" />                             
@@ -92,20 +92,20 @@
         <file path="textures/ramos-arvore.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
-	<TEXTURE id="textura-prateado">
-        <file path="textures/prateado-japones.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
 	<TEXTURE id="textura-tinta-preta">
         <file path="textures/tinta-preta.png" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
-	<TEXTURE id="textura-dourado">
-        <file path="textures/dourado-japones.jpg" />                             
-        <amplif_factor s="1" t="1" />                
-    </TEXTURE>
 	<TEXTURE id="textura-bandeira-branca">
         <file path="textures/bandeira-branca.jpeg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-metal-dourado">
+        <file path="textures/metal-dourado.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-gradiente-prateado">
+        <file path="textures/gradiente-prateado.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
 </TEXTURES>
@@ -132,6 +132,20 @@
         <diffuse r="0.6" g="0.6" b="0.6" a="1" />   
         <ambient r="1" g="1" b="1" a="1" />         
         <emission r="1" g="1" b="1" a="1" />      
+     </MATERIAL>
+	 <MATERIAL id="material-dourado">                                  
+        <shininess value="5" />
+        <specular r="0.6" g="0.4" b="0" a="1" />        
+        <diffuse r="0.6" g="0.4" b="0" a="1" />   
+        <ambient r="0.6" g="0.4" b="0" a="1" />         
+        <emission r="0" g="0" b="0" a="0" />      
+     </MATERIAL>
+	 <MATERIAL id="material-prateado">                                  
+        <shininess value="5" />
+        <specular r="0.5" g="0.5" b="0.5" a="1" />        
+        <diffuse r="0.5" g="0.5" b="0.5" a="1" />   
+        <ambient r="0.5" g="0.5" b="0.5" a="1" />        
+        <emission r="0" g="0" b="0" a="0" />      
      </MATERIAL>
 </MATERIALS>
 
@@ -297,15 +311,15 @@
 		<controlpoint x="0" y="5" z="1" />
 		<controlpoint x="0" y="5" z="1.6" />
 		
-		<controlpoint x="-3" y="4.5" z="-1.6" />
-		<controlpoint x="-3" y="4.5" z="-1" />
-		<controlpoint x="-3" y="4.5" z="1" />
-		<controlpoint x="-3" y="4.5" z="1.6" />
+		<controlpoint x="3" y="4.5" z="-1.6" />
+		<controlpoint x="3" y="4.5" z="-1" />
+		<controlpoint x="3" y="4.5" z="1" />
+		<controlpoint x="3" y="4.5" z="1.6" />
 		
-		<controlpoint x="-3" y="2.5" z="-1.6" />
-		<controlpoint x="-3" y="2.5" z="-1" />
-		<controlpoint x="-3" y="2.5" z="1" />
-		<controlpoint x="-3" y="2.5" z="1.6" />
+		<controlpoint x="3" y="2.5" z="-1.6" />
+		<controlpoint x="3" y="2.5" z="-1" />
+		<controlpoint x="3" y="2.5" z="1" />
+		<controlpoint x="3" y="2.5" z="1.6" />
 	
 		<controlpoint x="0" y="2" z="-1.6" />
 		<controlpoint x="0" y="2" z="-1" />
@@ -320,15 +334,15 @@
 		<controlpoint x="0" y="2" z="1" />
 		<controlpoint x="0" y="2" z="1.6" />
 		
-		<controlpoint x="-3" y="2.5" z="-1.6" />
-		<controlpoint x="-3" y="2.5" z="-1" />
-		<controlpoint x="-3" y="2.5" z="1" />
-		<controlpoint x="-3" y="2.5" z="1.6" />
+		<controlpoint x="3" y="2.5" z="-1.6" />
+		<controlpoint x="3" y="2.5" z="-1" />
+		<controlpoint x="3" y="2.5" z="1" />
+		<controlpoint x="3" y="2.5" z="1.6" />
 		
-		<controlpoint x="-3" y="4.5" z="-1.6" />
-		<controlpoint x="-3" y="4.5" z="-1" />
-		<controlpoint x="-3" y="4.5" z="1" />
-		<controlpoint x="-3" y="4.5" z="1.6" />
+		<controlpoint x="3" y="4.5" z="-1.6" />
+		<controlpoint x="3" y="4.5" z="-1" />
+		<controlpoint x="3" y="4.5" z="1" />
+		<controlpoint x="3" y="4.5" z="1.6" />
 		
 		<controlpoint x="0" y="5" z="-1.6" />
 		<controlpoint x="0" y="5" z="-1" />
@@ -344,15 +358,15 @@
 		<controlpoint x="0" y="9.5" z="1" />
 		<controlpoint x="0" y="9.5" z="2.2" />
 		
-		<controlpoint x="-4" y="8.5" z="-2.2" />
-		<controlpoint x="-4" y="8.5" z="-1" />
-		<controlpoint x="-4" y="8.5" z="1" />
-		<controlpoint x="-4" y="8.5" z="2.2" />
+		<controlpoint x="4" y="8.5" z="-2.2" />
+		<controlpoint x="4" y="8.5" z="-1" />
+		<controlpoint x="4" y="8.5" z="1" />
+		<controlpoint x="4" y="8.5" z="2.2" />
 		
-		<controlpoint x="-4" y="5.5" z="-2.2" />
-		<controlpoint x="-4" y="5.5" z="-1" />
-		<controlpoint x="-4" y="5.5" z="1" />
-		<controlpoint x="-4" y="5.5" z="2.2" />
+		<controlpoint x="4" y="5.5" z="-2.2" />
+		<controlpoint x="4" y="5.5" z="-1" />
+		<controlpoint x="4" y="5.5" z="1" />
+		<controlpoint x="4" y="5.5" z="2.2" />
 		
 		<controlpoint x="0" y="4.5" z="-2.2" />
 		<controlpoint x="0" y="4.5" z="-1" />
@@ -367,15 +381,15 @@
 		<controlpoint x="0" y="4.5" z="1" />
 		<controlpoint x="0" y="4.5" z="2.2" />
 		
-		<controlpoint x="-4" y="5.5" z="-2.2" />
-		<controlpoint x="-4" y="5.5" z="-1" />
-		<controlpoint x="-4" y="5.5" z="1" />
-		<controlpoint x="-4" y="5.5" z="2.2" />
+		<controlpoint x="4" y="5.5" z="-2.2" />
+		<controlpoint x="4" y="5.5" z="-1" />
+		<controlpoint x="4" y="5.5" z="1" />
+		<controlpoint x="4" y="5.5" z="2.2" />
 		
-		<controlpoint x="-4" y="8.5" z="-2.2" />
-		<controlpoint x="-4" y="8.5" z="-1" />
-		<controlpoint x="-4" y="8.5" z="1" />
-		<controlpoint x="-4" y="8.5" z="2.2" />
+		<controlpoint x="4" y="8.5" z="-2.2" />
+		<controlpoint x="4" y="8.5" z="-1" />
+		<controlpoint x="4" y="8.5" z="1" />
+		<controlpoint x="4" y="8.5" z="2.2" />
 		
 		<controlpoint x="0" y="9.5" z="-2.2" />
 		<controlpoint x="0" y="9.5" z="-1" />
@@ -490,8 +504,8 @@
     </NODE>
 	
 	<NODE id="flagship">
-        <MATERIAL id="material-geral" />
-        <TEXTURE id="textura-dourado" />
+        <MATERIAL id="material-dourado" />
+        <TEXTURE id="textura-metal-dourado" />
         <DESCENDANTS>
 			<DESCENDANT id="barco-almirante" />
 			<DESCENDANT id="mastro-almirante" />
@@ -500,8 +514,8 @@
     </NODE>
 	
 	<NODE id="gold-escort">
-        <MATERIAL id="material-geral" />
-        <TEXTURE id="textura-dourado" />
+        <MATERIAL id="material-dourado" />
+        <TEXTURE id="textura-metal-dourado" />
         <DESCENDANTS>
 			<DESCENDANT id="barco" />
 			<DESCENDANT id="mastro" />
@@ -511,8 +525,8 @@
     </NODE>
 	
 	<NODE id="silver-escort">
-        <MATERIAL id="material-geral" />
-        <TEXTURE id="textura-prateado" />
+        <MATERIAL id="material-prateado" />
+        <TEXTURE id="textura-gradiente-prateado" />
         <DESCENDANTS>
 			<DESCENDANT id="barco" />
 			<DESCENDANT id="mastro" />

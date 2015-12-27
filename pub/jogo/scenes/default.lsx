@@ -698,7 +698,7 @@
     </NODE>
 	
 	<NODE id="silver-escort">
-        <MATERIAL id="material-dourado" />
+        <MATERIAL id="material-geral" />
         <TEXTURE id="textura-madeira-prateada" />
         <DESCENDANTS>
 			<DESCENDANT id="navio" />
