@@ -163,6 +163,33 @@ function HelicopterBody(scene) {
 		[2.2, 0.1, -2.95],[2.2, 2, -2],[2.2, 3, -1]
 		
 	]);
+
+	this.brown = new CGFappearance(this.scene);
+	this.brown.setAmbient(0.15,0.1,0,1);
+	this.brown.setDiffuse(0.15,0.1,0,1);
+	this.brown.setSpecular(0.2,0.12,0,1);
+	this.brown.setShininess(200); 
+
+	this.metal = new CGFappearance(this.scene);
+	this.metal.loadTexture('textures/metal.jpg');
+	this.metal.setAmbient(0.07,0.05,0.03,1);
+	this.metal.setDiffuse(0.6,0.6,0.6,1);
+	this.metal.setSpecular(0.3,0.3,0.3,1); 
+	this.metal.setShininess(200); 
+	
+	this.exercito = new CGFappearance(this.scene);
+	this.exercito.loadTexture('textures/exercito.jpg');
+	this.exercito.setAmbient(0.6,0.6,0.6,1);
+	this.exercito.setDiffuse(0.6,0.6,0.6,1);
+	this.exercito.setSpecular(0.8,0.8,0.8,1); 
+	this.exercito.setShininess(200); 
+
+	this.aviaoFrente = new CGFappearance(this.scene);
+	this.aviaoFrente.loadTexture('textures/frente-avião.jpg');
+	this.aviaoFrente.setAmbient(0.6,0.6,0.6,1);
+	this.aviaoFrente.setDiffuse(0.6,0.6,0.6,1);
+	this.aviaoFrente.setSpecular(0.8,0.8,0.8,1); 
+	this.aviaoFrente.setShininess(200); 
 	
 
 };
@@ -176,11 +203,18 @@ HelicopterBody.prototype.display = function() {
 	this.scene.pushMatrix();
 		this.scene.translate(-4.5,0,0);
 		this.scene.pushMatrix();
-		this.scene.translate(0,2,0);
+			this.scene.translate(0,2,0);
+			
+			//Corpo do helicoptero
+			this.aviaoFrente.apply();
 			this.supUPfront.display();
+			this.exercito.apply();
 			this.supUPback.display();
 			this.supDOWNfront.display();
 			this.supDOWNback.display();
+
+			//Cauda do helicoptero
+			this.brown.apply();
 			this.tailTop.display();
 			this.tailBottom.display();
 			this.tailCover.display();
@@ -188,6 +222,8 @@ HelicopterBody.prototype.display = function() {
 			this.wingTopBack.display();
 			this.wingDownFront.display();
 			this.wingDownBack.display();
+
+			//Suporte das helices de cima
 			this.topFront.display();
 			this.topBack.display();
 			this.topCover.display();
@@ -197,7 +233,8 @@ HelicopterBody.prototype.display = function() {
 			this.cover.display();
 			this.downCover.display();
 			this.scene.popMatrix();
-
+			
+			//Suporte das helices de tras
 			this.scene.pushMatrix();
 			this.scene.translate(9.1, 1.82, -2.6);
 			this.scene.rotate(90*Math.PI/180.0, 1, 0, 0);
@@ -210,11 +247,12 @@ HelicopterBody.prototype.display = function() {
 			this.backBladeSupportTOP.display();
 			this.backBladeSupportBOTTOM.display();
 			this.scene.popMatrix();
-
 		this.scene.popMatrix();
 
+		//Suporte do helicoptero
 		this.scene.pushMatrix();
 		this.scene.translate(0, 0, 3);
+		this.metal.apply();
 		this.legLeft.display();
 		this.legRight.display();
 		this.scene.popMatrix();
@@ -229,6 +267,7 @@ HelicopterBody.prototype.display = function() {
 		this.leg1.display();
 		this.leg2.display();
 		this.leg3.display();
+
 		this.scene.pushMatrix();
 		this.scene.translate(3, 0, 0);
 		this.leg.display();

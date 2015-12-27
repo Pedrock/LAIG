@@ -29,6 +29,7 @@ MyInterface.prototype.init = function(application) {
     this.gui = new dat.GUI();
 	this.gui.add(this.scene,"Rotate");
 	this.gui.add(this,"Change Camera");
+	this.gui.add(this.scene,"Start Animation");
 	this.scene["Silver Player"] = 0;
 	var self = this;
 	this.gui.add(this.scene,"Silver Player", {'Human':0,'Random':1,'AI':2}).onFinishChange(function() {self.scene.changePlayers()});
