@@ -48,9 +48,16 @@ processString([_Par=Val]):-
 
 %---------------------------------------------
 
+winner(Board, 1) :-
+	silverWins(Board).
+winner(Board, 2) :-
+	goldWins(Board).
+winner(_, 0).
+
 play(Board,Player,X,Y,DeltaX,DeltaY,N1) :-
 	play(Board,Player,X,Y,DeltaX,DeltaY,N1,N2,NewBoard),
-	formatAsJSON([N2,NewBoard,true],[newCounter,newBoard,valid]).
+	winner(NewBoard,Winner),
+	formatAsJSON([N2,NewBoard,Winner,true],[newCounter,newBoard,winner,valid]).
 
 play(_,_,_,_,_,_,_) :-
 	formatAsJSON([false],[valid]).
@@ -58,7 +65,8 @@ play(_,_,_,_,_,_,_) :-
 computerPlay(Board,Player,Difficulty,N1) :-
 	computerPlay(Board,Player,Difficulty,X,Y,DeltaX,DeltaY,N1,N2,NewBoard),
 	sleep(1),
-	formatAsJSON([X,Y,DeltaX,DeltaY,N2,NewBoard,true],[x,y,deltax,deltay,newCounter,newBoard,valid]).
+	winner(NewBoard,Winner),
+	formatAsJSON([X,Y,DeltaX,DeltaY,N2,NewBoard,Winner,true],[x,y,deltax,deltay,newCounter,newBoard,winner,valid]).
 
 computerPlay(_,_,_,_) :-
 	formatAsJSON([false],[valid]).

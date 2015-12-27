@@ -8,8 +8,8 @@ function Board(scene)
     [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0], 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
     [0, 1, 0, 0, 2, 2, 2, 0, 0, 1, 0], 
-    [0, 1, 0, 2, 0, 0, 0, 2, 0, 1, 0], 
-    [0, 1, 0, 2, 0, 4, 0, 2, 0, 1, 0], 
+    [0, 1, 2, 2, 1, 0, 0, 2, 0, 1, 0], 
+    [0, 0, 0, 0, 0, 4, 0, 2, 0, 1, 0], 
     [0, 1, 0, 2, 0, 0, 0, 2, 0, 1, 0], 
     [0, 1, 0, 0, 2, 2, 2, 0, 0, 1, 0], 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
@@ -77,6 +77,8 @@ function Board(scene)
         1: 0,
         2: 0
     }
+
+    this.winner = 0;
     
     this.movesStack = [];
 }
@@ -139,6 +141,7 @@ Board.prototype.getValidMoves = function(board, player, playCounter)
 
 Board.prototype.createPickHandler = function() 
 {
+    if (!this.started || this.winner) return;
     if (this.scene.pickMode == false) {
         if (this.scene.pickResults != null  && this.scene.pickResults.length > 0) {
             for (var i = 0; i < this.scene.pickResults.length; i++) {
@@ -226,7 +229,7 @@ Board.prototype.computerPlay = function()
     Game.computerPlay(this.board, this.currentPlayer, this.difficulty[this.currentPlayer], this.playCounter, handler);
 }
 
-Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounter, newBoard) 
+Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounter, newBoard, winner) 
 {
     if (!this.awaitingResponse) return;
     this.awaitingResponse = false;
@@ -263,11 +266,12 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
                 self.pieces[y - 1][x - 1] = null;
                 pickObject.boardPosition = pos;
                 self.pieces[pos[1]][pos[0]] = pickObject;
-                if (self.playCounter == 2) 
+                if (!winner && self.playCounter == 2) 
                 {
                     self.updateScore();
                     self.switchPlayer();
                 }
+                self.winner = winner;
             }
             self.moveAnimation = null ;
             self.pickStart = self.pickEnd = null ;
@@ -284,8 +288,14 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
         this.pickStart = this.pickEnd = null ;
 }
 
+Board.prototype.start = function()
+{
+    this.started = true;
+}
+
 Board.prototype.update = function(currTime) 
 {
+    if (!this.started) return;
     if (this.moveAnimation && this.moveAnimation) 
     {
         this.moveAnimation.update(currTime);
@@ -309,9 +319,9 @@ Board.prototype.update = function(currTime)
        else this.replay_active = false;
     }
 
-    if (!this.moveAnimation) 
+    if (!this.moveAnimation && !this.winner) 
     {
-        if (!this.human[this.currentPlayer] && !this.awaitingResponse && !this.replay_active) 
+        if (!this.human[this.currentPlayer] && !this.awaitingResponse && this.started && !this.replay_active) 
         {
             this.computerPlay();
         }
@@ -374,6 +384,7 @@ Board.prototype.undo_last_move = function(fast, currTime)
         self.moveAnimation = null;
         self.pickStart = self.pickEnd = null ;
         self.timeStart = null ;
+        self.winner = 0;
         if (capturePiece)
             self.pieces[pos[1]][pos[0]] = capturePiece;
     }
@@ -430,7 +441,7 @@ Board.prototype.display = function()
             this.scene.pushMatrix();
             this.scene.translate(this.cellWidth * x + 1, 0, this.cellWidth * y + 1);
             this.scene.scale(0.95 * this.cellWidth, 1, 0.95 * this.cellWidth);
-            if (!this.replay_active && !this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
+            if (!this.winner && !this.replay_active && !this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
             && (!this.pickStart || (this.pickStart[0] == x && this.pickStart[1] == y))) 
             {
                 this.selectionMaterial.apply();

@@ -13,7 +13,7 @@ function postGameRequest(requestObject, onSuccess, onError)
 
 function Game() {};
 
-Game.play = function(board,player,x,y,deltax,deltay,counter, handler)
+Game.play = function(board,player,x,y,deltax,deltay,counter,handler)
 {	
 	var request = (["play",board,player,x,y,deltax,deltay,counter]);
 	postGameRequest(request,
@@ -27,7 +27,7 @@ Game.play = function(board,player,x,y,deltax,deltay,counter, handler)
 				}
 			}
 			else response = false;
-			handler(response.valid, x, y, deltax, deltay, response.newCounter, response.newBoard);
+			handler(response.valid, x, y, deltax, deltay, response.newCounter, response.newBoard, response.winner);
 		});
 }
 
@@ -45,7 +45,7 @@ Game.computerPlay = function(board,player,difficulty,counter,handler)
 				}
 			}
 			else response = false;
-			handler(response.valid, response.x, response.y, response.deltax, response.deltay, response.newCounter, response.newBoard);
+			handler(response.valid, response.x, response.y, response.deltax, response.deltay, response.newCounter, response.newBoard, response.winner);
 		});
 }
 

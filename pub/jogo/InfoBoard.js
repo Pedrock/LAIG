@@ -11,7 +11,6 @@ function InfoBoard(scene,board) {
     this.charWidth = 0.002;
     this.rectangle = new Rectangle(scene,[0,this.charWidth],[this.charWidth,0],[this.charWidth,this.charWidth]);
     this.back = new Rectangle(scene,[0,this.charWidth*1.1],[this.charWidth*1.1,0],[this.charWidth,this.charWidth]);
-    // this.rect1 = new Sphere(scene,5,5,5);
 
     this.appearance = new CGFappearance(this.scene);
 	this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
