@@ -91,6 +91,22 @@
         <file path="textures/pinheiro-de-natal.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
+	<TEXTURE id="textura-dourado">
+        <file path="textures/dourado-sala-com-lareira.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-madeira-vermelha">
+        <file path="textures/madeira-vermelha.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-prateada">
+        <file path="textures/prateado-sala-com-lareira.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-madeira-laranja">
+        <file path="textures/madeira-laranja.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
 </TEXTURES>
 
 
@@ -143,7 +159,7 @@
 	
 	<LEAF id="superficie-frente-barco" type="patch" order="3" partsU="20" partsV="20" >
 	
-		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2.5" y="0" z="0" />
 		<controlpoint x="-2.33" y="0.5" z="0" />
 		<controlpoint x="-2.66" y="1" z="0" />
 		<controlpoint x="-3" y="1.5" z="0" />
@@ -158,7 +174,7 @@
 		<controlpoint x="1.66" y="1" z="1.66" />
 		<controlpoint x="2" y="1.5" z="2" />
 		
-		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2.5" y="0" z="0" />
 		<controlpoint x="2.33" y="0.5" z="0" />
 		<controlpoint x="2.66" y="1" z="0" />
 		<controlpoint x="3" y="1.5" z="0" />
@@ -189,7 +205,7 @@
 	</LEAF>
 	
 	<LEAF id="superficie-tras-barco" type="patch" order="3" partsU="20" partsV="20" >
-		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2.5" y="0" z="0" />
 		<controlpoint x="2.33" y="0.5" z="0" />
 		<controlpoint x="2.66" y="1" z="0" />
 		<controlpoint x="3" y="1.5" z="0" />
@@ -204,7 +220,7 @@
 		<controlpoint x="-1.66" y="1" z="-1.66" />
 		<controlpoint x="-2" y="1.5" z="-2" />
 	
-		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2.5" y="0" z="0" />
 		<controlpoint x="-2.33" y="0.5" z="0" />
 		<controlpoint x="-2.66" y="1" z="0" />
 		<controlpoint x="-3" y="1.5" z="0" />
@@ -234,10 +250,10 @@
 	</LEAF>
 	
 	<LEAF id="superficie-baixo-barco" type="patch" order="3" partsU="20" partsV="20" >
+		<controlpoint x="-2.5" y="0" z="0" />
 		<controlpoint x="-2" y="0" z="0" />
 		<controlpoint x="-2" y="0" z="0" />
-		<controlpoint x="-2" y="0" z="0" />
-		<controlpoint x="-2" y="0" z="0" />
+		<controlpoint x="-2.5" y="0" z="0" />
 		
 		<controlpoint x="-1" y="0" z="-1" />
 		<controlpoint x="-1" y="0" z="-0.5" />
@@ -249,10 +265,10 @@
 		<controlpoint x="1" y="0" z="0.5" />
 		<controlpoint x="1" y="0" z="1" />
 		
+		<controlpoint x="2.5" y="0" z="0" />
 		<controlpoint x="2" y="0" z="0" />
 		<controlpoint x="2" y="0" z="0" />
-		<controlpoint x="2" y="0" z="0" />
-		<controlpoint x="2" y="0" z="0" />
+		<controlpoint x="2.5" y="0" z="0" />
 	</LEAF>
 
 	<LEAF id="superficie-interior-baixo-barco" type="patch" order="3" partsU="20" partsV="20" >
@@ -710,11 +726,13 @@
 	
     <NODE id="root">
         <MATERIAL id="material-geral" />
-        <TEXTURE id="null" />
+        <TEXTURE id="null" /> 
         <DESCENDANTS>
-		    <DESCENDANT id="board" /> 
+			<DESCENDANT id="navio-almirante" />
+			<DESCENDANT id="board" />
+		    <!--<DESCENDANT id="board" /> 
 			<DESCENDANT id="cena" />	
-			<DESCENDANT id="suporte-tabuleiro" />
+			<DESCENDANT id="suporte-tabuleiro" />-->
         </DESCENDANTS>
     </NODE>
 	
@@ -741,7 +759,7 @@
 	
 	<NODE id="barco">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
         <DESCENDANTS>
 			<DESCENDANT id="superficie-frente-barco" />
 			<DESCENDANT id="superficie-interior-frente-barco" />	
@@ -754,7 +772,7 @@
 	
 	<NODE id="navio-almirante">
         <MATERIAL id="null" />
-        <TEXTURE id="null" />
+        <TEXTURE id="textura-madeira-vermelha" />
         <DESCENDANTS>
 			<DESCENDANT id="barco-almirante" />
 			<DESCENDANT id="mastro-almirante" />
@@ -765,7 +783,7 @@
 	
 	<NODE id="barco-almirante">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<SCALE sx="1.5" sy="2" sz="1.5" />
         <DESCENDANTS>
 			<DESCENDANT id="barco" />
@@ -774,7 +792,7 @@
 	
 	<NODE id="mastro-almirante">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<SCALE sx="1.1" sy="2" sz="1.1" />
         <DESCENDANTS>
 			<DESCENDANT id="mastro" />
@@ -792,7 +810,7 @@
 	
 	<NODE id="vela-pequena">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-dourado" />
 		<TRANSLATION x="0.2" y="2.55" z="0" />
 		<SCALE sx="2" sy="1.5" sz="1.5" />
         <DESCENDANTS>
@@ -803,7 +821,7 @@
 	
 	<NODE id="vela-baixo-almirante">
         <MATERIAL id="null" />
-        <TEXTURE id="null" />
+        <TEXTURE id="textura-dourado" />
 		<TRANSLATION x="-0.2" y="-1" z="0" />
 		<SCALE sx="2" sy="1.7" sz="3" />
         <DESCENDANTS>
@@ -811,12 +829,38 @@
         </DESCENDANTS>
     </NODE>
 	
-	<NODE id="navio">
+	<NODE id="navio-frota-dourada">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="textura-madeira-vermelha" />
         <DESCENDANTS>
 			<DESCENDANT id="barco" />
 			<DESCENDANT id="mastro" />
+			<DESCENDANT id="vela-dourada" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="navio-frota-prateada">
+        <MATERIAL id="null" />
+        <TEXTURE id="textura-madeira-laranja" />
+        <DESCENDANTS>
+			<DESCENDANT id="barco" />
+			<DESCENDANT id="mastro" />
+			<DESCENDANT id="vela-prateada" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="vela-dourada">
+        <MATERIAL id="null" />
+        <TEXTURE id="textura-dourado" />
+        <DESCENDANTS>
+			<DESCENDANT id="vela" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="vela-prateada">
+        <MATERIAL id="null" />
+        <TEXTURE id="textura-prateada" />
+        <DESCENDANTS>
 			<DESCENDANT id="vela" />
         </DESCENDANTS>
     </NODE>
@@ -834,7 +878,7 @@
 	
 	<NODE id="mastro">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<SCALE sx="0.9" sy="1" sz="0.9" />
         <DESCENDANTS>
 			<DESCENDANT id="cilindro-mastro" />
@@ -844,7 +888,7 @@
 	
 	<NODE id="cilindro-mastro">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<ROTATION axis="x" angle="-90" />
 		<SCALE sx="0.5" sy="0.5" sz="0.6" />
         <DESCENDANTS>

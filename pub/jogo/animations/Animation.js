@@ -9,6 +9,7 @@ function Animation(scene, timespan) {
 	this.startTime = {};
 }
 
+
 //Função que inicia a animação
 Animation.prototype.start = function(node, startTime){
 	if (startTime) this.startTime[node] = startTime;

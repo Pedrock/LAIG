@@ -79,6 +79,18 @@
         <file path="textures/metal-verde.jpg" />                             
         <amplif_factor s="1" t="1" />                
     </TEXTURE>
+	<TEXTURE id="textura-madeira-dourada">
+        <file path="textures/madeira-dourada.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-madeira-prateada">
+        <file path="textures/madeira-prateada.jpg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
+	<TEXTURE id="textura-bandeira-branca">
+        <file path="textures/bandeira-branca.jpeg" />                             
+        <amplif_factor s="1" t="1" />                
+    </TEXTURE>
 </TEXTURES>
 
 
@@ -104,13 +116,27 @@
         <ambient r="0" g="0" b="0" a="1" />         
         <emission r="0" g="0" b="0" a="0" />  
 	</MATERIAL>	
-<MATERIAL id="material-abranqueado">                                  
+	<MATERIAL id="material-abranqueado">                                  
         <shininess value="150" />
         <specular r="0.3" g="0.3" b="0.3" a="1" />        
         <diffuse r="0.6" g="0.6" b="0.6" a="1" />   
         <ambient r="1" g="1" b="1" a="1" />         
         <emission r="1" g="1" b="1" a="1" />      
-     </MATERIAL>	
+     </MATERIAL>
+	<MATERIAL id="material-dourado">                                  
+        <shininess value="5" />
+        <specular r="0.6" g="0.4" b="0" a="1" />        
+        <diffuse r="0.6" g="0.4" b="0" a="1" />   
+        <ambient r="0.6" g="0.4" b="0" a="1" />         
+        <emission r="0" g="0" b="0" a="0" />      
+     </MATERIAL>
+	 <MATERIAL id="material-prateado">                                  
+        <shininess value="5" />
+        <specular r="0.3" g="0.3" b="0.3" a="1" />        
+        <diffuse r="0.6" g="0.6" b="0.6" a="1" />   
+        <ambient r="1" g="1" b="1" a="1" />        
+        <emission r="0" g="0" b="0" a="0" />      
+     </MATERIAL>
 </MATERIALS>
 
 <ANIMATIONS>
@@ -407,8 +433,6 @@
 		
 		</LEAF>
 		
-
-		
 		<LEAF id="encosto-cadeira" type="patch" order="3" partsU="20" partsV="20" >
 	
 		<controlpoint x="0" y="3" z="-1.5" />
@@ -610,14 +634,15 @@
         <MATERIAL id="material-geral" />
         <TEXTURE id="null" />
         <DESCENDANTS>
+			<DESCENDANT id="navio-almirante" />
 		    <DESCENDANT id="board" /> 
-			<DESCENDANT id="cena" />		
+			<!--<DESCENDANT id="cena" />	-->	
         </DESCENDANTS>
     </NODE>
 	
 	<NODE id="barco">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
         <DESCENDANTS>
 			<DESCENDANT id="superficie-frente-barco" />
 			<DESCENDANT id="superficie-interior-frente-barco" />	
@@ -629,8 +654,8 @@
     </NODE>
 	
 	<NODE id="navio-almirante">
-        <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <MATERIAL id="material-dourado" />
+        <TEXTURE id="textura-madeira-dourada" />
         <DESCENDANTS>
 			<DESCENDANT id="barco-almirante" />
 			<DESCENDANT id="mastro-almirante" />
@@ -641,7 +666,7 @@
 	
 	<NODE id="barco-almirante">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<SCALE sx="1.5" sy="2" sz="1.5" />
         <DESCENDANTS>
 			<DESCENDANT id="barco" />
@@ -650,7 +675,7 @@
 	
 	<NODE id="mastro-almirante">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<SCALE sx="1.1" sy="2" sz="1.1" />
         <DESCENDANTS>
 			<DESCENDANT id="mastro" />
@@ -658,8 +683,8 @@
     </NODE>
 	
 	<NODE id="vela-cima-almirante">
-        <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <MATERIAL id="material-abranqueado" />
+        <TEXTURE id="textura-bandeira-branca" />
 		<TRANSLATION x="0" y="4.75" z="0" />
         <DESCENDANTS>
 			<DESCENDANT id="vela-pequena" />
@@ -668,7 +693,7 @@
 	
 	<NODE id="vela-pequena">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<TRANSLATION x="0.2" y="2.55" z="0" />
 		<SCALE sx="2" sy="1.5" sz="1.5" />
         <DESCENDANTS>
@@ -687,9 +712,25 @@
         </DESCENDANTS>
     </NODE>
 	
+	<NODE id="navio-frota-dourada">
+        <MATERIAL id="material-dourado" />
+        <TEXTURE id="textura-madeira-dourada" />
+        <DESCENDANTS>
+			<DESCENDANT id="navio" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id="navio-frota-prateada">
+        <MATERIAL id="material-prateado" />
+        <TEXTURE id="textura-madeira-prateada" />
+        <DESCENDANTS>
+			<DESCENDANT id="navio" />
+        </DESCENDANTS>
+    </NODE>
+	
 	<NODE id="navio">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
         <DESCENDANTS>
 			<DESCENDANT id="barco" />
 			<DESCENDANT id="mastro" />
@@ -698,8 +739,8 @@
     </NODE>
 	
 	<NODE id="vela">
-        <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <MATERIAL id="material-abranqueado" />
+        <TEXTURE id="textura-bandeira-branca" />
 		<TRANSLATION x="0.2" y="2.55" z="0" />
 		<SCALE sx="2" sy="1.5" sz="1.5" />
         <DESCENDANTS>
@@ -710,7 +751,7 @@
 	
 	<NODE id="mastro">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<SCALE sx="0.9" sy="1" sz="0.9" />
         <DESCENDANTS>
 			<DESCENDANT id="cilindro-mastro" />
@@ -720,7 +761,7 @@
 	
 	<NODE id="cilindro-mastro">
         <MATERIAL id="null" />
-        <TEXTURE id="clear" />
+        <TEXTURE id="null" />
 		<ROTATION axis="x" angle="-90" />
 		<SCALE sx="0.5" sy="0.5" sz="0.6" />
         <DESCENDANTS>
