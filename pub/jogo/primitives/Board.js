@@ -39,18 +39,6 @@ function Board(scene)
     this.choiceMaterial.setSpecular(0, 0, 1, 1);
     this.choiceMaterial.setShininess(200);
     
-    this.gold = new CGFappearance(this.scene);
-    this.gold.setAmbient(0.6, 0.4, 0, 1);
-    this.gold.setDiffuse(0.6, 0.4, 0, 1);
-    this.gold.setSpecular(1, 1, 1, 1);
-    this.gold.setShininess(5);
-    
-    this.silver = new CGFappearance(this.scene);
-    this.silver.setAmbient(0.375, 0.4, 0.4, 1);
-    this.silver.setDiffuse(0.8, 0.85, 0.85, 1);
-    this.silver.setSpecular(1, 1, 1, 1);
-    this.silver.setShininess(10);
-    
     this.capturedPieces = {
         1: [],
         2: []
@@ -451,10 +439,6 @@ Board.prototype.display = function()
             var piece = this.pieces[y][x];
             if (piece) 
             {
-                if (this.board[y][x] == 1)
-                    this.silver.apply();
-                else
-                    this.gold.apply();
                 this.scene.pushMatrix();
                 this.scene.translate(this.cellWidth * x + this.cellWidth / 2, 0, this.cellWidth * y + this.cellWidth / 2);
                 if (this.moveAnimation && this.moveAnimation.started && this.moveAnimation.object === piece) 
@@ -476,7 +460,6 @@ Board.prototype.display = function()
         this.capturedAnimation.apply();
         this.scene.translate(coords[0] + this.cellWidth / 2, 0, coords[1] + this.cellWidth / 2);
         this.scene.scale(0.25, 0.25, 0.25);
-        (this.capturedAnimation.player == 1 ? this.gold : this.silver).apply();
         this.capturedAnimation.object.display();
         this.scene.popMatrix();
     }
@@ -484,7 +467,6 @@ Board.prototype.display = function()
     {
         for (var i = 0; i < this.capturedPieces[player].length; i++) 
         {
-            (player == 1 ? this.gold : this.silver).apply();
             var coords = this.calculateSidePiecePosition(player, i);
             this.scene.pushMatrix();
             this.scene.translate(coords[0], 0, coords[1]);
