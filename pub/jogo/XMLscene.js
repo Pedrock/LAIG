@@ -221,10 +221,12 @@ XMLscene.prototype.update = function(currTime)
             this.board.update(currTime);
             this.updateCamera(currTime);
         }
+        if (this.infoBoard)
+        {
+            this.infoBoard.update(currTime);
+        }
     }
     this.prevCurrTime = currTime;
-
-
 }
 
 function easeInOutQuad(t) {
