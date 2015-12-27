@@ -8,8 +8,8 @@ function Board(scene)
     [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0], 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
     [0, 1, 0, 0, 2, 2, 2, 0, 0, 1, 0], 
-    [0, 1, 2, 2, 1, 0, 0, 2, 0, 1, 0], 
-    [0, 0, 0, 0, 0, 4, 0, 2, 0, 1, 0], 
+    [0, 1, 0, 2, 0, 0, 0, 2, 0, 1, 0], 
+    [0, 1, 0, 2, 0, 4, 0, 2, 0, 1, 0], 
     [0, 1, 0, 2, 0, 0, 0, 2, 0, 1, 0], 
     [0, 1, 0, 0, 2, 2, 2, 0, 0, 1, 0], 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
@@ -321,7 +321,7 @@ Board.prototype.update = function(currTime)
 
     if (!this.moveAnimation && !this.winner) 
     {
-        if (!this.human[this.currentPlayer] && !this.awaitingResponse && this.started && !this.replay_active) 
+        if (!this.human[this.currentPlayer] && !this.awaitingResponse && this.started && !this.replay_active && !this.reverse_all) 
         {
             this.computerPlay();
         }
@@ -416,11 +416,21 @@ Board.prototype.undo = function()
 
 Board.prototype.replay = function() 
 {
-    if (!this.replay_active && this.movesStack.length)
+    if (!this.replay_active && !this.reverse_all && this.movesStack.length)
     {
         this.awaitingResponse = false;
         this.replayStack = this.movesStack.slice();
         this.replay_active = true;
+        this.reverse_all = true;
+    }
+}
+
+Board.prototype.restart = function() 
+{
+    if (!this.replay_active && !this.reverse_all && this.movesStack.length)
+    {
+        this.awaitingResponse = false;
+        this.replayStack = this.movesStack.slice();
         this.reverse_all = true;
     }
 }
@@ -441,7 +451,7 @@ Board.prototype.display = function()
             this.scene.pushMatrix();
             this.scene.translate(this.cellWidth * x + 1, 0, this.cellWidth * y + 1);
             this.scene.scale(0.95 * this.cellWidth, 1, 0.95 * this.cellWidth);
-            if (!this.winner && !this.replay_active && !this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
+            if (!this.winner && !this.replay_active && !this.replay_active && !this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
             && (!this.pickStart || (this.pickStart[0] == x && this.pickStart[1] == y))) 
             {
                 this.selectionMaterial.apply();

@@ -248,6 +248,11 @@ XMLscene.prototype["Game Replay"] = function()
     this.board.replay();
 }
 
+XMLscene.prototype["Game Restart"] = function()
+{
+    this.board.restart();
+}
+
 XMLscene.prototype.getCameraTime = function(delta)
 {
     if (this.board.currentPlayer == 2 || this.board.reverse_all) this.cameraTime += delta;

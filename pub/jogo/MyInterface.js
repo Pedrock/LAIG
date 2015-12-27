@@ -40,6 +40,7 @@ MyInterface.prototype.init = function(application) {
 	this.gui.add(this,"Load LSX");
 	this.gui.add(this.scene,"Undo");
 	this.gui.add(this.scene,"Game Replay");
+	this.gui.add(this.scene,"Game Restart");
 	this.startgame = this.gui.add(this,"Start Game");
 
 	this["Load LSX"]();

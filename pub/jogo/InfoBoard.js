@@ -50,9 +50,11 @@ function easeOutExpo(t) {
 
 InfoBoard.prototype.update = function(currTime)
 {
-	if (this.startTime && !this.board.winner) this.startTime = null;
 	if (!this.startTime && this.board.winner) this.startTime = currTime;
-	this.winnerX = -6*this.charWidth*easeOutExpo((currTime - this.startTime)/1000);
+
+	var t = (currTime - this.startTime)/1000;
+	if (this.startTime && !this.board.winner) this.startTime = null;
+	this.winnerX = -6*this.charWidth*easeOutExpo(t);
 }
 
 InfoBoard.prototype.display = function()
