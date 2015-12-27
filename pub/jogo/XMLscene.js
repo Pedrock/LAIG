@@ -237,7 +237,7 @@ function easeInOutQuad(t) {
     return -1 / 2 * (t * (t-2) - 1);
 };
 
-XMLscene.prototype["Rotate"] = function()
+XMLscene.prototype["Switch Player"] = function()
 {
     this.board.switchPlayer();
     this.board.getValidMoves();

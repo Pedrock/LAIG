@@ -333,8 +333,8 @@ Board.prototype.update = function(currTime)
         this.timeLeft = Math.max(0, this.timeStart + this.timePerPlay - currTime);
         if (this.timeLeft === 0 && !this.awaitingResponse) 
         {
-            this.timeStart = currTime;
             this.switchPlayer();
+            this.timeStart = currTime;
             this.getValidMoves();
         }
     }
@@ -346,6 +346,7 @@ Board.prototype.update = function(currTime)
 
 Board.prototype.switchPlayer = function() 
 {
+    this.timeStart = null;
     this.playCounter = 0;
     this.currentPlayer = (this.currentPlayer == 1 ? 2 : 1);
     this.pickStart = null ;

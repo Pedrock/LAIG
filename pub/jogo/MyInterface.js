@@ -27,7 +27,7 @@ MyInterface.prototype["Change Camera"] = function() {
 MyInterface.prototype.init = function(application) {
     CGFinterface.prototype.init.call(this, application);
     this.gui = new dat.GUI();
-	this.gui.add(this.scene,"Rotate");
+	this.gui.add(this.scene,"Switch Player");
 	this.gui.add(this,"Change Camera");
 	this.gui.add(this.scene,"Start Animation");
 	this.scene["Silver Player"] = 0;
