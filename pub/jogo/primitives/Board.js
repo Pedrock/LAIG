@@ -260,8 +260,11 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
                     player: self.currentPlayer
                 };
                 self.movesStack.push(move);
-                self.getValidMoves(newBoard, nextPlayer, newCounter % 2);
-                self.playCounter = newCounter;
+                if (self.currentPlayer == player) 
+                {
+                    self.getValidMoves(newBoard, nextPlayer, newCounter % 2);
+                    self.playCounter = newCounter;
+                }
                 self.board = newBoard;
                 self.pieces[y - 1][x - 1] = null;
                 pickObject.boardPosition = pos;
