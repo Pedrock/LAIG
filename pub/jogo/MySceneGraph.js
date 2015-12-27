@@ -387,7 +387,7 @@ MySceneGraph.prototype.parseNodes = function(rootElement) {
             var animations = this.parseAll(title, "ANIMATION", animationsContainer[0], "node", id, "Animation ignored", ["id"], ["getString"]);
             for (var k in animations)
             {
-                this.nodes[id].addAnimation(animations[k]);
+                this.nodes[id].addAnimation(this,animations[k]);
             }
         }
     }

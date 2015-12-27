@@ -17,9 +17,9 @@ function Node(scene, id, material, texture) {
     this.totalTimePerAnimation[-1] = 0;
 }
 
-Node.prototype.addAnimation = function(animationID)
+Node.prototype.addAnimation = function(graph,animationID)
 {
-	var animation = this.scene.graph.animations[animationID];
+	var animation = graph.animations[animationID];
 	if (!animation)
 	{
 		console.warn("Invalid animation in use: '"+animationID+"'.");
