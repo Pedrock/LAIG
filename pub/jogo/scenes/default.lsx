@@ -140,7 +140,43 @@
 </MATERIALS>
 
 <ANIMATIONS>
-	
+	<ANIMATION id="rotacao-helices" span="56" type="circular"
+			center="0 0 0"
+			radius="0"
+			startang="0"
+			rotang="100000000" />
+	<ANIMATION id="linear1" span="8" type="linear">
+		<controlpoint xx="0" yy="0" zz="0" />
+		<controlpoint xx="0" yy="4" zz="0" />
+		<controlpoint xx="20" yy="4" zz="0" />
+	</ANIMATION>
+	<ANIMATION id="circular1" span="12" type="circular"
+			center="20 4 10"
+			radius="10"
+			startang="90"
+			rotang="-180" />
+	<ANIMATION id="linear2" span="8" type="linear">
+		<controlpoint xx="20" yy="4" zz="20" />
+		<controlpoint xx="0" yy="4" zz="20" />
+	</ANIMATION>
+	<ANIMATION id="circular2" span="10" type="circular"
+			center="0 4 10"
+			radius="10"
+			startang="-90"
+			rotang="-180" />
+	<ANIMATION id="circular3" span="5" type="circular"
+			center="0 4 2"
+			radius="2"
+			startang="90"
+			rotang="-360" />
+	<ANIMATION id="linear3" span="6" type="linear">
+		<controlpoint xx="0" yy="4" zz="0" />
+		<controlpoint xx="0" yy="0" zz="0" />
+	</ANIMATION>
+	<ANIMATION id="wait1" span="2.8" type="linear">
+		<controlpoint xx="0" yy="0" zz="0" />
+		<controlpoint xx="0" yy="0" zz="0" />
+	</ANIMATION>
 </ANIMATIONS>
 
 <LEAVES>
@@ -150,6 +186,8 @@
 	<LEAF id="rectangulo" type="rectangle" args="0 1 1 0" /> 
 	<LEAF id="cone" type="cylinder" args="4 0 1 1 40" />
 	<LEAF id="terreno" type="terrain" texture="textures/jardim.jpg" heightmap="textures/jardim-heightmap.jpg" />
+	<LEAF id="plano" type="plane" parts="20" />
+	<LEAF id="veículo" type="vehicle" />
 	
 	<LEAF id="superficie-frente-barco" type="patch" order="3" partsU="20" partsV="20" >
 	
@@ -635,6 +673,7 @@
         <TEXTURE id="null" />
         <DESCENDANTS>
 		    <DESCENDANT id="board" /> 
+			<DESCENDANT id="helicoptero-animado" />
 			<DESCENDANT id="cena" />
         </DESCENDANTS>
     </NODE>
@@ -665,6 +704,180 @@
 			<DESCENDANT id="navio" />
         </DESCENDANTS>
     </NODE>
+	
+	<NODE id="helicoptero-animado" >
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		
+		<TRANSLATION x="-8" y="-1.3" z="-2.8" />
+		<DESCENDANTS>
+			<DESCENDANT id="helicoptero" />
+        </DESCENDANTS>
+		<ANIMATIONS>
+			<ANIMATION id="wait1" />
+			<ANIMATION id="linear1" />
+			<ANIMATION id="circular1" />
+			<ANIMATION id="linear2" />
+			<ANIMATION id="circular2" />
+			<ANIMATION id="circular3" />
+			<ANIMATION id="linear3" />
+		</ANIMATIONS>
+	</NODE>
+	
+	<NODE id="helicoptero">
+		<MATERIAL id="material-geral" />
+        <TEXTURE id="null" />
+		<SCALE sx="0.1" sy="0.1" sz="0.1" />
+		<ROTATION axis="y" angle="180" />
+		<DESCENDANTS>
+			<DESCENDANT id="helices-tras" />
+			<DESCENDANT id="helices-cimo" />
+			<DESCENDANT id="veículo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helices-tras">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="8.2" y="3.85" z="0.5" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="0.3" sy="1" sz="0.3" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helices-animadas" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helices-cimo">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="0" y="7.15" z="0" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helices-animadas" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helices-animadas">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<DESCENDANTS>
+			<DESCENDANT id="helices" />
+        </DESCENDANTS>
+		<ANIMATIONS>
+			<ANIMATION id="rotacao-helices" />
+		</ANIMATIONS>
+	</NODE>
+	
+	<NODE id="helices">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		 <DESCENDANTS>
+			<DESCENDANT id="centro-helice" />
+			<DESCENDANT id="centro-helice-back" />
+			<DESCENDANT id="helice1" />
+			<DESCENDANT id="helice1-back" />
+			<DESCENDANT id="helice2" />
+			<DESCENDANT id="helice2-back" />
+			<DESCENDANT id="helice3" />
+			<DESCENDANT id="helice3-back" />
+			<DESCENDANT id="helice4" />
+			<DESCENDANT id="helice4-back" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="centro-helice">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="-0.325" y="0" z="0.325" />
+		<ROTATION axis="x" angle="-90" />
+		<SCALE sx="0.65" sy="0.65" sz="1" />
+		 <DESCENDANTS>
+			<DESCENDANT id="rectangulo" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="centro-helice-back">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="x" angle="180" />
+		 <DESCENDANTS>
+			<DESCENDANT id="centro-helice" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice1">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<TRANSLATION x="2.325" y="0" z="0" />
+		<SCALE sx="4" sy="1" sz="0.65" />
+		 <DESCENDANTS>
+			<DESCENDANT id="plano" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice1-back">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="x" angle="180" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helice1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice2">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="y" angle="-90" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helice1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice2-back">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="x" angle="180" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helice2" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice3">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="y" angle="90" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helice1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice3-back">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="x" angle="180" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helice3" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice4">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="y" angle="180" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helice1" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<NODE id="helice4-back">
+		<MATERIAL id="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="x" angle="180" />
+		 <DESCENDANTS>
+			<DESCENDANT id="helice4" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<!---->
 	
 	<NODE id="barco">
         <MATERIAL id="null" />

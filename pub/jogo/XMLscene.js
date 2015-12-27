@@ -223,6 +223,8 @@ XMLscene.prototype.update = function(currTime)
         }
     }
     this.prevCurrTime = currTime;
+
+
 }
 
 function easeInOutQuad(t) {
@@ -274,4 +276,12 @@ XMLscene.prototype["Undo"] = function()
 {
     if (this.board)
         this.board.undo();
+}
+
+XMLscene.prototype["Start Animation"] = function()
+{
+    for (var id in this.graph.nodes)
+    {
+        if (this.graph.nodes[id] && !this.graph.nodes[id].isLeaf) this.graph.nodes[id].startAnimations();
+    }
 }
