@@ -452,7 +452,7 @@ Board.prototype.display = function()
             this.scene.pushMatrix();
             this.scene.translate(this.cellWidth * x + 1, 0, this.cellWidth * y + 1);
             this.scene.scale(0.95 * this.cellWidth, 1, 0.95 * this.cellWidth);
-            if (!this.winner && !this.replay_active && !this.replay_active && !this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
+            if (!this.winner && !this.replay_active && !this.reverse_all && !this.moveAnimation && this.board[y][x] != 0 && this.board[y][x] % 2 == this.currentPlayer % 2 
             && (!this.pickStart || (this.pickStart[0] == x && this.pickStart[1] == y))) 
             {
                 this.selectionMaterial.apply();
