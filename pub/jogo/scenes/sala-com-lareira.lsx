@@ -779,7 +779,7 @@
 	<NODE id="cena">
 		<MATERIAL id="material-geral" />
         <TEXTURE id="null" />
-		<TRANSLATION x="8" y="-3.25" z="-10" />
+		<TRANSLATION x="8" y="-3.165" z="-10" />
 		<ROTATION axis="y" angle="-90" />
 		<DESCENDANTS>
 			<DESCENDANT id="chao-sala" />
