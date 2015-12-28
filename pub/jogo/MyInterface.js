@@ -37,7 +37,6 @@ MyInterface.prototype.init = function(application) {
 	this.gui.add(this.scene,"Gold Player", {'Human':0,'Random':1,'AI':2}).onFinishChange(function() {self.scene.changePlayers()});
 	this.scene["Scene"] = 'default.lsx';
 	this.gui.add(this.scene,"Scene",this.scenes).onFinishChange(function() {self.scene.updateScene()});
-	this.gui.add(this,"Load LSX");
 	this.gui.add(this.scene,"Undo");
 	this.gui.add(this.scene,"Game Replay");
 	this.gui.add(this.scene,"Game Restart");
