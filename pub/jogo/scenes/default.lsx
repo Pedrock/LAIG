@@ -1064,7 +1064,7 @@
 	<NODE id="cena">
 		<MATERIAL id="material-geral" />
         <TEXTURE id="null" />
-		<TRANSLATION x="6.79" y="0" z="2.26" />
+		<TRANSLATION x="6.79" y="0.02" z="2.26" />
 		<ROTATION axis="y" angle="-45" />
 		<SCALE sx="0.8" sy="0.8" sz="0.8" />
 		<DESCENDANTS>
@@ -1088,7 +1088,7 @@
         <TEXTURE id="null" />
 		<TRANSLATION x="-8" y="0" z="4" />
 		<ROTATION axis="y" angle="-45" />
-		<TRANSLATION x="-1.35" y="-0.01" z="1.35" />
+		<TRANSLATION x="-1.35" y="-0.03" z="1.35" />
 		<SCALE sx="2.7" sy="2.7" sz="2.7" />
 		<ROTATION axis="x" angle="-90" />
         <DESCENDANTS>
