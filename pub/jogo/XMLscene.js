@@ -255,7 +255,7 @@ XMLscene.prototype["Game Restart"] = function()
 
 XMLscene.prototype.getCameraTime = function(delta)
 {
-    if (this.board.currentPlayer == 2 || this.board.reverse_all) this.cameraTime += delta;
+    if (this.board.currentPlayer == 2 && !this.board.reverse_all) this.cameraTime += delta;
     else this.cameraTime -= delta;
     this.cameraTime = Math.max(Math.min(this.cameraTime,this.cameraMovement),0);
     return this.cameraTime/1000;
