@@ -1,3 +1,6 @@
+/**
+ * Construtor de tabuleiro
+ */
 function Board(scene) 
 {
     CGFobject.call(this, scene);
@@ -83,6 +86,7 @@ function Board(scene)
     this.movesStack = [];
 }
 
+// Obter posição de peça lateral de acordo com o indice da mesma e o jogador que a capturou
 Board.prototype.calculateSidePiecePosition = function(player, index) 
 {
     var side = player == 1 ? 1 : -1;
@@ -97,6 +101,7 @@ Board.prototype.calculateSidePiecePosition = function(player, index)
     return [side * this.cellWidth * (this.board.length / 2 + 1 + column) + this.board.length * this.cellWidth / 2, this.cellWidth * row + this.board.length * this.cellWidth / 2];
 }
 
+// Verifica se uma peça vai ser capturada e se for o caso, realiza a animação de captura
 Board.prototype.capture = function(player, piece, pos) 
 {
     if (piece) 
@@ -120,12 +125,14 @@ Board.prototype.capture = function(player, piece, pos)
         this.moveAnimation.captureFinished(false);
 }
 
+// Atualiza a pontuação
 Board.prototype.updateScore = function() 
 {
     this.score[1] = this.capturedPieces[1].length;
     this.score[2] = this.capturedPieces[2].length;
 }
 
+// Obter jogadas válidas
 Board.prototype.getValidMoves = function(board, player, playCounter) 
 {
     board = (board === undefined ? this.board : board);
@@ -139,6 +146,7 @@ Board.prototype.getValidMoves = function(board, player, playCounter)
     });
 }
 
+// Handler do picking
 Board.prototype.createPickHandler = function() 
 {
     if (!this.started || this.winner) return;
@@ -182,6 +190,7 @@ Board.prototype.createPickHandler = function()
     }
 }
 
+// Altera as peças a serem usadas aquando da troca de cena
 Board.prototype.updateBoardPieces = function(flagship, gold_escort, silver_escort)
 {
     this.flagship = flagship;
@@ -189,6 +198,7 @@ Board.prototype.updateBoardPieces = function(flagship, gold_escort, silver_escor
     this.silver_escort = silver_escort;
 }
 
+// Cria as peças de tabuleiro de acordo com a matriz do tabuleiro
 Board.prototype.createBoardPieces = function() 
 {
     for (var y = 0; y < this.board.length; y++) 
@@ -222,6 +232,7 @@ Board.prototype.createBoardPieces = function()
     }
 }
 
+// Realiza jogada do computador
 Board.prototype.computerPlay = function() 
 {
     var handler = this.handleResponse.bind(this);
@@ -229,6 +240,7 @@ Board.prototype.computerPlay = function()
     Game.computerPlay(this.board, this.currentPlayer, this.difficulty[this.currentPlayer], this.playCounter, handler);
 }
 
+// Handler de respostas de jogadas
 Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounter, newBoard, winner) 
 {
     if (!this.awaitingResponse) return;
@@ -291,11 +303,13 @@ Board.prototype.handleResponse = function(valid, x, y, deltax, deltay, newCounte
         this.pickStart = this.pickEnd = null ;
 }
 
+// Iniciar o jogo
 Board.prototype.start = function()
 {
     this.started = true;
 }
 
+// Função de update
 Board.prototype.update = function(currTime) 
 {
     if (!this.started) return;
@@ -347,6 +361,7 @@ Board.prototype.update = function(currTime)
     }
 }
 
+// Trocar de jogador
 Board.prototype.switchPlayer = function() 
 {
     this.timeStart = null;
@@ -355,6 +370,7 @@ Board.prototype.switchPlayer = function()
     this.pickStart = null ;
 }
 
+// Desfazer última jogada
 Board.prototype.undo_last_move = function(fast, currTime)
 {
     var self = this;
@@ -402,6 +418,7 @@ Board.prototype.undo_last_move = function(fast, currTime)
     if (this.moveAnimation && currTime) this.moveAnimation.update(currTime);
 }
 
+// Pedir para desfazer a ultima jogada
 Board.prototype.undo = function() 
 {
     if (this.replay_active) return;
@@ -418,6 +435,7 @@ Board.prototype.undo = function()
     }
 }
 
+// Pedir para fazer replay
 Board.prototype.replay = function() 
 {
     if (!this.replay_active && !this.reverse_all && this.movesStack.length)
@@ -429,6 +447,7 @@ Board.prototype.replay = function()
     }
 }
 
+// Pedir para reeniciar o jogo
 Board.prototype.restart = function() 
 {
     if (!this.replay_active && !this.reverse_all && this.movesStack.length)
@@ -439,6 +458,7 @@ Board.prototype.restart = function()
     }
 }
 
+// Display do tabuleiro
 Board.prototype.display = function() 
 {
     this.scene.pushMatrix();

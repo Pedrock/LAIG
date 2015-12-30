@@ -99,6 +99,7 @@ XMLscene.prototype.onGraphLoaded = function(graph)
     }
 };
 
+// Função chamada sempre que se troca de cena
 XMLscene.prototype.updateScene = function() {
     if (!this.graphs[this.Scene].loadedOk) return;
     if (!this.infoBoard) this.infoBoard = new InfoBoard(this,this.board);
@@ -110,6 +111,8 @@ XMLscene.prototype.updateScene = function() {
     this.board.updateBoardPieces(this.graph.nodes["flagship"],this.graph.nodes["gold-escort"],this.graph.nodes["silver-escort"]);
 };
 
+
+// Inicia as luzes de uma cena
 XMLscene.prototype.initLights = function() {
     var i = 0;
     for (var i in this.lights)
@@ -141,6 +144,7 @@ XMLscene.prototype.initLights = function() {
     this.setGlobalAmbientLight.apply(this, this.graph.illumination.ambient);
 }
 
+// Update das luzes
 XMLscene.prototype.updateLights = function() {
     for (var i = 0; i < this.numberLights; i++) 
     {
@@ -148,6 +152,8 @@ XMLscene.prototype.updateLights = function() {
     }
 }
 
+
+// Display da cena
 XMLscene.prototype.display = function() {
     // Clear image and depth buffer everytime we update the scene
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
@@ -187,6 +193,8 @@ XMLscene.prototype.display = function() {
 }
 ;
 
+
+// Transformações iniciais
 XMLscene.prototype.initialTransformations = function() 
 {
     for (var i = 0; i < this.graph.initials.translations.length; i++) 
@@ -204,6 +212,7 @@ XMLscene.prototype.initialTransformations = function()
     }
 }
 
+// Função de update
 XMLscene.prototype.update = function(currTime)
 {
     if (this.graphs[this.Scene] !== this.graph)
@@ -229,6 +238,7 @@ XMLscene.prototype.update = function(currTime)
     this.prevCurrTime = currTime;
 }
 
+// Função ease in out quadratica
 function easeInOutQuad(t) {
     t *= 2;
     if (t < 1)
@@ -237,22 +247,26 @@ function easeInOutQuad(t) {
     return -1 / 2 * (t * (t-2) - 1);
 };
 
+// Trocar de jogador
 XMLscene.prototype["Switch Player"] = function()
 {
     this.board.switchPlayer();
     this.board.getValidMoves();
 }
 
+// "Filme" do jogo
 XMLscene.prototype["Game Replay"] = function()
 {
     this.board.replay();
 }
 
+// Reeniciar o jogo
 XMLscene.prototype["Game Restart"] = function()
 {
     this.board.restart();
 }
 
+// Obter tempo para rotação da camara
 XMLscene.prototype.getCameraTime = function(delta)
 {
     if (this.board.currentPlayer == 2 && !this.board.reverse_all) this.cameraTime += delta;
@@ -261,6 +275,7 @@ XMLscene.prototype.getCameraTime = function(delta)
     return this.cameraTime/1000;
 }
 
+// Atualizar a posição da camara
 XMLscene.prototype.updateCamera = function(currTime)
 {
     this.gameCamera.position = this.cameraPosition.slice();
@@ -269,7 +284,7 @@ XMLscene.prototype.updateCamera = function(currTime)
     this.gameCamera.orbit(CGFcameraAxis.Y,Math.PI*easeInOutQuad(t));
 }
 
-
+// Trocar de jogador
 XMLscene.prototype.changePlayers = function()
 {
     this.board.human[1] = this["Silver Player"] == 0;
@@ -279,12 +294,14 @@ XMLscene.prototype.changePlayers = function()
     this.board.difficulty[2] = this["Gold Player"];
 }
 
+// Desfazer ultima jogada
 XMLscene.prototype["Undo"] = function()
 {
     if (this.board)
         this.board.undo();
 }
 
+// Iniciar animação da cena
 XMLscene.prototype["Start Animation"] = function()
 {
     for (var id in this.graph.nodes)

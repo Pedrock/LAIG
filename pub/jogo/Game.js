@@ -1,3 +1,4 @@
+// Envia request para o servidor Prolog
 function postGameRequest(requestObject, onSuccess, onError)
 {
 	var request = new XMLHttpRequest();
@@ -13,6 +14,7 @@ function postGameRequest(requestObject, onSuccess, onError)
 
 function Game() {};
 
+// Realiza jogada
 Game.play = function(board,player,x,y,deltax,deltay,counter,handler)
 {	
 	var request = (["play",board,player,x,y,deltax,deltay,counter]);
@@ -31,6 +33,7 @@ Game.play = function(board,player,x,y,deltax,deltay,counter,handler)
 		});
 }
 
+// Obter jogada do computador
 Game.computerPlay = function(board,player,difficulty,counter,handler)
 {
 	var request = (["computerPlay",board,player,difficulty,counter]);
@@ -49,6 +52,7 @@ Game.computerPlay = function(board,player,difficulty,counter,handler)
 		});
 }
 
+// Obter jogadas válidas para um jogador
 Game.getValidMoves = function(board,player,playCounter,handler)
 {
 	var request = (["getValidMoves",board,player,playCounter]);

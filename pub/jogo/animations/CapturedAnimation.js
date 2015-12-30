@@ -19,6 +19,7 @@ function CapturedAnimation(scene, player, object, delta, moveAnimation, reversed
     this.timespan = 2 / (fast ? 10: 1);
 }
 
+// Função ease in out cubica
 function easeInOutCubic(t) {
     t *= 2;
     if (t < 1)
@@ -27,11 +28,13 @@ function easeInOutCubic(t) {
     return 1 / 2 * (t * t * t + 2);
 };
 
+// Função de arco
 function arc(t)
 {
     return -4*Math.pow(t-0.5,2)+1;
 }
 
+// Obter tempo da animação
 CapturedAnimation.prototype.getTime = function(startTime, currTime, timespan)
 {
     if (!this.reversed) return (currTime - startTime)/timespan;
@@ -63,6 +66,7 @@ CapturedAnimation.prototype.update = function(currTime) {
     }
 }
 
+// Reverter a animação
 CapturedAnimation.prototype.reverse = function()
 {
     if (!this.reversed)

@@ -42,6 +42,7 @@ function PieceAnimation(scene, object, delta, finishedHandler, captureHandler, r
     if (reversed) this.stageTimes.reverse();
 }
 
+// Função ease in out Cubica
 function easeInOutCubic(t) {
     t *= 2;
     if (t < 1)
@@ -50,7 +51,7 @@ function easeInOutCubic(t) {
     return 1 / 2 * (t * t * t + 2);
 };
 
-// Função que calcula as direções e rotações para cada secção
+// Função que calcula a normal e rotação do movimento
 PieceAnimation.prototype.calculateNormalAndRotation = function() 
 {
     var N = Math.sqrt(this.delta[0] * this.delta[0] + this.delta[2] * this.delta[2]);
@@ -61,6 +62,7 @@ PieceAnimation.prototype.calculateNormalAndRotation = function()
     this.moveRotation = Math.atan2(this.normal[2], -this.normal[0]);
 }
 
+// Atualiza a secção linear
 PieceAnimation.prototype.updateLinearSection = function(currTime,sectionStart) 
 {
     var t = this.getSectionTime(this.startTime + sectionStart*1000, currTime, this.timespan*1000);
@@ -81,12 +83,14 @@ PieceAnimation.prototype.updateLinearSection = function(currTime,sectionStart)
     }
 }
 
+// Obter tempo de secção
 PieceAnimation.prototype.getSectionTime = function(startTime, currTime, timespan)
 {
     if (!this.reversed) return (currTime - startTime)/timespan;
     else return 1 - (currTime - startTime)/timespan;
 }
 
+// Atualiza uma secção de rotação
 PieceAnimation.prototype.updateRotationSection = function(currTime, firstRot, sectionStart)
 {
     if (this.rotationTime == 0)
@@ -106,6 +110,7 @@ PieceAnimation.prototype.updateRotationSection = function(currTime, firstRot, se
     this.rotation = currRotation;
 }
 
+// Avança para a fase seguinte de animação
 PieceAnimation.prototype.nextStage = function()
 {
      this.stage += (this.reversed ? -1 : 1);
@@ -113,6 +118,7 @@ PieceAnimation.prototype.nextStage = function()
      this.previousStageEnd = (this.prevCurrTime - this.startTime)/1000;
 }
 
+// Reverter animação
 PieceAnimation.prototype.reverse = function()
 {
     if (!this.reversed)
@@ -129,6 +135,7 @@ PieceAnimation.prototype.reverse = function()
     }
 }
 
+// Função chamada quando a captura é finalizada ou não é para ser realizada
 PieceAnimation.prototype.captureFinished = function()
 {
     this.captureFinishedState = true;

@@ -1,7 +1,7 @@
  /**
  * InfoBoard
- * @param gl {WebGLRenderingContext}
- * @constructor
+ *
+ * Construtor do Marcador de jogo
  */
 function InfoBoard(scene,board) {
     CGFobject.call(this, scene);
@@ -44,10 +44,12 @@ function InfoBoard(scene,board) {
 InfoBoard.prototype = Object.create(CGFobject.prototype);
 InfoBoard.prototype.constructor = InfoBoard;
 
+// Função ease out exponencial
 function easeOutExpo(t) {
 	return -Math.pow( 2, -10 * t ) + 1;
 };
 
+// Função update
 InfoBoard.prototype.update = function(currTime)
 {
 	if (!this.startTime && this.board.winner) this.startTime = currTime;
@@ -57,6 +59,7 @@ InfoBoard.prototype.update = function(currTime)
 	this.winnerX = -6*this.charWidth*easeOutExpo(t);
 }
 
+// Display do marcador
 InfoBoard.prototype.display = function()
 {
     var frustum = this.scene.graph.initials.frustum;
@@ -95,6 +98,7 @@ InfoBoard.prototype.display = function()
     }
 }
 
+// Escrever string
 InfoBoard.prototype.displayString = function(str)
 {
     this.scene.pushMatrix();
@@ -118,6 +122,7 @@ InfoBoard.prototype.displayString = function(str)
     this.scene.setActiveShaderSimple(this.scene.defaultShader);
 }
 
+// Obter coordenadas de determinado caracter
 function getcharCoords(char)
 {
     if (char >= "0" && char<= "9") return [char - "0",0];
